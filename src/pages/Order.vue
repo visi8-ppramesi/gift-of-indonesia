@@ -1,13 +1,13 @@
 <template>
-    <div class="container flex flex-col bg-black text-white pb-16">
+    <div style="background-color: #202424;" class="text-white pb-16">
         <div class="flex flex-row">
             <!-- add background image + bottom fadeout color -->
             <top  class="h-screen w-screen items-center text-white flex flex-col justify-center" :background="gudeg">
             <!-- align items below to the left  -->
-                <div class="text-left mt-64">   
-                    <div class="mx-10 font-bold text-4xl">Gudeg</div>
+               <div class="text-left mt-72 md:mt-96">   
+                    <div class="mx-6 font-bold text-xl md:text-4xl">Gudeg</div>
                     
-                    <div class="ml-10 mr-96 mt-3 text-2xl">
+                    <div class="mx-6 mt-1 text-xs md:text-lg">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
                         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                         Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
@@ -23,30 +23,30 @@
         <card 
             class="px-6"
             type="Order"
-            title="Buy Ingredients :"
+            title="Ingredients :"
             :ingredients="bahan"
             total="300,000"
         />
 
         <div class="px-6">
             <div style="background-color: #4E423E;" class="mt-10 text-white w-full flex flex-col rounded-xl shadow-lg">
-                <div class="text-4xl px-4 pt-4">Payment :</div>
-                <div class="flex pb-4">
-                    <div class="mx-4">
-                        <tombol title="Credit Card" />
+                <div class="text-xl px-4 pt-4 md:text-4xl">Payment :</div>
+                <div class="flex pb-4 text-xs mt-3 md:mt-6">
+                    <div class="ml-4">
+                        <tombol class="md:text-xl" title="Credit Card" />
                     </div>
 
-                    <div class="mx-4">
-                        <tombol title="Bank Transfer" />
+                    <div class="mx-2">
+                        <tombol class="md:text-xl" title="Bank Transfer" />
                     </div>
 
-                    <div class="mx-4">
-                        <tombol title="Paypal" />
+                    <div>
+                        <tombol class="md:text-xl" title="Paypal" />
                     </div>
                 </div>
 
-                <div class="mr-16 ml-4">
-                    <div style="background-color: white; width: 800px;" class="mt-10 text-black flex flex-col rounded-md shadow-xl">
+                <div class="mx-4">
+                    <div style="background-color: white;" class="w-full mt-10 text-black flex flex-col rounded-md shadow-xl">
                         <div class="p-4">
                             <div class="py-4">
                                 <p>NAME ON CARD</p>
@@ -76,7 +76,7 @@
                     </div>
                 </div>
 
-                <div class="mx-4 pb-6">
+                <div class="mx-4 mt-4 pb-6">
                     <tombol title="PAY NOW" />
                 </div>
             </div>

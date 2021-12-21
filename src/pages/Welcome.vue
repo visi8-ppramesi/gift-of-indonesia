@@ -3,10 +3,10 @@
         <!-- center the content below -->
         <div class="flex flex-col">
             <top class="h-screen w-screen items-center text-white flex flex-col justify-center" :background="welcomeBackground">
-                <div class="text-4xl">Welcome To</div>
-                <div class="font-bold text-8xl">Experience of Indonesia</div>
-                <hr style="width: 950px;" class="w-full mt-5 border-4" />
-                <div class="text-center text-2xl mx-72 mt-3">
+                <div class="text-md md:text-xl">Welcome To</div>
+                <div class="font-bold text-xl md:text-4xl">Experience of Indonesia</div>
+                <hr style="width: 200px;" class="mt-2 border-4" />
+                <div class="text-center w-full px-4 text-sm mt-3 md:text-lg md:w-full md:px-6">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
@@ -16,20 +16,20 @@
                     qui officia deserunt mollit anim id est laborum
                 </div>
                 <div>
-                    <div class="flex flex-row">
+                    <div class="flex flex-row mt-8">
                         <div>
                             <router-link to="/sight">
-                                <tombol class="mx-10" title="Sight" />
+                                <tombol class="ml-6 mt-2 text-sm md:text-lg  md:mt-4 md:ml-4" title="Sight" />
                             </router-link>
                         </div>
                         <div>
                             <router-link to="/taste">
-                                <tombol class="mx-10" title="Taste" />
+                                <tombol class="mx-4 mt-2 text-sm md:text-lg  md:mt-4 md:mx-12" title="Taste" />
                             </router-link>
                         </div>
                         <div>
                             <router-link to="/sound">
-                                <tombol class="mx-10" title="Sound" />
+                                <tombol class="mt-2 text-sm md:text-lg  md:mt-4" title="Sound" />
                             </router-link>
                         </div>
                     </div>
