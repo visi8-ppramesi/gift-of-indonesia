@@ -1,5 +1,5 @@
 <template>
-    <button class="px-10 mt-7 bg-transparent hover:bg-white font-semibold hover:text-black py-2 px-4 border border-white hover:border-transparent rounded">
+    <button class="px-4 bg-transparent hover:bg-white font-semibold hover:text-black py-1 border border-white hover:border-transparent rounded">
         {{title}}
     </button>
 </template>

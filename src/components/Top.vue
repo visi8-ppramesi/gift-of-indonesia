@@ -14,7 +14,7 @@ export default {
         },
         color: {
             type: String,
-            default: 'black'
+            default: '#202424'
         }
     }
 }
