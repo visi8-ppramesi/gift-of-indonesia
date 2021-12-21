@@ -23,8 +23,8 @@
         </div>
 
         <div> <!-- change height -->
-            <div class="mx-6 flex flex-row justify-evenly justify-items-stretch">
-                <div class="w-full">
+            <div class="mx-6 flex flex-row justify-evenly justify-items-stretch md:mt-24">
+                <div class="w-full h-44">
                     <img class="rounded-lg object-cover h-full" :src="card1" />
                 </div>
 
@@ -56,7 +56,7 @@
                     </div>
                 </div>
 
-                <div class="w-full mx-2">
+                <div class="w-full h-44 mx-2">
                     <img class="rounded-lg object-cover h-full" :src="card2" />
                 </div>
             </div>
@@ -64,11 +64,11 @@
 
         <div class="mt-24"> <!-- change height -->
             <div class="mx-6 flex flex-row justify-evenly justify-items-stretch">
-                <div class="w-full">
+                <div class="w-full h-44">
                     <img class="rounded-lg object-cover h-full" :src="card3" />
                 </div>
 
-                <div class="w-full text-right mx-2">
+                <div class="w-full text-right">
                     <div class="text-md font-bold md:text-4xl">Dance</div>
                     <div class="text-sm md:text-2xl">Tari Reog Ponogoro</div>
                     <div class="text-xs mt-2 md:text-lg">
