@@ -54,7 +54,6 @@ export default {
         }
     },
     created(){
-        console.log(this.welcomeBackground)
     }
 }
 </script>

@@ -104,7 +104,6 @@ export default {
         }
     },
     created(){
-        console.log(this.sightBackground)
     }
 }
 </script>
