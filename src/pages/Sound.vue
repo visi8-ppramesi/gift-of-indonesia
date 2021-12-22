@@ -2,12 +2,12 @@
     <div style="background-color: #202424;" class="text-white pb-16">
         <div class="flex flex-row">
             <!-- add background image + bottom fadeout color -->
-            <top class="h-screen w-screen items-center text-white flex flex-col justify-center" :background="soundBackground">
+            <top class="h-screen w-screen items-center text-white flex flex-col justify-end" :background="soundBackground">
             <!-- align items below to the left  -->
-            <div class="text-left mt-64">   
-                <div class="mx-6 font-bold text-xl">SIGHT OF INDONESIA</div>
-                 <hr class="w-36 ml-6 mt-1 border-4" />
-                <div class="mt-3 mx-6 text-xs">
+            <div class="text-left pb-16">   
+                <div class="mx-6 font-bold text-xl md:text-4xl">SIGHT OF INDONESIA</div>
+                 <hr class="w-36 ml-6 mt-1 border-4 md:w-64" />
+                <div class="mt-3 mx-6 text-xs md:text-lg">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 

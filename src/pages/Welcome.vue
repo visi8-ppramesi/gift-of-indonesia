@@ -5,7 +5,7 @@
             <top class="h-screen w-screen items-center text-white flex flex-col justify-center" :background="welcomeBackground">
                 <div class="text-md md:text-xl">Welcome To</div>
                 <div class="font-bold text-xl md:text-4xl">Experience of Indonesia</div>
-                <hr style="width: 200px;" class="mt-2 border-4" />
+                <hr class="underline mt-2 border-4" />
                 <div class="text-center w-full px-4 text-sm mt-3 md:text-lg md:w-full md:px-6">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
@@ -60,5 +60,13 @@ export default {
 </script>
 
 <style>
+    .underline {
+        width: 200px;
+    }
 
+    @media (min-width: 768px){
+        .underline {
+            width: 300px;
+        }
+    }
 </style>

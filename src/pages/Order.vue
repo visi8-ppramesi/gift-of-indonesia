@@ -2,9 +2,9 @@
     <div style="background-color: #202424;" class="text-white pb-16">
         <div class="flex flex-row">
             <!-- add background image + bottom fadeout color -->
-            <top  class="h-screen w-screen items-center text-white flex flex-col justify-center" :background="gudeg">
+            <top  class="h-screen w-screen items-center text-white flex flex-col justify-end" :background="gudeg">
             <!-- align items below to the left  -->
-               <div class="text-left mt-72 md:mt-96">   
+               <div class="text-left pb-16">   
                     <div class="mx-6 font-bold text-xl md:text-4xl">Gudeg</div>
                     
                     <div class="mx-6 mt-1 text-xs md:text-lg">
