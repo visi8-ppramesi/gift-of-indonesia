@@ -2,9 +2,9 @@
     <div style="background-color: #202424;" class="text-white pb-16">
         <div class="flex">
             <!-- add background image + bottom fadeout color -->
-            <top  class="h-screen w-screen items-center text-white flex flex-col justify-center" :background="tasteBackground">
+            <top  class="h-screen w-screen items-center text-white flex flex-col justify-end" :background="tasteBackground">
                 <!-- align items below to the right  -->
-                <div class="text-right mt-64">   
+                <div class="text-right pb-12 md:pb-16">
                 <div class="mx-6 font-bold text-xl md:text-4xl">TASTE OF INDONESIA</div>
                 <div class="flex justify-end mx-6">
                     <hr class="w-36 mt-1 border-4 md:w-72" />
@@ -117,7 +117,7 @@
                 <hr class="w-full border-2 border-white md:border-4" />
             </div>
             <div class="flex justify-center items-center">
-                <div style="background-color: #F9AC18;" class="w-max text-xs py-3 px-8 font-bold absolute rounded-xl mcd:text-lg">Spice</div>
+                <div style="background-color: #F9AC18;" class="w-max text-xs py-3 px-8 font-bold absolute rounded-xl md:text-lg">Spice</div>
             </div>
         </div>
 
