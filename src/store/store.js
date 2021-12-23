@@ -3,7 +3,7 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
-export const store = new Vuex.Store({
+const store = new Vuex.Store({
     state: {
         spiceIndo: [
             {id: 1, name: 'Cengkeh', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', price: '5,000', quantity: 0},
@@ -53,3 +53,5 @@ export const store = new Vuex.Store({
         }
     }
 })
+
+export default store

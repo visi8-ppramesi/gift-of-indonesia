@@ -131,11 +131,11 @@
                         <div class="text-xs mb-2 md:text-xl md:mt-4">{{ items.description }}</div>
                         <div class="flex">
                             <div>
-                                <tombol v-on:click="addToCart(items)" class="text-xs md:textmd md:mt-12" title="ADD TO CART" />
+                                <tombol @click="addToCart(items)" class="text-xs md:textmd md:mt-12" title="ADD TO CART" />
                             </div>
                              <div>{{count}}</div>
                              <div>
-                                <tombol v-on:click="removeItem(items)" class="text-xs md:text-md md:mt-12" title="REMOVE FROM CART" />
+                                <tombol @click="removeItem(items)" class="text-xs md:text-md md:mt-12" title="REMOVE FROM CART" />
                             </div>
                         </div>
                     </div>
