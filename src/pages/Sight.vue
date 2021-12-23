@@ -4,7 +4,7 @@
             <!-- add background image + bottom fadeout color -->
             <top class="h-screen w-screen items-center text-white flex flex-col justify-end" :background="sightBackground">
             <!-- align items below to the right  -->
-                <div class="text-right pb-12 md:pb-0">   
+                <div class="text-right pb-16">   
                     <div class="mx-6 font-bold text-lg md:text-4xl">SIGHT OF INDONESIA</div>
                     <div class="flex justify-end mx-6">
                     <hr class="w-36 mt-1 border-4 md:w-72" />

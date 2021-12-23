@@ -22,12 +22,12 @@
             </top>
         </div>
 
-        <div>
+        <div class="mt-5">
             <div class="mx-6">
                 <hr class="w-full border-2 border-white md:border-4" />
             </div>
             <div class="flex justify-center items-center">
-                <div style="background-color: #F9AC18;" class="w-max p-3 text-xs font-bold absolute rounded-xl md:text-lg">Traditional Food</div>
+                <div style="background-color: #F9AC18;" class="w-max p-3 text-xs font-bold absolute rounded-full md:text-lg">Traditional Food</div>
             </div>
         </div>
         
@@ -117,7 +117,7 @@
                 <hr class="w-full border-2 border-white md:border-4" />
             </div>
             <div class="flex justify-center items-center">
-                <div style="background-color: #F9AC18;" class="w-max text-xs py-3 px-8 font-bold absolute rounded-xl md:text-lg">Spice</div>
+                <div style="background-color: #F9AC18;" class="w-max text-xs py-3 px-8 font-bold absolute rounded-full md:text-lg">Spice</div>
             </div>
         </div>
 
