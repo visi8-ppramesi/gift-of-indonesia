@@ -49,7 +49,7 @@ const store = new Vuex.Store({
             context.commit("addToCart", payload)
         },
         removeItem: (context, payload) => {
-            context.commit("addToCart", payload)
+            context.commit("removeItem", payload)
         }
     }
 })

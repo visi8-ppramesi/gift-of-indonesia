@@ -20,13 +20,13 @@
             </top>
         </div>
 
-        <card 
-            class="px-6"
-            type="Order"
-            title="Ingredients :"
-            :ingredients="bahan"
-            total="300,000"
-        />
+        <div class="text-white">
+            <li v-for="items in cartItems" :key="items.id">
+                <div>{{items.name}}</div>
+                <div>{{items.description}}</div>
+                <div>{{items.price}}</div>
+            </li>
+        </div>
 
         <div class="px-6">
             <div style="background-color: #4E423E;" class="mt-10 text-white w-full flex flex-col rounded-xl shadow-lg">
@@ -86,14 +86,26 @@
 
 <script>
 import Top from '../components/Top.vue'
-import Card from '../components/Card.vue'
+// import Card from '../components/Card.vue'
 import Tombol from '../components/Button.vue'
 export default {
     name: 'Taste',
     components: {
       Top,
-      Card,
+    //   Card,
       Tombol,
+    },
+    computed: {
+        cartItems(){
+            return this.$store.state.cartItems;
+        },
+        totalPrice(){
+            let price = 0;
+            this.$store.state.cartItems.map(el => {
+                price +- el["quantity"] *el["price"]
+            })
+            return price;
+        }
     },
     data(){
         return {

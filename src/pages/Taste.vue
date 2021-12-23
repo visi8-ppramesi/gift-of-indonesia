@@ -121,21 +121,21 @@
             </div>
         </div>
 
-        <div v-for="items in product" :key="items.id" class="w-full">
+        <div v-for="(item, i) in spiceIndo"  :key="i" :product="item" class="w-full">
             <div class="mx-6 my-5">
                 <div style="background-color: #4E423E;" class="text-white w-full flex flex-col rounded-xl shadow-lg p-4">
                     <div class="flex">
                     <img class="rounded-lg w-32 object-cover h-32 md:w-64 md:h-64" :src="spice1" />
                     <div class="mx-4">
-                        <div class="font-bold text-md md:text-2xl">{{ items.name }}</div>
-                        <div class="text-xs mb-2 md:text-xl md:mt-4">{{ items.description }}</div>
+                        <div class="font-bold text-md md:text-2xl">{{ item.name }}</div>
+                        <div class="text-xs mb-2 md:text-xl md:mt-4">{{ item.description }}</div>
                         <div class="flex">
                             <div>
-                                <tombol @click="addToCart(items)" class="text-xs md:textmd md:mt-12" title="ADD TO CART" />
+                                <tombol @click="addToCart(item.id)" class="text-xs md:textmd md:mt-12" title="ADD TO CART" />
                             </div>
                              <div>{{count}}</div>
                              <div>
-                                <tombol @click="removeItem(items)" class="text-xs md:text-md md:mt-12" title="REMOVE FROM CART" />
+                                <tombol @click="removeItem(item.id)" class="text-xs md:text-md md:mt-12" title="REMOVE FROM CART" />
                             </div>
                         </div>
                     </div>
@@ -160,6 +160,9 @@ export default {
       Tombol,
     },
     computed: {
+        // description() {
+        //     return this.product.description.substring(0, 150)
+        // }
         product() {
             return this.$store.state.spiceIndo;
         },
@@ -177,6 +180,11 @@ export default {
             spice1: require('../assets/cengkeh.jpg'),
             spice2: require('../assets/kayu manis.jpg'),
             spice3: require('../assets/kapulaga.jpg'),
+            spiceIndo: [
+                {id: 1, name: 'Cengkeh', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', price: '5,000', quantity: 0},
+                {id: 2, name: 'Kayu Manis', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', price: '5,000', quantity: 0},
+                {id: 3, name: 'Kapulaga', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', price: '5,000', quantity: 0},
+            ],
         }
     },
     methods: {
@@ -186,9 +194,6 @@ export default {
         removeItem(item){
             this.$store.dispatch("removeItem", item);
         },
-        // spiceDetails(item){
-        //         this.$router.push({name: 'order', params: item})
-        // }
     },
 }
 </script>
