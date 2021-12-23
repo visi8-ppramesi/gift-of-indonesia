@@ -121,37 +121,27 @@
             </div>
         </div>
 
-        <div class="w-full">
-            <card
-                type="B"
-                :image="spice1"
-                title="Cengkeh"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam"
-            />
-        </div>
-
-         <div class="w-full">
-            <card
-                type="B"
-                :image="spice2"
-                title="Kayu Manis"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam"
-            />
-        </div>
-
-         <div class="w-full">
-            <card
-                type="B"
-                :image="spice3"
-                title="Kapulaga"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam"
-            />
+        <div v-for="items in product" :key="items.id" class="w-full">
+            <div class="mx-6 my-5">
+                <div style="background-color: #4E423E;" class="text-white w-full flex flex-col rounded-xl shadow-lg p-4">
+                    <div class="flex">
+                    <img class="rounded-lg w-32 object-cover h-32 md:w-64 md:h-64" :src="spice1" />
+                    <div class="mx-4">
+                        <div class="font-bold text-md md:text-2xl">{{ items.name }}</div>
+                        <div class="text-xs mb-2 md:text-xl md:mt-4">{{ items.description }}</div>
+                        <div class="flex">
+                            <div>
+                                <tombol v-on:click="addToCart(items)" class="text-xs md:textmd md:mt-12" title="ADD TO CART" />
+                            </div>
+                             <div>{{count}}</div>
+                             <div>
+                                <tombol v-on:click="removeItem(items)" class="text-xs md:text-md md:mt-12" title="REMOVE FROM CART" />
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
 
@@ -161,11 +151,21 @@
 <script>
 import Top from '../components/Top.vue'
 import Card from '../components/Card.vue'
+import Tombol from '../components/Button.vue'
 export default {
     name: 'Taste',
     components: {
       Top,
       Card,
+      Tombol,
+    },
+    computed: {
+        product() {
+            return this.$store.state.spiceIndo;
+        },
+        count(){
+            return this.$store.state.cartItemCount;
+        }
     },
     data(){
         return {
@@ -179,8 +179,17 @@ export default {
             spice3: require('../assets/kapulaga.jpg'),
         }
     },
-    created(){
-    }
+    methods: {
+        addToCart(item){
+            this.$store.dispatch("addToCart", item);
+        },
+        removeItem(item){
+            this.$store.dispatch("removeItem", item);
+        },
+        // spiceDetails(item){
+        //         this.$router.push({name: 'order', params: item})
+        // }
+    },
 }
 </script>
 

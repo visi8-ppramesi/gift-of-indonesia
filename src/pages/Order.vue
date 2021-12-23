@@ -98,17 +98,18 @@ export default {
     data(){
         return {
             gudeg: require('../assets/food1.jpg'),
-            bahan: [
-                {name: 'Daging Sapi', porsi: '500 g for 1 portion', price: '263,000'},
-                {name: 'Daun Jeruk', porsi: '5 pieces for 1 portion', price: '5,000'},
-                {name: 'Asam Jawa', porsi: '1 pieces for 1 portion', price: '5,000'},
-                {name: 'Serai', porsi: '1 pieces for 1 portion', price: '7,000'},
-                {name: 'Bawang', porsi: '1 pieces for 1 portion', price: '10,000'},
-                {name: 'Kemiri', porsi: '1 pieces for 1 portion', price: '10,000'},
-            ]
+            // bahan: [
+            //     {name: 'Daging Sapi', porsi: '500 g for 1 portion', price: '263,000'},
+            //     {name: 'Daun Jeruk', porsi: '5 pieces for 1 portion', price: '5,000'},
+            //     {name: 'Asam Jawa', porsi: '1 pieces for 1 portion', price: '5,000'},
+            //     {name: 'Serai', porsi: '1 pieces for 1 portion', price: '7,000'},
+            //     {name: 'Bawang', porsi: '1 pieces for 1 portion', price: '10,000'},
+            //     {name: 'Kemiri', porsi: '1 pieces for 1 portion', price: '10,000'},
+            // ]
         }
     },
-    created(){
+    methods: {
+
     }
 }
 </script>
