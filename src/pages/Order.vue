@@ -20,13 +20,52 @@
             </top>
         </div>
 
-        <card 
-            class="px-6"
-            type="Order"
-            title="Ingredients :"
-            :ingredients="bahan"
-            total="300,000"
-        />
+        <div class="mx-6 my-5">
+            <div style="background-color: #4E423E;" class="text-white w-full flex flex-col rounded-xl shadow-lg p-4">
+                <div class="text-center" v-if="totalPrice == 0">
+                    <div class="text-4xl">Your Cart is Empty</div>
+                    <div class="text-xl mt-3">You can go to taste page to order food items</div>
+                </div>
+                <div v-if="totalPrice !== 0">
+                    <div class="text-xl md:text-4xl">Items in cart :</div>
+                    <ul class="list-disc mx-6 mt-5">
+                        <li class="my-3" v-for="items in cartItems" :key="items.id">
+                            <div class="flex">
+                                <div class="w-5/6">
+                                    <div class="text-md font-bold md:text-2xl">
+                                        {{ items.name }}
+                                    </div>
+                                    <div class="text-xs md:text-lg">
+                                        {{ formatPrice(items.price * items.quantity) }}
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-end w-5/6 ml-16">
+                                    <div class="text-md md:text-xl">
+                                         x {{items.quantity}}
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <hr class="border-2 mx-2" />
+
+                    <div class="flex mx-4 mt-2">
+                        <div>
+                            <div class="text-md w-1/6 font-bold md:text-2xl">
+                            Total
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-end w-5/6 ml-36">
+                            <div class="text-md md:text-xl">
+                            Rp. {{ formatPrice(totalPrice) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
 
         <div class="px-6">
             <div style="background-color: #4E423E;" class="mt-10 text-white w-full flex flex-col rounded-xl shadow-lg">
@@ -86,18 +125,31 @@
 
 <script>
 import Top from '../components/Top.vue'
-import Card from '../components/Card.vue'
+// import Card from '../components/Card.vue'
 import Tombol from '../components/Button.vue'
 export default {
     name: 'Taste',
     components: {
       Top,
-      Card,
+    //   Card,
       Tombol,
+    },
+    computed: {
+        cartItems(){
+            return this.$store.state.cartItems;
+        },
+        totalPrice() {
+            let price = 0;
+            this.$store.state.cartItems.map(el => {
+                price += el["quantity"] * el["price"];
+            });
+            return price;
+        }
     },
     data(){
         return {
             gudeg: require('../assets/food1.jpg'),
+            item:0
             // bahan: [
             //     {name: 'Daging Sapi', porsi: '500 g for 1 portion', price: '263,000'},
             //     {name: 'Daun Jeruk', porsi: '5 pieces for 1 portion', price: '5,000'},
@@ -106,10 +158,13 @@ export default {
             //     {name: 'Bawang', porsi: '1 pieces for 1 portion', price: '10,000'},
             //     {name: 'Kemiri', porsi: '1 pieces for 1 portion', price: '10,000'},
             // ]
-        }
+        };
     },
     methods: {
-
+        formatPrice(value) {
+            let val = (value/1).toFixed(2).replace('.', ',')
+            return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+        }
     }
 }
 </script>

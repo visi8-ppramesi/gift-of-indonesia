@@ -121,30 +121,30 @@
             </div>
         </div>
 
-        <div v-for="items in product" :key="items.id" class="w-full">
+        <div v-for="item in product" :key="item.id" class="w-full">
             <div class="mx-6 my-5">
                 <div style="background-color: #4E423E;" class="text-white w-full flex flex-col rounded-xl shadow-lg p-4">
                     <div class="flex">
                     <img class="rounded-lg w-32 object-cover h-32 md:w-64 md:h-64" :src="spice1" />
                     <div class="mx-4">
-                        <div class="font-bold text-md md:text-2xl">{{ items.name }}</div>
-                        <div class="text-xs mb-2 md:text-xl md:mt-4">{{ items.description }}</div>
+                        <div class="font-bold text-md md:text-2xl">{{ item.name }}</div>
+                        <div class="text-xs mb-2 md:text-xl md:mt-4">{{ item.description }}</div>
                         <div class="flex">
                             <div>
-                                <tombol @click="addToCart(items)" class="text-xs md:textmd md:mt-12" title="ADD TO CART" />
+                                <tombol @click="addToCart(item)" class="text-xs md:textmd md:mt-3" title="ADD TO CART" />
                             </div>
-                             <div>{{count}}</div>
-                             <div>
-                                <tombol @click="removeItem(items)" class="text-xs md:text-md md:mt-12" title="REMOVE FROM CART" />
+                            <div class="ml-3">
+                                <tombol @click="removeItem(item)" class="text-xs md:text-md md:mt-3" title="REMOVE FROM CART" />
                             </div>
+                        </div>
+                        <div>
+                            <div class="mt-3"><strong>Item in Cart : </strong>{{ totalItems[item.id] }}</div>
                         </div>
                     </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
     </div>
 </template>
 
@@ -159,13 +159,25 @@ export default {
       Card,
       Tombol,
     },
+    watch: {
+        
+    },
     computed: {
+        // description() {
+        //     return this.product.description.substring(0, 150)
+        // }
         product() {
             return this.$store.state.spiceIndo;
         },
-        count(){
-            return this.$store.state.cartItemCount;
-        }
+        totalItems(){
+            let arr = this.$store.state.cartItems 
+
+            return arr.reduce((acc, val) => {
+                acc[val.id] = val.quantity || 0
+                return acc;
+            }, {})
+
+        },
     },
     data(){
         return {
@@ -186,9 +198,6 @@ export default {
         removeItem(item){
             this.$store.dispatch("removeItem", item);
         },
-        // spiceDetails(item){
-        //         this.$router.push({name: 'order', params: item})
-        // }
     },
 }
 </script>
