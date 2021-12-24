@@ -121,7 +121,7 @@
             </div>
         </div>
 
-        <div v-for="(item, i) in spiceIndo"  :key="i" :product="item" class="w-full">
+        <div v-for="item in product" :key="item.id" class="w-full">
             <div class="mx-6 my-5">
                 <div style="background-color: #4E423E;" class="text-white w-full flex flex-col rounded-xl shadow-lg p-4">
                     <div class="flex">
@@ -131,20 +131,20 @@
                         <div class="text-xs mb-2 md:text-xl md:mt-4">{{ item.description }}</div>
                         <div class="flex">
                             <div>
-                                <tombol @click="addToCart(item.id)" class="text-xs md:textmd md:mt-12" title="ADD TO CART" />
+                                <tombol @click="addToCart(item)" class="text-xs md:textmd md:mt-3" title="ADD TO CART" />
                             </div>
-                             <div>{{count}}</div>
-                             <div>
-                                <tombol @click="removeItem(item.id)" class="text-xs md:text-md md:mt-12" title="REMOVE FROM CART" />
+                            <div class="ml-3">
+                                <tombol @click="removeItem(item)" class="text-xs md:text-md md:mt-3" title="REMOVE FROM CART" />
                             </div>
+                        </div>
+                        <div>
+                            <div class="mt-3"><strong>Item in Cart : </strong>{{ totalItems[item.id] }}</div>
                         </div>
                     </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
     </div>
 </template>
 
@@ -159,6 +159,9 @@ export default {
       Card,
       Tombol,
     },
+    watch: {
+        
+    },
     computed: {
         // description() {
         //     return this.product.description.substring(0, 150)
@@ -166,9 +169,15 @@ export default {
         product() {
             return this.$store.state.spiceIndo;
         },
-        count(){
-            return this.$store.state.cartItemCount;
-        }
+        totalItems(){
+            let arr = this.$store.state.cartItems 
+
+            return arr.reduce((acc, val) => {
+                acc[val.id] = val.quantity || 0
+                return acc;
+            }, {})
+
+        },
     },
     data(){
         return {
@@ -180,11 +189,6 @@ export default {
             spice1: require('../assets/cengkeh.jpg'),
             spice2: require('../assets/kayu manis.jpg'),
             spice3: require('../assets/kapulaga.jpg'),
-            spiceIndo: [
-                {id: 1, name: 'Cengkeh', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', price: '5,000', quantity: 0},
-                {id: 2, name: 'Kayu Manis', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', price: '5,000', quantity: 0},
-                {id: 3, name: 'Kapulaga', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', price: '5,000', quantity: 0},
-            ],
         }
     },
     methods: {
