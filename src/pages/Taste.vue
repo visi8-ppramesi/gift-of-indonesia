@@ -30,84 +30,43 @@
                 <div style="background-color: #F9AC18;" class="w-max p-3 text-xs font-bold absolute rounded-full md:text-lg">Traditional Food</div>
             </div>
         </div>
-        
-        
-        <div class="mt-12 mx-2 md:mt-24"> <!-- change height -->
-            <div class="flex flex-row justify-evenly justify-items-stretch mx-4">
-                <div class="w-full text-left mr-5">
-                    <card
-                        class="text-left" 
-                        type="A"
-                        title="Gudeg" 
-                        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam"
-                    />
 
-                </div>
+        <div v-for="data in dataRecipe" :key="data.title">
+            <div v-if="data.id % 2 == 0">
+                <div class="mt-12 mx-2 md:mt-16"> <!-- change height -->
+                    <div class="flex flex-row justify-evenly justify-items-stretch mx-4">
+                        <div class="w-full text-left mr-5">
+                            <card
+                                class="text-left" 
+                                type="A"
+                                :title= data.title
+                                :description= data.description
+                            />
+                        </div>
 
-                <div class="w-full">
-                    <img class="rounded-lg object-cover h-44 md:h-60" :src="food1" />
-                </div>
-            </div>
-        </div>
-
-        <div class="mt-12 mx-2"> <!-- change height -->
-            <div class="flex flex-row justify-evenly justify-items-stretch mx-4">
-                <div class="w-full ">
-                    <img class="rounded-md object-cover h-44 md:h-60" :src="food2" />
-                </div>
-
-                <div class="w-full text-right ml-5">
-                    <card
-                        class="text-right"
-                        type="A"
-                        title="Rawon" 
-                        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam"
-                    />
-
+                        <div class="w-full">
+                            <img class="rounded-lg object-cover h-44 md:h-60" :src= data.image />
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
- 
-        <div class="mt-12 mx-2"> <!-- change height -->
-            <div class="flex flex-row justify-evenly justify-items-stretch mx-4">
-                <div class="w-full text-left mr-5">
-                    <card
-                        class="text-left" 
-                        type="A"
-                        title="Ketoprak" 
-                        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam"
-                    />
 
-                </div>
+            <div v-if="data.id % 2 !== 0">
+                    <div class="mt-12 mx-2 md:mt-16"> <!-- change height -->
+                        <div class="flex flex-row justify-evenly justify-items-stretch mx-4">
+                            <div class="w-full ">
+                                <img class="rounded-md object-cover h-44 md:h-60" :src= data.image />
+                            </div>
 
-                <div class="w-full ">
-                    <img class="rounded-lg object-cover h-44 md:h-60" :src="food1" />
-                </div>
-            </div>
-        </div>
-
-        <div class="mt-12 mx-2"> <!-- change height -->
-            <div class="flex flex-row justify-evenly justify-items-stretch mx-4">
-                <div class="w-full ">
-                    <img class="rounded-md object-cover h-44 md:h-60" :src="food2" />
-                </div>
-
-                <div class="w-full text-right ml-5">
-                    <card
-                        class="text-right"
-                        type="A"
-                        title="Soto Betawi" 
-                        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam"
-                    />
-
+                            <div class="w-full text-right ml-5">
+                                <card
+                                    class="text-right"
+                                    type="A"
+                                    :title= data.title
+                                    :description= data.description
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -145,6 +104,15 @@
                 </div>
             </div>
         </div>
+
+        <div class="checkout fixed">
+            <router-link to="/order">
+                <div class='badge badge-warning' id='lblCartCount'>{{count}}</div>
+                <div class="bg-white rounded-full p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M10 19.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm1.336-5l1.977-7h-16.813l2.938 7h11.898zm4.969-10l-3.432 12h-12.597l.839 2h13.239l3.474-12h1.929l.743-2h-4.195z"/></svg>
+                </div>
+            </router-link>
+        </div>
     </div>
 </template>
 
@@ -152,6 +120,10 @@
 import Top from '../components/Top.vue'
 import Card from '../components/Card.vue'
 import Tombol from '../components/Button.vue'
+import food1 from '../assets/food1.jpg'
+import food2 from '../assets/food2.jpg'
+// import food3 from '../assets/food3.jpg'
+// import food4 from '../assets/food4.jpg'
 export default {
     name: 'Taste',
     components: {
@@ -178,17 +150,22 @@ export default {
             }, {})
 
         },
+        count(){
+            return this.$store.state.cartItemCount;
+        },
     },
     data(){
         return {
             tasteBackground: require('../assets/tasteHeader.jpg'),
-            food1: require('../assets/food1.jpg'),
-            food2: require('../assets/food2.jpg'),
-            food3: require('../assets/food3.jpg'),
-            food4: require('../assets/food4.jpg'),
             spice1: require('../assets/cengkeh.jpg'),
             spice2: require('../assets/kayu manis.jpg'),
             spice3: require('../assets/kapulaga.jpg'),
+            dataRecipe: [
+                {id: 1, title: "Gudeg", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam", image: food1 },
+                {id: 2, title: "Rawon", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam", image: food2 },
+                {id: 3, title: "Ketoprak", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam", image: food1 },
+                {id: 4, title: "Soto Betawi", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam", image: food2 },
+            ]
         }
     },
     methods: {
@@ -203,5 +180,27 @@ export default {
 </script>
 
 <style>
+ .checkout {
+        top: calc(var(--viewport-height) - 67px);
+        right: 20px;
+        /* opacity: 0.7; */
+}
+
+#lblCartCount {
+        font-size: 12px;
+        background: #ff0000;
+        color: #fff;
+        padding: 0 10px;
+        margin-left: 25px; 
+        margin-top: -10px;
+        position: absolute;
+}
+
+.badge {
+        padding-left: 9px;
+        padding-right: 9px;
+        border-radius: 9px;
+    }
+
 
 </style>
