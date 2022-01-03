@@ -52,8 +52,6 @@ const store = new Vuex.Store({
                     state.cartItems[index]["quantity"] === 0
                         ? (state.cartItems[index]["quantity"] = 0)
                         : (state.cartItems[index]["quantity"] -= 1);
-                    if (state.cartItems[index]["quantity"] === 0)
-                        state.cartItems.splice(index, 1)
                     if (state.cartItemCount !== 0)
                         state.cartItemCount--
                 }

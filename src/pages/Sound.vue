@@ -19,69 +19,20 @@
             </div>
             </top>
         </div>
-        <div class="flex flex-col">
-            <div>
-                <div class="mx-6">
-                    <iframe class="embed-video w-full " :src="iframeSrc1">
-                    </iframe>
-                </div>
-                <div class="text-center">
-                    <p class="text-lg font-bold my-5">INDONESIA RAYA</p>
-                    <p class="text-sm mx-2">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                    qui officia deserunt mollit anim id est laborum
-                    </p>
-                </div>
-            </div>
-        </div>
 
-        <hr class="border-2 my-5" />
-
-        <div class="flex flex-col">
-            <div>
-                <div class="mx-6">
-                    <iframe class="embed-video w-full " :src="iframeSrc2">
-                    </iframe>
-                </div>
-                <div class="text-center">
-                    <p class="text-lg font-bold my-5">SOLERAM</p>
-                    <p class="text-sm mx-2">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                    qui officia deserunt mollit anim id est laborum
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <hr class="border-4 my-5" />
-
-        <div class="flex flex-col">
-            <div>
-                <div class="mx-6">
-                    <iframe class="embed-video w-full " :src="iframeSrc3">
-                    </iframe>
-                </div>
-                <div class="text-center">
-                    <p class="text-lg font-bold my-5">BUNGONG JEMPA</p>
-                    <p class="text-sm mx-2">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                    qui officia deserunt mollit anim id est laborum
-                    </p>
+        <div  v-for="item in soundList" :key="item.title">
+            <div class="flex flex-col">
+                <div>
+                    <div class="mx-6 mt-10">
+                        <iframe class="embed-video w-full " :src= "item.iframe">
+                        </iframe>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-lg font-bold my-5">{{item.title}}</p>
+                        <p class="text-sm mx-2">
+                        {{item.description}}
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -101,6 +52,11 @@ export default {
             iframeSrc1: 'https://www.youtube.com/embed/UbF6Uf37XN0',
             iframeSrc2: 'https://www.youtube.com/embed/5DmT6N2_uE4',
             iframeSrc3: 'https://www.youtube.com/embed/GFZnjFSvB08',
+            soundList: [
+                {id: 1, title: "Indonesia Raya", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nullapariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum", iframe: 'https://www.youtube.com/embed/UbF6Uf37XN0'  },
+                {id: 2, title: "Soleram", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nullapariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum", iframe: 'https://www.youtube.com/embed/5DmT6N2_uE4' },
+                {id: 3, title: "Bungong Jempa", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nullapariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum", iframe: 'https://www.youtube.com/embed/GFZnjFSvB08' },
+            ]
         }
     },
     created(){
