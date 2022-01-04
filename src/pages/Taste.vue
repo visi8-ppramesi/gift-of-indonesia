@@ -122,6 +122,8 @@ import Card from '../components/Card.vue'
 import Tombol from '../components/Button.vue'
 import food1 from '../assets/food1.jpg'
 import food2 from '../assets/food2.jpg'
+import { getDocs } from "firebase/firestore"
+import { ref, getDownloadURL } from "firebase/storage"
 // import food3 from '../assets/food3.jpg'
 // import food4 from '../assets/food4.jpg'
 export default {
@@ -176,6 +178,19 @@ export default {
             this.$store.dispatch("removeItem", item);
         },
     },
+    async created(){
+        this.dataRecipe = []
+        const recipesSnapshot = await getDocs(this.$firebase.recipes)
+        recipesSnapshot.forEach(async (doc) => {
+            const data = doc.data()
+            const imgUrl = await getDownloadURL(ref(this.$firebase.storage, data.image))
+            data.image = imgUrl
+            this.dataRecipe.push({
+                id: doc.id,
+                ...data
+            })
+        })
+    }
 }
 </script>
 
