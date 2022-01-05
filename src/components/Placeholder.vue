@@ -1,15 +1,39 @@
 <template>
-    <div class="w-full flex items-center flex-col">
-        <div class="flex w-full brown-background shadow-md p-4 rounded-md">
-            <div data-placeholder class="mr-2 h-20 w-20 rounded-full overflow-hidden relative bg-gray-200">
-                
-            </div>
-            <div class="flex flex-col justify-between">
-                <div data-placeholder class="mb-2 h-5 w-40 overflow-hidden relative bg-gray-200">
-                
+    <div>
+        <div v-if="type === 'food'" class="w-full flex items-center flex-col">
+            <div class="flex w-full brown-background shadow-md p-4 rounded-md">
+                <div data-placeholder class="mr-2 h-20 w-20 rounded-full overflow-hidden relative bg-gray-200">
+                    
                 </div>
-                <div data-placeholder class="h-10 w-40 overflow-hidden relative bg-gray-200">
-                
+                <div class="flex flex-col justify-between">
+                    <div data-placeholder class="mb-2 h-5 w-40 overflow-hidden relative bg-gray-200">
+                    
+                    </div>
+                    <div data-placeholder class="h-10 w-40 overflow-hidden relative bg-gray-200">
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div v-if="type === 'spice'">
+            <div style="background-color: #4E423E;" class="text-white w-full flex flex-col rounded-xl shadow-lg p-4">
+                <div class="flex">
+                    <div data-placeholder class="mr-2 h-32 w-32 overflow-hidden relative bg-gray-200">   
+                    </div>
+                    <div class="flex flex-col justify-between">
+                        <div data-placeholder class="mb-2 ml-8 h-5 w-84 overflow-hidden relative bg-gray-200">
+                        
+                        </div>
+
+                        <div data-placeholder class="h-10 ml-8 w-84 overflow-hidden relative bg-gray-200">
+                        </div>
+
+                        <div class="mt-3 ml-8 flex">
+                            <div data-placeholder class="mb-2 h-5 w-40 overflow-hidden relative bg-gray-200"></div>
+                            <div data-placeholder class="mb-2 ml-5 h-5 w-40 overflow-hidden relative bg-gray-200"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -18,7 +42,10 @@
 
 <script>
 export default {
-    
+    name: 'Card',
+    props: {
+        type: String,
+    },
 }
 </script>
 

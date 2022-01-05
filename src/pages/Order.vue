@@ -136,7 +136,7 @@ export default {
     },
     computed: {
         cartItems(){
-            return this.$store.state.cartItems;
+            return this.$store.state.cartItems.filter(v => v.quantity > 0);
         },
         totalPrice() {
             let price = 0;
