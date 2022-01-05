@@ -76,7 +76,7 @@
                         </div>
 
                         <div class="w-full">
-                            <img class="rounded-lg object-cover h-44 md:h-60" :src= data.image />
+                            <img class="rounded-lg object-cover w-full h-44 md:h-60" :src= data.image />
                         </div>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                 <div class="mt-12 mx-2 md:mt-16">
                     <div class="flex flex-row justify-evenly justify-items-stretch mx-4">
                         <div class="w-full ">
-                            <img class="rounded-md object-cover h-44 md:h-60" :src= data.image />
+                            <img class="rounded-md object-cover w-full h-44 md:h-60" :src= data.image />
                         </div>
 
                         <div class="w-full text-right ml-5">
