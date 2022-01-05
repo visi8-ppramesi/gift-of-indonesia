@@ -31,9 +31,40 @@
             </div>
         </div>
 
-        <div v-for="data in dataRecipe" :key="data.title">
-            <div v-if="data.id % 2 == 0">
-                <div class="mt-12 mx-2 md:mt-16"> <!-- change height -->
+        <template v-if="dataRecipe.length === 0">
+            <div v-for="index in 3" :key="index + '-placeholders'">
+                <div v-if="index % 2 == 0">
+                    <div class="mt-12 mx-2 md:mt-16">
+                        <div class="flex flex-row justify-evenly justify-items-stretch mx-4">
+                            <div class="w-full text-left mr-5">
+                                <placeholder />
+                            </div>
+
+                            <div class="w-full">
+                                <placeholder />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div v-if="index % 2 !== 0">
+                    <div class="mt-12 mx-2 md:mt-16">
+                        <div class="flex flex-row justify-evenly justify-items-stretch mx-4">
+                            <div class="w-full ">
+                                <placeholder />
+                            </div>
+
+                            <div class="w-full text-right ml-5">
+                                <placeholder />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <div v-for="(data, idx) in dataRecipe" :key="data.id">
+            <div v-if="idx % 2 == 0">
+                <div class="mt-12 mx-2 md:mt-16">
                     <div class="flex flex-row justify-evenly justify-items-stretch mx-4">
                         <div class="w-full text-left mr-5">
                             <card
@@ -51,19 +82,19 @@
                 </div>
             </div>
 
-            <div v-if="data.id % 2 !== 0">
-                    <div class="mt-12 mx-2 md:mt-16"> <!-- change height -->
-                        <div class="flex flex-row justify-evenly justify-items-stretch mx-4">
-                            <div class="w-full ">
-                                <img class="rounded-md object-cover h-44 md:h-60" :src= data.image />
-                            </div>
+            <div v-if="idx % 2 !== 0">
+                <div class="mt-12 mx-2 md:mt-16">
+                    <div class="flex flex-row justify-evenly justify-items-stretch mx-4">
+                        <div class="w-full ">
+                            <img class="rounded-md object-cover h-44 md:h-60" :src= data.image />
+                        </div>
 
-                            <div class="w-full text-right ml-5">
-                                <card
-                                    class="text-right"
-                                    type="A"
-                                    :title= data.title
-                                    :description= data.description
+                        <div class="w-full text-right ml-5">
+                            <card
+                                class="text-right"
+                                type="A"
+                                :title= data.title
+                                :description= data.description
                             />
                         </div>
                     </div>
@@ -80,11 +111,11 @@
             </div>
         </div>
 
-        <div v-for="item in product" :key="item.id" class="w-full">
+        <div v-for="item in spicesData" :key="item.id" class="w-full">
             <div class="mx-6 my-5">
                 <div style="background-color: #4E423E;" class="text-white w-full flex flex-col rounded-xl shadow-lg p-4">
                     <div class="flex">
-                    <img class="rounded-lg w-32 object-cover h-32 md:w-64 md:h-64" :src="spice1" />
+                    <img class="rounded-lg w-32 object-cover h-32 md:w-64 md:h-64" :src="item.image" />
                     <div class="mx-4">
                         <div class="font-bold text-md md:text-2xl">{{ item.name }}</div>
                         <div class="text-xs mb-2 md:text-xl md:mt-4">{{ item.description }}</div>
@@ -106,10 +137,12 @@
         </div>
 
         <div class="checkout fixed">
-            <router-link to="/order">
+            <router-link to="/order" :class="{ disabled: count < 1 }">
                 <div class='badge badge-warning' id='lblCartCount'>{{count}}</div>
                 <div class="bg-white rounded-full p-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24"><path d="M10 19.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm1.336-5l1.977-7h-16.813l2.938 7h11.898zm4.969-10l-3.432 12h-12.597l.839 2h13.239l3.474-12h1.929l.743-2h-4.195z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
+                        <path d="M10 19.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm1.336-5l1.977-7h-16.813l2.938 7h11.898zm4.969-10l-3.432 12h-12.597l.839 2h13.239l3.474-12h1.929l.743-2h-4.195z"/>
+                    </svg>
                 </div>
             </router-link>
         </div>
@@ -119,9 +152,10 @@
 <script>
 import Top from '../components/Top.vue'
 import Card from '../components/Card.vue'
+import Placeholder from '../components/Placeholder.vue'
 import Tombol from '../components/Button.vue'
-import food1 from '../assets/food1.jpg'
-import food2 from '../assets/food2.jpg'
+// import food1 from '../assets/food1.jpg'
+// import food2 from '../assets/food2.jpg'
 import { getDocs } from "firebase/firestore"
 import { ref, getDownloadURL } from "firebase/storage"
 // import food3 from '../assets/food3.jpg'
@@ -132,17 +166,19 @@ export default {
       Top,
       Card,
       Tombol,
+      Placeholder,
     },
     watch: {
         
     },
     computed: {
         // description() {
-        //     return this.product.description.substring(0, 150)
+        //     return this.product.description.substringLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam(0, 150)
         // }
-        product() {
-            return this.$store.state.spiceIndo;
-        },
+        // product() {
+        //     // return this.$store.state.spiceIndo;
+        //     return this.spicesData
+        // },
         totalItems(){
             let arr = this.$store.state.cartItems 
 
@@ -163,11 +199,12 @@ export default {
             spice2: require('../assets/kayu manis.jpg'),
             spice3: require('../assets/kapulaga.jpg'),
             dataRecipe: [
-                {id: 1, title: "Gudeg", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam", image: food1 },
-                {id: 2, title: "Rawon", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam", image: food2 },
-                {id: 3, title: "Ketoprak", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam", image: food1 },
-                {id: 4, title: "Soto Betawi", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam", image: food2 },
-            ]
+                // {id: 1, title: "Gudeg", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam", image: food1 },
+                // {id: 2, title: "Rawon", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam", image: food2 },
+                // {id: 3, title: "Ketoprak", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam", image: food1 },
+                // {id: 4, title: "Soto Betawi", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam", image: food2 },
+            ],
+            spicesData: []
         }
     },
     methods: {
@@ -189,6 +226,28 @@ export default {
                 id: doc.id,
                 ...data
             })
+        })
+
+        const spicesSnapshot = await getDocs(this.$firebase.spices)
+        const promises = []
+        spicesSnapshot.forEach((doc) => {
+            // eslint-disable-next-line no-unused-vars
+            promises.push(new Promise((resolve, reject) => {
+                const data = doc.data()
+                getDownloadURL(ref(this.$firebase.storage, data.image)).then((imgUrl) => {
+                    data.image = imgUrl
+                    data.quantity = 0
+                    this.spicesData.push({
+                        id: doc.id,
+                        ...data
+                    })
+                    resolve()
+                })
+            }))
+        })
+        // eslint-disable-next-line no-unused-vars
+        Promise.all(promises).then((res) => {
+            this.$store.dispatch('setCartItems', [...this.spicesData])
         })
     }
 }
@@ -216,6 +275,10 @@ export default {
         padding-right: 9px;
         border-radius: 9px;
     }
+
+.disabled{
+    pointer-events: none;
+}
 
 
 </style>

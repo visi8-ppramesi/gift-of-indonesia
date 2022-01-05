@@ -22,18 +22,18 @@ const firebaseConfig = {
   appId: process.env.VUE_APP_APP_ID,
   measurementId: process.env.VUE_APP_MEASUREMENT_ID
 };
-console.log(firebaseConfig)
-console.log(process.env)
 
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
 const storage = getStorage(app)
 const recipes = collection(db, 'recipes')
+const spices = collection(db, 'spices')
 
 Vue.prototype.$firebase = {
   app,
   db,
   recipes,
+  spices,
   storage
 }
 Vue.config.productionTip = false
