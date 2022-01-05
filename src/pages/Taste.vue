@@ -107,7 +107,7 @@
                 <hr class="w-full border-2 border-white md:border-4" />
             </div>
             <div class="flex justify-center items-center">
-                <div style="background-color: #F9AC18;" class="w-max text-xs py-3 px-8 font-bold absolute rounded-full md:text-lg">Spice</div>
+                <div style="background-color: #F9AC18;" class="w-max text-xs py-3 px-8 font-bold absolute rounded-full md:text-lg">Spices</div>
             </div>
         </div>
 
@@ -151,7 +151,7 @@
         <div class="checkout fixed">
             <router-link to="/order" :class="{ disabled: count < 1 }">
                 <div class='badge badge-warning' id='lblCartCount'>{{count}}</div>
-                <div class="bg-white rounded-full p-2">
+                <div class="bg-white rounded-full p-2 border-2 border-black">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
                         <path d="M10 19.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm1.336-5l1.977-7h-16.813l2.938 7h11.898zm4.969-10l-3.432 12h-12.597l.839 2h13.239l3.474-12h1.929l.743-2h-4.195z"/>
                     </svg>

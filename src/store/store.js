@@ -55,14 +55,11 @@ const store = new Vuex.Store({
                         el => el.id == payload.id
                     );
                     //to prevent quantity from being negative
-                    state.cartItems[index]["quantity"] === 0
-                        ? (state.cartItems[index]["quantity"] = 0)
-                        : (state.cartItems[index]["quantity"] -= 1);
-                    // if (state.cartItems[index]["quantity"] === 1){ 
-                    //     state.cartItems.splice(index, 1)
-                    // }
-                    if (state.cartItemCount > 0){
-                        state.cartItemCount--
+                    if(state.cartItems[index].quantity === 0){
+                        state.cartItems[index].quantity = 0
+                    }else{
+                        state.cartItems[index].quantity -= 1
+                        state.cartItemCount -= 1
                     }
                 }
             }
