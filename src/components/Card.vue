@@ -27,7 +27,7 @@
 
               <div class="flex items-center justify-end w-5/6 ml-16">
                 <div class="text-md md:text-xl">
-                  Rp. {{item.price}}
+                  {{ formatPrice(item.price) }}
                 </div>
               </div>
             </div>
@@ -45,7 +45,7 @@
 
           <div class="flex items-center justify-end w-5/6 ml-36">
             <div class="text-md md:text-xl">
-              Rp. {{ total }}
+              {{ formatPrice(total) }}
             </div>
           </div>
         </div>
@@ -94,5 +94,15 @@ export default {
         total: String,
         id: String
     },
+    methods: {
+        formatPrice(value) {
+            if(typeof value == 'string'){
+                value = parseFloat(value)
+            }
+            return value.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })
+            // let val = (value/1).toFixed(2).replace('.', ',')
+            // return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+        }
+    }
 }
 </script>

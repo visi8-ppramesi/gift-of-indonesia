@@ -30,23 +30,23 @@ const recipes = collection(db, 'recipes')
 const spices = collection(db, 'spices')
 
 Vue.prototype.$firebase = {
-  app,
-  db,
-  recipes,
-  spices,
-  storage,
-  recipeById: async function(id){
-    const docRef = doc(this.db, "recipes", id)
-    const docSnap = await getDoc(docRef)
-    const data = docSnap.data()
-    data.image = await getDownloadURL(ref(this.storage, data.image))
-    return data
-  }
+    app,
+    db,
+    recipes,
+    spices,
+    storage,
+    recipeById: async function(id){
+        const docRef = doc(this.db, "recipes", id)
+        const docSnap = await getDoc(docRef)
+        const data = docSnap.data()
+        data.image = await getDownloadURL(ref(this.storage, data.image))
+        return data
+    }
 }
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(App),
-  router,
-  store,
+    render: h => h(App),
+    router,
+    store,
 }).$mount('#app')
