@@ -63,7 +63,7 @@
                   {{ item.name }}
                 </div>
                 <div class="text-xs md:text-lg">
-                  {{ item.porsi }}
+                  {{ item.description }}
                 </div>
               </div>
             </div>

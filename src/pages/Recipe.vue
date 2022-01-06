@@ -5,16 +5,9 @@
             <top  class="h-screen w-screen items-center text-white flex flex-col justify-end" :background="gudeg">
             <!-- align items below to the left  -->
                 <div class="text-left pb-16"> 
-                    <div class="mx-6 font-bold text-xl md:text-4xl">Gudeg</div>
+                    <div class="mx-6 font-bold text-xl md:text-4xl" v-html="title"></div>
                     
-                    <div class="mx-6 mt-1 text-xs md:text-lg">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                        qui officia deserunt mollit anim id est laborum
+                    <div class="mx-6 mt-1 text-xs md:text-lg" v-html="description">
                     </div>
                 </div>
             </top>
@@ -24,8 +17,7 @@
             class="px-6"
             type="Recipe"
             title="Ingredients :"
-            :ingredients="bahan"
-            total="300,000"
+            :ingredients="ingredients"
         />
 
         <div class="px-6">
@@ -52,7 +44,7 @@
 
 <script>
 import Top from '../components/Top.vue'
-import Card from '../components/Card.vue'
+import Card from '../components/recipeCard.vue'
 
 export default {
     name: 'Recipe',
@@ -63,14 +55,14 @@ export default {
     data(){
         return {
             gudeg: require('../assets/food1.jpg'),
-            bahan: [
-                {name: 'Daging Sapi', porsi: '500 g for 1 portion', price: '263,000'},
-                {name: 'Daun Jeruk', porsi: '5 pieces for 1 portion', price: '5,000'},
-                {name: 'Asam Jawa', porsi: '1 pieces for 1 portion', price: '5,000'},
-                {name: 'Serai', porsi: '1 pieces for 1 portion', price: '7,000'},
-                {name: 'Bawang', porsi: '1 pieces for 1 portion', price: '10,000'},
-                {name: 'Kemiri', porsi: '1 pieces for 1 portion', price: '10,000'},
-            ],
+            // bahan: [
+            //     {name: 'Daging Sapi', porsi: '500 g for 1 portion', price: '263,000'},
+            //     {name: 'Daun Jeruk', porsi: '5 pieces for 1 portion', price: '5,000'},
+            //     {name: 'Asam Jawa', porsi: '1 pieces for 1 portion', price: '5,000'},
+            //     {name: 'Serai', porsi: '1 pieces for 1 portion', price: '7,000'},
+            //     {name: 'Bawang', porsi: '1 pieces for 1 portion', price: '10,000'},
+            //     {name: 'Kemiri', porsi: '1 pieces for 1 portion', price: '10,000'},
+            // ],
             description: '',
             image: '',
             ingredients: [],
