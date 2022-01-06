@@ -35,7 +35,7 @@ export const routes = [
         meta: { title: 'Order Food', noCache: false }
     },
     {
-        path: '/recipe',
+        path: '/recipe/:id',
         component: () => import('../pages/Recipe'),
         name: 'recipe',
         meta: { title: 'Food Recipe', noCache: false }

@@ -35,15 +35,15 @@
                     
                 </div>
 
-                <div class="mx-4 mt-4 pb-6">
-                    <ol class="mx-4 text-justify list-decimal md:text-2xl">
+                <div class="mx-4 mt-4 pb-6" v-html="text">
+                    <!-- <ol class="mx-4 text-justify list-decimal md:text-2xl">
                         <li class="my-3">Rebus daging dan dengkul sapi hingga setengah lunak. Potong daging sesuai selera. Sisihkan.</li>
                         <li class="my-3">Masukkan Royco Kaldu Sapi dan garam ke dalam air rebusan daging.</li>
                         <li class="my-3">Tumis bumbu halus, lengkuas, daun jeruk, dan serai hingga harum dan matang.</li>
                         <li class="my-3">Masukkan potongan daging ke dalam tumisan, masak hingga bumbu meresap.</li>
                         <li class="my-3">Masukkan tumisan daging ke dalam kuah kaldu. Masak dengan api kecil hingga daging empuk.</li>
                         <li class="my-3">Sajikan hangat beserta pelengkap.</li>
-                    </ol>
+                    </ol> -->
                 </div>
             </div>
         </div>
@@ -53,8 +53,9 @@
 <script>
 import Top from '../components/Top.vue'
 import Card from '../components/Card.vue'
+
 export default {
-    name: 'Taste',
+    name: 'Recipe',
     components: {
       Top,
       Card,
@@ -69,10 +70,28 @@ export default {
                 {name: 'Serai', porsi: '1 pieces for 1 portion', price: '7,000'},
                 {name: 'Bawang', porsi: '1 pieces for 1 portion', price: '10,000'},
                 {name: 'Kemiri', porsi: '1 pieces for 1 portion', price: '10,000'},
-            ]
+            ],
+            description: '',
+            image: '',
+            ingredients: [],
+            text: '',
+            title: ''
         }
     },
-    created(){
+    async created(){
+        const data = await this.$firebase.recipeById(this.$route.params.id)
+        Object.assign(this, { ...data })
+        console.log(this)
+        // this.description = description
+        // this.image = image
+        // this.ingredients = ingredients
+        // this.text = text
+        // this.title = title
+
+        // const snapshot = await getDocs(query(this.$firebase.recipes, where(FieldPath.documentId(), '==', this.$route.params.id)))
+        // snapshot.forEach((doc) => {
+        //     console.log(doc.data())
+        // })
     }
 }
 </script>

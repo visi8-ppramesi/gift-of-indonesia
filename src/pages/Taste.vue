@@ -72,6 +72,7 @@
                                 type="A"
                                 :title= data.title
                                 :description= data.description
+                                :id="data.id"
                             />
                         </div>
 
@@ -95,6 +96,7 @@
                                 type="A"
                                 :title= data.title
                                 :description= data.description
+                                :id="data.id"
                             />
                         </div>
                     </div>
@@ -112,7 +114,7 @@
         </div>
 
         <template v-if="spicesData.length === 0">
-            <div v-for="index in 3" :key="index + '-placeholders'">
+            <div v-for="index in 3" :key="index + '-bottom-placeholders'">
                 <div class="mt-10 mx-2 md:mt-6">
                     <div class="flex flex-row justify-evenly justify-items-stretch mx-4">
                         <div class="w-full text-left mr-5">
@@ -257,10 +259,12 @@ export default {
                 })
             }))
         })
-        // eslint-disable-next-line no-unused-vars
-        Promise.all(promises).then((res) => {
-            this.$store.dispatch('setCartItems', [...this.spicesData])
-        })
+        if(this.$store.state.cartItems.length == 0){
+            // eslint-disable-next-line no-unused-vars
+            Promise.all(promises).then((res) => {
+                this.$store.dispatch('setCartItems', [...this.spicesData])
+            })
+        }
     }
 }
 </script>

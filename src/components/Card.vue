@@ -4,7 +4,7 @@
       <div style="background-color: #4E423E;" class="text-white w-full flex flex-col rounded-xl shadow-lg p-4">
         <div class="text-md md:text-2xl">{{ title }}</div>
         <div class="text-xs mt-2 md:text-lg">{{ description }}</div>
-        <router-link to="/recipe">
+        <router-link :to="'/recipe/' + id">
            <tombol class="mt-2 text-xs md:text-lg md:mt-3" title="RECIPE" />
         </router-link>
       </div>
@@ -92,6 +92,7 @@ export default {
         type: String,
         image: String,
         total: String,
+        id: String
     },
 }
 </script>

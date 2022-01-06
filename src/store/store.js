@@ -36,7 +36,7 @@ const store = new Vuex.Store({
                     let itemIndex = state.cartItems.findIndex(
                         el => el.id == item.id
                     );
-                    state.cartItems[itemIndex]["quantity"] += 1;
+                    state.cartItems[itemIndex].quantity += 1;
                 } else {
                     state.cartItems.push(item);
                 }

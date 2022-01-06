@@ -6,9 +6,9 @@ import '@/assets/css/main.css'
 import './registerServiceWorker'
 import store from './store/store.js'
 
-import { getStorage } from "firebase/storage"
+import { getStorage, ref, getDownloadURL } from "firebase/storage"
 import { initializeApp } from "firebase/app"
-import { getFirestore, collection } from 'firebase/firestore'
+import { doc, getDoc, getFirestore, collection } from 'firebase/firestore'
 
 // import dotenv from 'dotenv'
 
@@ -34,7 +34,14 @@ Vue.prototype.$firebase = {
   db,
   recipes,
   spices,
-  storage
+  storage,
+  recipeById: async function(id){
+    const docRef = doc(this.db, "recipes", id)
+    const docSnap = await getDoc(docRef)
+    const data = docSnap.data()
+    data.image = await getDownloadURL(ref(this.storage, data.image))
+    return data
+  }
 }
 Vue.config.productionTip = false
 
