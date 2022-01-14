@@ -176,8 +176,8 @@ import Placeholder from '../components/Placeholder.vue'
 import Tombol from '../components/Button.vue'
 // import food1 from '../assets/food1.jpg'
 // import food2 from '../assets/food2.jpg'
-import { getDocs } from "firebase/firestore"
-import { ref, getDownloadURL } from "firebase/storage"
+import { where } from "firebase/firestore"
+// import { ref, getDownloadURL } from "firebase/storage"
 // import food3 from '../assets/food3.jpg'
 // import food4 from '../assets/food4.jpg'
 export default {
@@ -236,40 +236,27 @@ export default {
         },
     },
     async created(){
-        this.dataRecipe = []
-        const recipesSnapshot = await getDocs(this.$firebase.recipes)
-        recipesSnapshot.forEach(async (doc) => {
-            const data = doc.data()
-            const imgUrl = await getDownloadURL(ref(this.$firebase.storage, data.image))
-            data.image = imgUrl
-            this.dataRecipe.push({
-                id: doc.id,
-                ...data
-            })
-        })
+        this.dataRecipe = await this.$firestoreOrm.collections.recipes.functions.fetch()
+        this.spicesData = await this.$firestoreOrm.collections.spices.functions.fetch()
 
-        const spicesSnapshot = await getDocs(this.$firebase.spices)
-        const promises = []
-        spicesSnapshot.forEach((doc) => {
-            // eslint-disable-next-line no-unused-vars
-            promises.push(new Promise((resolve, reject) => {
-                const data = doc.data()
-                getDownloadURL(ref(this.$firebase.storage, data.image)).then((imgUrl) => {
-                    data.image = imgUrl
-                    data.quantity = 0
-                    this.spicesData.push({
-                        id: doc.id,
-                        ...data
-                    })
-                    resolve()
+        this.$firestoreOrm.collections.connections.functions.registerOnSnapshot(
+            function(snap){
+                const data = []
+                snap.forEach((doc) => {
+                    data.push(doc.data())
                 })
-            }))
-        })
+                if(data[0].open === 1){
+                    console.log('open')
+                }
+            },
+            function(err){
+                console.error(err)
+            },
+            where('identifier', '==', 'a10686f6-3743-482e-a05d-bceb8e87277f')
+        )
+
         if(this.$store.state.cartItems.length == 0){
-            // eslint-disable-next-line no-unused-vars
-            Promise.all(promises).then((res) => {
-                this.$store.dispatch('setCartItems', [...this.spicesData])
-            })
+            this.$store.dispatch('setCartItems', [...this.spicesData])
         }
     }
 }

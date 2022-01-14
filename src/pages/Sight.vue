@@ -52,7 +52,9 @@
                        sed eiusmod tempor. consectetur adipiscing elit
                     </div>
                     <div class="mt-2 md:mt-4">
-                        <tombol class="text-xs md:text-md" title="VR" />
+                        <router-link to="/scene/asdfasdfasdf">
+                            <tombol class="text-xs md:text-md" title="VR" />
+                        </router-link>
                     </div>
                 </div>
 

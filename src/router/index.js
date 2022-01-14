@@ -40,6 +40,12 @@ export const routes = [
         name: 'recipe',
         meta: { title: 'Food Recipe', noCache: false }
     },
+    {
+        path: '/scene/:id',
+        component: () => import('../pages/SceneViewer'),
+        name: 'sceneViewer',
+        meta: { title: 'Scene', noCache: false }
+    },
 ]
 
 const createRouter = () => new Router({

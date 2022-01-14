@@ -1,4 +1,17 @@
 module.exports = {
+    chainWebpack: config => {
+        config.module
+            .rule('html')
+            .test(/\.html$/)
+            .use('html-loader')
+            .loader('html-loader')
+    },
+    pwa: {
+        workboxPluginMode: "InjectManifest",
+        workboxOptions: {
+            swSrc: "./src/service-worker.js"
+        }
+    }
     // // ...other vue-cli plugin options...
     // pwa: {
     //   name: 'My App',

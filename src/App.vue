@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { where } from "firebase/firestore"
 export default {
     name: 'App',
     methods: {
@@ -18,6 +19,31 @@ export default {
             this.$router.go(-1)
         }
     },
+    data(){
+        return {
+            testing: require('./scenes/testing.html')
+        }
+    },
+    created(){
+        console.log(this.testing)
+        if(this.$isOculus){
+            this.$firestoreOrm.collections.connections.functions.registerOnSnapshot(
+                function(snap){
+                    const data = []
+                    snap.forEach((doc) => {
+                        data.push(doc.data())
+                    })
+                    if(data[0].open === 1){
+                        //redirect to vr here
+                    }
+                },
+                function(err){
+                    console.error(err)
+                },
+                where('identifier', '==', 'a10686f6-3743-482e-a05d-bceb8e87277f')
+            )
+        }
+    }
 }
 </script>
 
