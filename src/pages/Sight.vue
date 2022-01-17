@@ -23,8 +23,8 @@
         </div>
 
         <div> <!-- change height -->
-            <div class="h-52 mx-6 flex flex-row justify-evenly justify-items-stretch md:mt-12">
-                <div class="w-full">
+            <div class="h-full mx-6 flex flex-row justify-evenly justify-items-stretch md:mt-12">
+                <div class="w-full h-44 mr-2 pr-2">
                     <img class="rounded-lg object-cover w-full h-full" :src="card1" />
                 </div>
 
@@ -42,8 +42,8 @@
             </div>
         </div>
 
-        <div class="mt-24"> <!-- change height -->
-            <div class="h-52 mx-6 flex flex-row justify-evenly justify-items-stretch">
+        <div class="mt-12"> <!-- change height -->
+            <div class="h-full mx-6 flex flex-row justify-evenly justify-items-stretch">
                 <div class="w-full text-left">
                     <div class="text-md font-bold md:text-xl">Fishing</div>
                     <div class="text-sm md:text-lg">Laut Indonesia</div>
@@ -58,16 +58,16 @@
                     </div>
                 </div>
 
-                <div class="w-full h-44 mx-2">
-                    <img class="rounded-lg object-cover w-full" :src="card2" />
+                <div class="w-full h-44 ml-2 pl-2">
+                    <img class="rounded-lg object-cover w-full h-full" :src="card2" />
                 </div>
             </div>
         </div>
 
-        <div class="mt-24"> <!-- change height -->
-            <div class="mx-6 h-52 flex flex-row justify-evenly justify-items-stretch">
-                <div class="w-full h-44">
-                    <img class="rounded-lg object-cover w-full" :src="card3" />
+        <div class="mt-12"> <!-- change height -->
+            <div class="h-full mx-6 flex flex-row justify-evenly justify-items-stretch">
+                <div class="w-full h-44 mr-2 pr-2">
+                    <img class="rounded-lg object-cover w-full h-full" :src="card3" />
                 </div>
 
                 <div class="w-full text-right">

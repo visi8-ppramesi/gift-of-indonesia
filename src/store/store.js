@@ -1,9 +1,11 @@
 import Vue from 'vue';
 import Vuex from "vuex";
+import createPersistedState from "vuex-persistedstate"
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
+    plugins: [createPersistedState()],
     state: {
         spiceIndo: [
             // {id: 1, name: 'Cengkeh', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam', price: '5000', quantity: 0},

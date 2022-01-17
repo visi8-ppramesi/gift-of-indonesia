@@ -129,7 +129,7 @@
             <div class="mx-6 my-5">
                 <div style="background-color: #4E423E;" class="text-white w-full flex flex-col rounded-xl shadow-lg p-4">
                     <div class="flex">
-                        <img class="rounded-lg w-32 object-cover h-56 md:w-64 md:h-64" :src="item.image" />
+                        <img class="rounded-lg w-32 object-cover h-46 md:w-64 md:h-64" :src="item.image" />
                         <div class="mx-4">
                             <div class="font-bold text-md md:text-2xl">{{ item.name }}</div>
                             <div class="text-xs mb-2 md:text-xl md:mt-4">{{ item.description }}</div>
@@ -142,7 +142,7 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="mt-3 md:text-md"><strong>Item in Cart : </strong>{{ totalItems[item.id] }}</div>
+                                <div class="mt-3 md:text-md"><strong>Item in Cart : </strong>{{ getCurrentItemCount(item.id) }}</div>
                             </div>
                         </div>
                     </div>
@@ -200,7 +200,7 @@ export default {
         //     return this.spicesData
         // },
         totalItems(){
-            let arr = this.$store.state.cartItems 
+            let arr = this.$store.state.cartItems
 
             return arr.reduce((acc, val) => {
                 acc[val.id] = val.quantity || 0
@@ -228,10 +228,18 @@ export default {
         }
     },
     methods: {
+        getCurrentItemCount(id){
+            return this.$store.state.cartItems.reduce((acc, val) => {
+                acc[val.id] = val.quantity || 0
+                return acc;
+            }, {})[id]
+        },
         addToCart(item){
+            item.quantity = item.quantity || 0
             this.$store.dispatch("addToCart", item);
         },
         removeItem(item){
+            item.quantity = item.quantity || 0
             this.$store.dispatch("removeItem", item);
         },
     },

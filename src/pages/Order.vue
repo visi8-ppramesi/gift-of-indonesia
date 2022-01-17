@@ -141,7 +141,9 @@ export default {
         totalPrice() {
             let price = 0;
             this.$store.state.cartItems.map(el => {
-                price += el["quantity"] * el["price"];
+                if(el.quantity && el.price){
+                    price += el.quantity * el.price
+                }
             });
             return price;
         }
