@@ -27,7 +27,9 @@ import 'aframe'
 //   appId: process.env.VUE_APP_APP_ID,
 //   measurementId: process.env.VUE_APP_MEASUREMENT_ID
 // };
-
+const testing = Cookies.get('testing') || (Math.random() + 1).toString(36).substring(2)
+Cookies.set('testing', testing)
+console.log(testing)
 Vue.prototype.$firestoreOrm = new firestoreOrm.FirestoreOrm(firebaseConfig, firestoreConfig)
 Vue.prototype.$cookies = Cookies
 window.axios = axioss
