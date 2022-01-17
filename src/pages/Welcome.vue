@@ -14,7 +14,6 @@
                     reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
                     pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
                     qui officia deserunt mollit anim id est laborum
-                    <a href="intent:#Intent;scheme=twitter;package=com.twitter.android;end"> Take a QR code </a>
                 </div>
                 <div>
                     <div class="flex flex-row mt-8">
