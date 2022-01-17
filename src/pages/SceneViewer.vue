@@ -13,6 +13,11 @@ export default {
     },
     created(){
         console.log('asdfasassfadasdfsafdsfaasfdasfd')
+    },
+    beforeDestroy(){
+        const els = document.getElementsByClassName('a-fullscreen')
+        console.log(els[0])
+        els[0].classList.remove('a-fullscreen')
     }
 }
 </script>
