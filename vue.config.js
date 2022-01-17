@@ -10,6 +10,41 @@ module.exports = {
         workboxPluginMode: "InjectManifest",
         workboxOptions: {
             swSrc: "./src/service-worker.js"
+        },
+        name: 'gift-of-indonesia',
+        manifestOptions: {
+            short_name: "giftofindonesia",
+            theme_color: "#4DBA87",
+            start_url: "https://gift-of-indonesia.netlify.app/",
+            id: "https://gift-of-indonesia.netlify.app/",
+            description: "Welcome to Indonesia.",
+            icons:[
+                {
+                    src: "./img/icons/android-chrome-192x192.png",
+                    sizes: "192x192",
+                    type: "image/png"
+                },
+                {
+                    src: "./img/icons/android-chrome-512x512.png",
+                    sizes: "512x512",
+                    type: "image/png"
+                },
+                {
+                    src: "./img/icons/android-chrome-maskable-192x192.png",
+                    sizes: "192x192",
+                    type: "image/png",
+                    purpose: "maskable"
+                },
+                {
+                    src: "./img/icons/android-chrome-maskable-512x512.png",
+                    sizes: "512x512",
+                    type: "image/png",
+                    purpose: "maskable"
+                }
+            ],
+            display: "standalone",
+            background_color: "#000000",
+            scope: "https://gift-of-indonesia.netlify.app/"
         }
     }
     // // ...other vue-cli plugin options...
