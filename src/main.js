@@ -33,7 +33,7 @@ console.log(testing)
 Vue.prototype.$firestoreOrm = new firestoreOrm.FirestoreOrm(firebaseConfig, firestoreConfig)
 Vue.prototype.$cookies = Cookies
 window.axios = axioss
-Vue.prototype.$isOculus = !!navigator.userAgent.match(/OculusBrowser/)
+Vue.prototype.$isOculus = /Android|OculusBrowser/.test(navigator.userAgent) //!!navigator.userAgent.match(/OculusBrowser/)
 
 const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)

@@ -25,6 +25,7 @@ export default {
         }
     },
     created(){
+        const self = this
         console.log(this.testing)
         if(this.$isOculus){
             this.$firestoreOrm.collections.connections.functions.registerOnSnapshot(
@@ -34,6 +35,7 @@ export default {
                         data.push(doc.data())
                     })
                     if(data[0].open === 1){
+                        self.$router.push({ path: '/scene/asdfasdfasdf' })
                         //redirect to vr here
                     }
                 },

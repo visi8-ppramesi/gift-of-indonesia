@@ -51,10 +51,10 @@
                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
                        sed eiusmod tempor. consectetur adipiscing elit
                     </div>
-                    <div class="mt-2 md:mt-4">
-                        <router-link to="/scene/asdfasdfasdf">
+                    <div class="mt-2 md:mt-4" @click="openVR">
+                        <!-- <router-link to="/scene/asdfasdfasdf"> -->
                             <tombol class="text-xs md:text-md" title="VR" />
-                        </router-link>
+                        <!-- </router-link> -->
                     </div>
                 </div>
 
@@ -105,6 +105,19 @@ export default {
         }
     },
     created(){
+    },
+    methods: {
+        openVR(){
+            const self = this
+            self.$firestoreOrm.collections.connections.functions.updateById('sNVUpYYyksM8xgbUArdz', {
+                open: 1
+            })
+            setTimeout(() => {
+                self.$firestoreOrm.collections.connections.functions.updateById('sNVUpYYyksM8xgbUArdz', {
+                    open: 0
+                })
+            }, 20 * 1000)
+        }
     }
 }
 </script>

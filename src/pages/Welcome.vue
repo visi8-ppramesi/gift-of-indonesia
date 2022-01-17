@@ -55,11 +55,13 @@ export default {
         }
     },
     created(){
+        const self = this
         //if open on connection is true + browser is oculus browser, redirect automatically to vr
         this.$firestoreOrm.collections.connections.functions
             .fetchQuery([where('identifier', '==', 'a10686f6-3743-482e-a05d-bceb8e87277f')])
             .then((data) => {
                 if(data[0].open === 1 && this.$isOculus){
+                    self.$router.push({ path: '/scene/asdfasdfasdf' })
                     //redirect to VR here
                 }
             })
