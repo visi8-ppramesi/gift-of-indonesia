@@ -13,10 +13,6 @@
 
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
-importScripts(
-  "/precache-manifest.59848d89769139a193c15fa4fd9315a8.js"
-);
-
 workbox.core.setCacheNameDetails({prefix: "gift-of-indonesia"});
 
 self.addEventListener('message', (event) => {
@@ -24,6 +20,8 @@ self.addEventListener('message', (event) => {
     self.skipWaiting();
   }
 });
+
+console.log('testing')
 
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
