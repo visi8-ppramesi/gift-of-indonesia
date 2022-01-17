@@ -14,7 +14,10 @@ import { doc, getDoc, getFirestore, collection } from 'firebase/firestore'
 import firestoreOrm from 'firestore-orm'
 import Cookies from 'js-cookie'
 import axioss from 'axios'
+import _ from 'lodash'
 import 'aframe'
+import { uuidv4 } from './utils/utils.js'
+import EventBus from './utils/eventBus.js'
 // import dotenv from 'dotenv'
 
 // const env = dotenv.config().parsed
@@ -33,7 +36,44 @@ console.log(testing)
 Vue.prototype.$firestoreOrm = new firestoreOrm.FirestoreOrm(firebaseConfig, firestoreConfig)
 Vue.prototype.$cookies = Cookies
 window.axios = axioss
-Vue.prototype.$isOculus = /Android|OculusBrowser/.test(navigator.userAgent) //!!navigator.userAgent.match(/OculusBrowser/)
+Vue.prototype.$isOculus = /OculusBrowser/.test(navigator.userAgent) //!!navigator.userAgent.match(/OculusBrowser/)
+Vue.prototype.$isMobile = /Android/.test(navigator.userAgent);
+
+// eslint-disable-next-line no-constant-condition
+if(Vue.prototype.$isOculus){
+    const connectionUuid = window.localStorage.getItem('uuid')
+    const connectionId = window.localStorage.getItem('id')
+    if(_.isNull(connectionId) || _.isNull(connectionUuid)){
+        const uuid = uuidv4()
+        Vue.prototype.$firestoreOrm.collections.connections.functions.create({
+            identifier: uuid,
+            open: 0
+        }).then((newConnectionId) => {
+            window.localStorage.setItem('uuid', uuid)
+            window.localStorage.setItem('id', newConnectionId)
+            Vue.prototype.$connection = {identifier: uuid, id: newConnectionId}
+            EventBus.$emit('connectionStarted', { identifier: uuid, id: newConnectionId })
+        })
+    }else{
+        Vue.prototype.$firestoreOrm.collections.connections.functions.checkById(connectionId).then((exist) => {
+            if(exist){
+                Vue.prototype.$connection = { identifier: connectionUuid, id: connectionId }
+                EventBus.$emit('connectionStarted', { identifier: connectionUuid, id: connectionId })
+            }else{
+                const uuid = uuidv4()
+                Vue.prototype.$firestoreOrm.collections.connections.functions.create({
+                    identifier: uuid,
+                    open: 0
+                }).then((newConnectionId) => {
+                    window.localStorage.setItem('uuid', uuid)
+                    window.localStorage.setItem('id', newConnectionId)
+                    Vue.prototype.$connection = {identifier: uuid, id: newConnectionId}
+                    EventBus.$emit('connectionStarted', { identifier: uuid, id: newConnectionId })
+                })
+            }
+        })
+    }
+}
 
 const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)

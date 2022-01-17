@@ -27,6 +27,9 @@ export default {
     created(){
         const self = this
         console.log(this.testing)
+        this.$firestoreOrm.collections.connections.functions.checkById('sNVUpYYyksM8xgbUArdz').then((r) => {
+            console.log(r)
+        })
         if(this.$isOculus){
             this.$firestoreOrm.collections.connections.functions.registerOnSnapshot(
                 function(snap){
