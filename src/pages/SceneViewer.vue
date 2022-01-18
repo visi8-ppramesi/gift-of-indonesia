@@ -2,8 +2,8 @@
     <div>
         <a-scene>
             <!-- The original example also has this 180 degree rotation, to appear to be going forward. -->
-            <a-videosphere src="#video">
-            </a-videosphere>
+            <!-- <a-videosphere src="#video">
+            </a-videosphere> -->
             <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
             
             <!-- Define camera with zero user height, movement disabled and arrow key rotation added. -->
