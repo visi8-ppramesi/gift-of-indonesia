@@ -109,24 +109,23 @@ export default {
     },
     methods: {
         openVR(){
-            this.$router.push({ path: '/scene/asdfasdfasdf' })
-            // const self = this
-            // if(this.$isOculus || this.$isMobile){
-            //     self.$router.push({ path: '/scene/asdfasdfasdf' })
-            // }else{
-            //     self.$firestoreOrm.collections.connections.functions.updateById(this.$connection.id, {
-            //         open: 1
-            //     }).then((res) => {
-            //         if(res){
-            //             Swal.fire('Open the VR device!')
-            //         }
-            //     })
-            //     setTimeout(() => {
-            //         self.$firestoreOrm.collections.connections.functions.updateById(this.$connection.id, {
-            //             open: 0
-            //         })
-            //     }, 20 * 1000)
-            // }
+            const self = this
+            if(this.$isOculus || this.$isMobile){
+                self.$router.push({ path: '/scene/asdfasdfasdf' })
+            }else{
+                self.$firestoreOrm.collections.connections.functions.updateById(this.$connection.id, {
+                    open: 1
+                }).then((res) => {
+                    if(res){
+                        Swal.fire('Open the VR device!')
+                    }
+                })
+                setTimeout(() => {
+                    self.$firestoreOrm.collections.connections.functions.updateById(this.$connection.id, {
+                        open: 0
+                    })
+                }, 20 * 1000)
+            }
         }
     }
 }
