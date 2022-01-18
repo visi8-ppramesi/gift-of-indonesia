@@ -2,7 +2,7 @@
     <div>
         <a-scene>
             <!-- The original example also has this 180 degree rotation, to appear to be going forward. -->
-            <a-videosphere rotation="0 180 0" src="#video">
+            <a-videosphere src="#video">
             </a-videosphere>
             
             <!-- Define camera with zero user height, movement disabled and arrow key rotation added. -->
@@ -17,7 +17,7 @@
             <!-- Wait for the video to load. -->
             <a-assets>
                 <!-- Single source video. -->
-                <video id="video" style="display:none" autoplay loop crossorigin="anonymous" playsinline webkit-playsinline>
+                <video id="video" style="display:none" autoplay loop playsinline webkit-playsinline>
                     <!-- MP4 video source. -->
                     <source type="video/mp4"
                         src="https://ucarecdn.com/fadab25d-0b3a-45f7-8ef5-85318e92a261/" />
