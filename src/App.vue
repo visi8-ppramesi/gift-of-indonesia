@@ -26,18 +26,15 @@ export default {
     },
     created(){
         const self = this
-        console.log(this.testing)
-        this.$firestoreOrm.collections.connections.functions.checkById('sNVUpYYyksM8xgbUArdz').then((r) => {
-            console.log(r)
-        })
-        console.log(this.$connection.identifier)
-        if(this.$isOculus){
+        if(this.$isOculus || this.$isMobile){
+            console.log(this.$connection.identifier)
             this.$firestoreOrm.collections.connections.functions.registerOnSnapshot(
                 function(snap){
                     const data = []
                     snap.forEach((doc) => {
                         data.push(doc.data())
                     })
+                    console.log(data)
                     if(data[0].open === 1){
                         self.$router.push({ path: '/scene/asdfasdfasdf' })
                         //redirect to vr here
@@ -46,7 +43,7 @@ export default {
                 function(err){
                     console.error(err)
                 },
-                where('identifier', '==', this.$connection.identifier)
+                [ where('identifier', '==', this.$connection.identifier) ]
             )
         }
     }

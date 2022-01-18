@@ -60,11 +60,10 @@ if(Vue.prototype.$isOculus || Vue.prototype.$isMobile){
             EventBus.$emit('connectionStarted', { identifier: uuid, id: newConnectionId })
         })
     }else{
+        Vue.prototype.$connection = { identifier: connectionUuid, id: connectionId }
+        EventBus.$emit('connectionStarted', { identifier: connectionUuid, id: connectionId })
         Vue.prototype.$firestoreOrm.collections.connections.functions.checkById(connectionId).then((exist) => {
-            if(exist){
-                Vue.prototype.$connection = { identifier: connectionUuid, id: connectionId }
-                EventBus.$emit('connectionStarted', { identifier: connectionUuid, id: connectionId })
-            }else{
+            if(!exist){
                 const uuid = uuidv4()
                 Vue.prototype.$firestoreOrm.collections.connections.functions.create({
                     identifier: uuid,

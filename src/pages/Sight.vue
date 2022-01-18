@@ -109,11 +109,11 @@ export default {
     methods: {
         openVR(){
             const self = this
-            self.$firestoreOrm.collections.connections.functions.updateById(this.$connecion.id, {
+            self.$firestoreOrm.collections.connections.functions.updateById(this.$connection.id, {
                 open: 1
             })
             setTimeout(() => {
-                self.$firestoreOrm.collections.connections.functions.updateById(this.$connecion.id, {
+                self.$firestoreOrm.collections.connections.functions.updateById(this.$connection.id, {
                     open: 0
                 })
             }, 20 * 1000)
