@@ -90,7 +90,7 @@
 <script>
 import Tombol from '../components/Button.vue'
 import Top from '../components/Top.vue'
-import Swal from 'sweetalert2'
+// import Swal from 'sweetalert2'
 export default {
     name: 'Sight',
     components: {
@@ -109,23 +109,24 @@ export default {
     },
     methods: {
         openVR(){
-            const self = this
-            if(this.$isOculus || this.$isMobile){
-                self.$router.push({ path: '/scene/asdfasdfasdf' })
-            }else{
-                self.$firestoreOrm.collections.connections.functions.updateById(this.$connection.id, {
-                    open: 1
-                }).then((res) => {
-                    if(res){
-                        Swal.fire('Open the VR device!')
-                    }
-                })
-                setTimeout(() => {
-                    self.$firestoreOrm.collections.connections.functions.updateById(this.$connection.id, {
-                        open: 0
-                    })
-                }, 20 * 1000)
-            }
+            this.$router.push({ path: '/scene/asdfasdfasdf' })
+            // const self = this
+            // if(this.$isOculus || this.$isMobile){
+            //     self.$router.push({ path: '/scene/asdfasdfasdf' })
+            // }else{
+            //     self.$firestoreOrm.collections.connections.functions.updateById(this.$connection.id, {
+            //         open: 1
+            //     }).then((res) => {
+            //         if(res){
+            //             Swal.fire('Open the VR device!')
+            //         }
+            //     })
+            //     setTimeout(() => {
+            //         self.$firestoreOrm.collections.connections.functions.updateById(this.$connection.id, {
+            //             open: 0
+            //         })
+            //     }, 20 * 1000)
+            // }
         }
     }
 }

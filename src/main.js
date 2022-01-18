@@ -145,6 +145,9 @@ Vue.config.ignoredElements = [
     'a-cylinder',
     'a-plane',
     'a-image',
+    'a-assets',
+    'a-entity',
+    'a-videosphere',
 ]
 
 new Vue({
