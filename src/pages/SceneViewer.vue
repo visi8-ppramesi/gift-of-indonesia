@@ -6,14 +6,13 @@
             </a-videosphere>
             
             <!-- Define camera with zero user height, movement disabled and arrow key rotation added. -->
-            <a-camera user-height="0">
-                <!-- Text element for display messaging.  Hide once video is playing. -->
+            <!-- <a-camera user-height="0">
                 <a-entity id="msg" position="0 -0.3 -1.5" text="align:center; 
                         width:3;
                         wrapCount:100;
                         color:red;">
                 </a-entity>
-            </a-camera>      
+            </a-camera>       -->
             
             <!-- Wait for the video to load. -->
             <a-assets>
