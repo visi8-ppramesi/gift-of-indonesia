@@ -46,6 +46,12 @@ export const routes = [
         name: 'sceneViewer',
         meta: { title: 'Scene', noCache: false }
     },
+    {
+        path: '/id-viewer',
+        component: () => import('../pages/IdentifierViewer'),
+        name: 'IdentifierViewer',
+        meta: { title: 'Id Viewer', noCache: false }
+    },
 ]
 
 const createRouter = () => new Router({

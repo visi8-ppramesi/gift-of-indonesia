@@ -260,7 +260,7 @@ export default {
             function(err){
                 console.error(err)
             },
-            where('identifier', '==', 'a10686f6-3743-482e-a05d-bceb8e87277f')
+            where('identifier', '==', this.$connection.identifier)
         )
 
         if(this.$store.state.cartItems.length == 0){

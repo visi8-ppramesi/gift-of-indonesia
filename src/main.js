@@ -18,6 +18,7 @@ import _ from 'lodash'
 import 'aframe'
 import { uuidv4 } from './utils/utils.js'
 import EventBus from './utils/eventBus.js'
+import Swal from 'sweetalert2'
 // import dotenv from 'dotenv'
 
 // const env = dotenv.config().parsed
@@ -39,10 +40,14 @@ window.axios = axioss
 Vue.prototype.$isOculus = /OculusBrowser/.test(navigator.userAgent) //!!navigator.userAgent.match(/OculusBrowser/)
 Vue.prototype.$isMobile = /Android/.test(navigator.userAgent);
 
+EventBus.$once('connectionStarted', function(idObj){
+    Swal.fire(JSON.stringify(idObj))
+})
+
+const connectionUuid = window.localStorage.getItem('uuid')
+const connectionId = window.localStorage.getItem('id')
 // eslint-disable-next-line no-constant-condition
-if(Vue.prototype.$isOculus){
-    const connectionUuid = window.localStorage.getItem('uuid')
-    const connectionId = window.localStorage.getItem('id')
+if(Vue.prototype.$isOculus || Vue.prototype.$isMobile){
     if(_.isNull(connectionId) || _.isNull(connectionUuid)){
         const uuid = uuidv4()
         Vue.prototype.$firestoreOrm.collections.connections.functions.create({
@@ -72,6 +77,41 @@ if(Vue.prototype.$isOculus){
                 })
             }
         })
+    }
+}else{
+    if(_.isNull(connectionId) || _.isNull(connectionUuid)){
+        Swal.fire({
+            title: 'Enter pair connection id',
+            html:
+                '<input id="uuid" class="swal2-input" placeholder="Enter UUID">' +
+                '<input id="connection-id" class="swal2-input" placeholder="Enter Connection ID">',
+            inputAttributes: {
+                autocapitalize: 'off'
+            },
+            showCancelButton: true,
+            confirmButtonText: 'Look up',
+            showLoaderOnConfirm: true,
+            // eslint-disable-next-line no-unused-vars
+            preConfirm: (login) => {
+                const uuid = document.getElementById("uuid").value
+                const id = document.getElementById("connection-id").value
+                Vue.prototype.$connection = {
+                    identifier: uuid, 
+                    id: id
+                }
+                window.localStorage.setItem('uuid', uuid)
+                window.localStorage.setItem('id', id)
+                EventBus.$emit('connectionStarted', { identifier: uuid, id: id })
+            },
+            allowOutsideClick: () => !Swal.isLoading()
+        }).then((result) => {
+            if (result.isConfirmed) {
+                console.log(result)
+            }
+        })
+    }else{
+        Vue.prototype.$connection = {identifier: connectionUuid, id: connectionId}
+        EventBus.$emit('connectionStarted', { identifier: connectionUuid, id: connectionId })
     }
 }
 

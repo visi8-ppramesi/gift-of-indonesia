@@ -3,7 +3,7 @@
         <!-- center the content below -->
         <div class="flex flex-col">
             <top class="h-screen w-screen items-center text-white flex flex-col justify-center" :background="welcomeBackground">
-                <div class="text-md md:text-xl">Welcome To</div>
+                <div class="text-md md:text-xl" @click="openIdViewer">Welcome To</div>
                 <div class="font-bold text-xl md:text-4xl">Experience of Indonesia</div>
                 <hr class="underline mt-2 border-4" />
                 <div class="text-center w-full px-4 text-sm mt-3 md:text-lg md:w-full md:px-6">
@@ -51,20 +51,32 @@ export default {
     },
     data(){
         return {
-            welcomeBackground: require('../assets/Borobudur.jpg')
+            welcomeBackground: require('../assets/Borobudur.jpg'),
+            clickCount: 0
         }
     },
     created(){
+        this.clickCount = 0
         const self = this
         //if open on connection is true + browser is oculus browser, redirect automatically to vr
-        this.$firestoreOrm.collections.connections.functions
-            .fetchQuery([where('identifier', '==', 'a10686f6-3743-482e-a05d-bceb8e87277f')])
-            .then((data) => {
-                if(data[0].open === 1 && this.$isOculus){
-                    self.$router.push({ path: '/scene/asdfasdfasdf' })
-                    //redirect to VR here
-                }
-            })
+        if(this.$isOculus || this.$isMobile){
+            this.$firestoreOrm.collections.connections.functions
+                .fetchQuery([where('identifier', '==', this.$connection.identifier)])
+                .then((data) => {
+                    if(data[0].open === 1){
+                        self.$router.push({ path: '/scene/asdfasdfasdf' })
+                        //redirect to VR here
+                    }
+                })
+        }
+    },
+    methods: {
+        openIdViewer(){
+            this.clickCount += 1
+            if(this.clickCount > 3){
+                this.$router.push({ path: '/id-viewer' })
+            }
+        }
     }
 }
 </script>

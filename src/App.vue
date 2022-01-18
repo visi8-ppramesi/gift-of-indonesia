@@ -30,6 +30,7 @@ export default {
         this.$firestoreOrm.collections.connections.functions.checkById('sNVUpYYyksM8xgbUArdz').then((r) => {
             console.log(r)
         })
+        console.log(this.$connection.identifier)
         if(this.$isOculus){
             this.$firestoreOrm.collections.connections.functions.registerOnSnapshot(
                 function(snap){
@@ -45,7 +46,7 @@ export default {
                 function(err){
                     console.error(err)
                 },
-                where('identifier', '==', 'a10686f6-3743-482e-a05d-bceb8e87277f')
+                where('identifier', '==', this.$connection.identifier)
             )
         }
     }
