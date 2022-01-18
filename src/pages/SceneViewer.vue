@@ -19,7 +19,7 @@ export default {
     <!-- Define camera with zero user height, movement disabled and arrow key rotation added. --><!-- <a-camera user-height="0"><a-entity id="msg" position="0 -0.3 -1.5" text="align:center; width:3; wrapCount:100; color:red;"></a-entity></a-camera>--><!-- Wait for the video to load. -->
     <a-assets>
         <video id="video" style="display:none" autoplay loop playsinline webkit-playsinline>
-            <source type="video/mp4" src="https://ucarecdn.com/fadab25d-0b3a-45f7-8ef5-85318e92a261/" />
+            <source type="video/mp4" src="https://firebasestorage.googleapis.com/v0/b/gift-of-indonesia.appspot.com/o/city.mp4?alt=media&token=1c9c4547-37d2-41cc-bdf0-a0fcb81bcff2" />
         </video>
     </a-assets>
 </a-scene>

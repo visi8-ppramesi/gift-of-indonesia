@@ -52,6 +52,12 @@ export const routes = [
         name: 'IdentifierViewer',
         meta: { title: 'Id Viewer', noCache: false }
     },
+    {
+        path: '/test',
+        component: () => import('../pages/Test'),
+        name: 'Test',
+        meta: { title: 'Test', noCache: false }
+    },
 ]
 
 const createRouter = () => new Router({
