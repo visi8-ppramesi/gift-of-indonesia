@@ -109,8 +109,11 @@ export default {
     },
     methods: {
         openVR(){
-            if(!(this.$isOculus || this.$isMobile)){
-                const self = this
+            const self = this
+            if(this.$isOculus || this.$isMobile){
+                Swal.fire('testing')
+                self.$router.push({ path: '/scene/asdfasdfasdf' })
+            }else{
                 self.$firestoreOrm.collections.connections.functions.updateById(this.$connection.id, {
                     open: 1
                 }).then((res) => {
