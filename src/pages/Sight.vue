@@ -90,7 +90,7 @@
 <script>
 import Tombol from '../components/Button.vue'
 import Top from '../components/Top.vue'
-// import Swal from 'sweetalert2'
+import Swal from 'sweetalert2'
 export default {
     name: 'Sight',
     components: {
