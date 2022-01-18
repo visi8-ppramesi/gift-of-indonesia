@@ -90,6 +90,7 @@
 <script>
 import Tombol from '../components/Button.vue'
 import Top from '../components/Top.vue'
+import Swal from 'sweetalert2'
 export default {
     name: 'Sight',
     components: {
@@ -108,15 +109,21 @@ export default {
     },
     methods: {
         openVR(){
-            const self = this
-            self.$firestoreOrm.collections.connections.functions.updateById(this.$connection.id, {
-                open: 1
-            })
-            setTimeout(() => {
+            if(!(this.$isOculus || this.$isMobile)){
+                const self = this
                 self.$firestoreOrm.collections.connections.functions.updateById(this.$connection.id, {
-                    open: 0
+                    open: 1
+                }).then((res) => {
+                    if(res){
+                        Swal.fire('Open the VR device!')
+                    }
                 })
-            }, 20 * 1000)
+                setTimeout(() => {
+                    self.$firestoreOrm.collections.connections.functions.updateById(this.$connection.id, {
+                        open: 0
+                    })
+                }, 20 * 1000)
+            }
         }
     }
 }
