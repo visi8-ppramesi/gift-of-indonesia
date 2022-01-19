@@ -151,7 +151,7 @@ export default {
     data(){
         return {
             gudeg: require('../assets/food1.jpg'),
-            item:0
+            item: 0
             // bahan: [
             //     {name: 'Daging Sapi', porsi: '500 g for 1 portion', price: '263,000'},
             //     {name: 'Daun Jeruk', porsi: '5 pieces for 1 portion', price: '5,000'},

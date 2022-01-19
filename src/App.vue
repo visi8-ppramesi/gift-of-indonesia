@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="absolute text-white">
+        <div class="absolute text-white" v-if="environment !== 'production'">
             Version {{ version }}, User Agent {{ userAgent }}
         </div>
         <nav @click="goBack" v-if="$route.name !== 'welcome'" class="go-back-container fixed h-16">
@@ -27,11 +27,13 @@ export default {
             testing: require('./scenes/testing.html'),
             version: '0.0.0',
             userAgent: '',
+            environment: ''
         }
     },
     created(){
         this.version = process.env.VUE_APP_VERSION
         this.userAgent = navigator.userAgent
+        this.environment = process.env.VUE_APP_ENVIRONMENT
         console.log(this.version)
         const self = this
         if(this.$isOculus || this.$isMobile){

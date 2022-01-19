@@ -41,7 +41,9 @@ Vue.prototype.$isOculus = /OculusBrowser/.test(navigator.userAgent) //!!navigato
 Vue.prototype.$isMobile = /Android|iPhone/.test(navigator.userAgent);
 
 EventBus.$once('connectionStarted', function(idObj){
-    Swal.fire(JSON.stringify(idObj))
+    if(process.env.VUE_APP_ENVIRONMENT !== 'production'){
+        Swal.fire(JSON.stringify(idObj))
+    }
 })
 
 const connectionUuid = window.localStorage.getItem('uuid')
