@@ -117,7 +117,7 @@ export default {
                     open: 1
                 }).then((res) => {
                     if(res){
-                        Swal.fire('Open the VR device!')
+                        Swal.fire('Open your VR device!')
                     }
                 })
                 setTimeout(() => {

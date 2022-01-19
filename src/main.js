@@ -38,7 +38,7 @@ Vue.prototype.$firestoreOrm = new firestoreOrm.FirestoreOrm(firebaseConfig, fire
 Vue.prototype.$cookies = Cookies
 window.axios = axioss
 Vue.prototype.$isOculus = /OculusBrowser/.test(navigator.userAgent) //!!navigator.userAgent.match(/OculusBrowser/)
-Vue.prototype.$isMobile = /Android/.test(navigator.userAgent);
+Vue.prototype.$isMobile = /Android|iPhone/.test(navigator.userAgent);
 
 EventBus.$once('connectionStarted', function(idObj){
     Swal.fire(JSON.stringify(idObj))
