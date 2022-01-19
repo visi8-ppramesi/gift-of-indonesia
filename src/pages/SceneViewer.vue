@@ -1,5 +1,5 @@
 <template>
-    <div v-html="test">
+    <div v-html="test" class="aframe-container">
 
     </div>
 </template>
@@ -36,5 +36,9 @@ export default {
 </script>
 
 <style>
-
+.aframe-container{
+    position: absolute; 
+    height: 100%; 
+    width: 100%;
+}
 </style>
