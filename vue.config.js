@@ -17,7 +17,7 @@ module.exports = {
         },
         name: 'gift-of-indonesia',
         manifestOptions: {
-            short_name: "giftofindonesia",
+            short_name: "Path of Indonesia",
             theme_color: "#4DBA87",
             start_url: "https://gift-of-indonesia.netlify.app/",
             id: "https://gift-of-indonesia.netlify.app/",
