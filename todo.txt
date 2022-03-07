@@ -1,0 +1,10 @@
+integrate wire comms
+open another app from this app
+add VR carousel
+transition background on homepage
+large animated buttons on homepage
+taste page rework
+tablet landscape
+rework sizing
+partners page
+    subcategory for each type (culinary, tourism, culture, religion, etc)

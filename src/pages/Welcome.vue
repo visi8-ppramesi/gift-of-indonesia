@@ -2,9 +2,9 @@
     <div class="container h-screen">
         <!-- center the content below -->
         <div class="flex flex-col">
-            <top class="h-screen w-screen items-center text-white flex flex-col justify-center" :background="welcomeBackground">
+            <top class="min-h-screen h-full w-screen items-center text-white flex flex-col justify-center" :background="welcomeBackground">
                 <div class="text-md md:text-xl" @click="openIdViewer">Welcome To</div>
-                <div class="font-bold text-xl md:text-4xl">Experience of Indonesia</div>
+                <div class="font-bold text-xl md:text-4xl" @click="openPlayStore">Experience of Indonesia</div>
                 <hr class="underline mt-2 border-4" />
                 <div class="text-center w-full px-4 text-sm mt-3 md:text-lg md:w-full md:px-6">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
@@ -69,6 +69,10 @@ export default {
         }
     },
     methods: {
+        openPlayStore(){
+            // document.location.href = 'intent:#Intent;scheme=twitter;package=com.twitter.android;end;'
+            document.location.href = 'https://twitter.com/DegenerateThing/status/1500692383037636611'
+        },
         openIdViewer(){
             this.clickCount += 1
             if(this.clickCount > 3){
