@@ -15,44 +15,42 @@
                     pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
                     qui officia deserunt mollit anim id est laborum
                 </div>
-                <div>
-                    <div class="flex flex-row mt-8">
-                        <div>
-                            <router-link to="/sight">
-                                <tombol class="ml-6 mt-2 text-sm md:text-lg  md:mt-4 md:ml-4" title="Sight" />
-                            </router-link>
-                        </div>
-                        <div>
-                            <router-link to="/taste">
-                                <tombol class="mx-4 mt-2 text-sm md:text-lg  md:mt-4 md:mx-12" title="Taste" />
-                            </router-link>
-                        </div>
-                        <div>
-                            <router-link to="/sound">
-                                <tombol class="mt-2 text-sm md:text-lg  md:mt-4" title="Sound" />
-                            </router-link>
-                        </div>
-                    </div>
-                </div>
             </top>
+            <div class="choice">
+                <div class="container relative" v-for="item in choice" :key="item.title">   
+                    <img class="w-screen" :src="item.image" />
+                    <router-link :to="item.link">
+                        <button class="btn border-white border-solid border-2 font-bold shadow-xl text-black bg-white px-2 py-1">Button</button>
+                    </router-link>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
 import Top from '../components/Top.vue'
-import Tombol from '../components/Button.vue'
+// import Tombol from '../components/Button.vue'
 import { where } from "firebase/firestore"
+import sight from '../assets/sight.jpg'
+import taste from '../assets/taste.png'
+import sound from '../assets/sound.jpg'
 export default {
     name: 'welcome',
     components: {
         Top,
-        Tombol,
+        // Tombol,
     },
     data(){
         return {
             welcomeBackground: require('../assets/Borobudur.jpg'),
-            clickCount: 0
+            sight: require('../assets/sight.jpg'),
+            clickCount: 0,
+            choice: [
+                {title: "Sight", image: sight, link: "/sight"},
+                {title: "Taste", image: taste, link: "/taste"},
+                {title: "Sound", image: sound, link: "/sound"},
+            ]
         }
     },
     created(){
@@ -84,6 +82,22 @@ export default {
 <style>
     .underline {
         width: 200px;
+    }
+
+    .container .btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .container .btn:hover {
+        background-color: #555;
     }
 
     @media (min-width: 768px){
