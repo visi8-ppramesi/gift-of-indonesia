@@ -11,8 +11,10 @@
  * See https://goo.gl/2aRDsh
  */
 
+// eslint-disable-next-line no-undef
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
+// eslint-disable-next-line no-undef
 workbox.core.setCacheNameDetails({prefix: "gift-of-indonesia"});
 
 var CACHE_NAME = 'gift-of-indonesia-v1';
@@ -70,4 +72,6 @@ console.log('testing')
  * See https://goo.gl/S9QRab
  */
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
+
+// eslint-disable-next-line no-undef
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
