@@ -72,7 +72,8 @@ export default {
     },
     methods: {
         openPlayStore(){
-            document.location.href = 'intent:#Intent;scheme=twitter;package=com.twitter.android;end;'
+            // document.location.href = 'intent:#Intent;scheme=twitter;package=com.twitter.android;end;'
+            document.location.href = 'https://twitter.com/DegenerateThing/status/1500692383037636611'
         },
         openIdViewer(){
             this.clickCount += 1
