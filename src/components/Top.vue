@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import sight from '../assets/sight.jpg'
 export default {
     name: 'Top',
     props: {
@@ -15,7 +16,16 @@ export default {
         color: {
             type: String,
             default: '#202424'
+        },
+        data(){
+        return {
+            choice: [
+                {title: "Sight", image: sight},
+                {title: "Taste", image: sight},
+                {title: "Sound", image: sight},
+            ]
         }
+    },
     }
 }
 </script>
