@@ -22,7 +22,24 @@
             </top>
         </div>
 
-        <div class="mt-5">
+        <div>
+            <div v-for="item in kategori" :key="item.nama">
+                <div class="mt-5 py-8">
+                    <div class="mx-6">
+                        <hr class="w-full border-2 border-white md:border-4" />
+                    </div>
+                    <div class="flex justify-center items-center">
+                        <div style="background-color: #F9AC18;" class="text-center w-36 py-3 text-xs font-bold absolute rounded-full md:text-lg">{{ item.nama }}</div>
+                    </div>
+                </div>
+
+                <div class="pt-6">
+                    <Carousel />
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-14">
             <div class="mx-6">
                 <hr class="w-full border-2 border-white md:border-4" />
             </div>
@@ -174,6 +191,7 @@ import Top from '../components/Top.vue'
 import Card from '../components/Card.vue'
 import Placeholder from '../components/Placeholder.vue'
 import Tombol from '../components/Button.vue'
+import Carousel from '../components/Carousel.vue'
 // import food1 from '../assets/food1.jpg'
 // import food2 from '../assets/food2.jpg'
 import { where } from "firebase/firestore"
@@ -187,6 +205,7 @@ export default {
       Card,
       Tombol,
       Placeholder,
+      Carousel,
     },
     watch: {
         
@@ -224,7 +243,14 @@ export default {
                 // {id: 3, title: "Ketoprak", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam", image: food1 },
                 // {id: 4, title: "Soto Betawi", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam", image: food2 },
             ],
-            spicesData: []
+            spicesData: [],
+            kategori: [
+                {nama: 'Sumatera'},
+                {nama: 'Jawa'},
+                {nama: 'Kalimantan'},
+                {nama: 'NTT'},
+                {nama: 'Sulawesi'}
+            ]
         }
     },
     methods: {
