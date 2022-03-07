@@ -34,12 +34,12 @@
                 </div>
 
                 <div class="pt-6">
-                    <Carousel />
+                    <Carousel @clickBox="moveInfoBox" />
                 </div>
             </div>
         </div>
 
-        <div v-show="tooltipShown" class="recipe-box w-screen m-6 p-4 h-1/2 absolute rounded-xl" id="testBox">
+        <div v-show="tooltipShown" class="recipe-box w-screen m-6 p-4 h-1/2 absolute rounded-xl" id="testBox" data-content="50%">
             {{recipeText}}
         </div>
 
@@ -87,7 +87,7 @@
             <div v-if="idx % 2 == 0">
                 <div class="mt-12 mx-2 md:mt-16">
                     <div class="flex flex-row justify-evenly justify-items-stretch mx-4">
-                        <div class="w-full text-left mr-5" @click="testStuff">
+                        <div class="w-full text-left mr-5" @click="testStuff(data.id)" :id="'box-' + data.id">
                             <card
                                 class="text-left" 
                                 type="A"
@@ -111,7 +111,7 @@
                             <img class="rounded-md object-cover w-full h-44 md:h-60" :src= data.image />
                         </div>
 
-                        <div class="w-full text-right ml-5" @click="testStuff">
+                        <div class="w-full text-right ml-5" @click="testStuff(data.id)" :id="'box-' + data.id">
                             <card
                                 class="text-right"
                                 type="A"
@@ -237,6 +237,7 @@ export default {
     },
     data(){
         return {
+            currentlySelected: null,
             tooltipShown: false,
             tooltipTop: 0,
             tasteBackground: require('../assets/tasteHeader.jpg'),
@@ -261,11 +262,48 @@ export default {
         }
     },
     methods: {
-        testStuff(e){
-            this.tooltipShown = !this.tooltipShown
+        moveInfoBox(e){
+            if(e.isEqualNode(this.currentlySelected)){
+                this.tooltipShown = !this.tooltipShown
+            }else{
+                this.currentlySelected = e
+            }
+
+            // this.tooltipShown = !this.tooltipShown
+            const coords = this.getCoords(e)
             const infoBox = document.getElementById('testBox')
-            const coords = this.getCoords(e.target)
-            infoBox.style.top = 'calc(' + coords.top + 'px - 4rem - 50%)'
+            switch(coords.section){
+                case 0:
+                    infoBox.style.setProperty('--loc', '12.5%', '')
+                    break
+                case 2:
+                    infoBox.style.setProperty('--loc', '50%', '')
+                    break
+                case 3:
+                    infoBox.style.setProperty('--loc', '87.5%', '')
+                    break
+            }
+
+            infoBox.style.top = 'calc(' + coords.top + 'px - 3rem - 50%)'
+        },
+        testStuff(id){
+            if(this.currentlySelected == id){
+                this.tooltipShown = !this.tooltipShown
+            }else{
+                this.currentlySelected = id
+            }
+            
+            const infoBox = document.getElementById('testBox')
+            const elem = document.getElementById('box-' + id)
+
+            const coords = this.getCoords(elem)
+            if(coords.section){
+                infoBox.style.setProperty('--loc', '75%', '')
+            }else{
+                infoBox.style.setProperty('--loc', '25%', '')
+            }
+
+            infoBox.style.top = 'calc(' + coords.top + 'px - 3rem - 50%)'
             // console.log(e.target.getBoundingClientRect().top)
             // e.target.style.top = e.target.getBoundingClientRect().top
             // console.log(e.target.getBoundingClientRect().top )
@@ -285,7 +323,9 @@ export default {
             var top  = box.top +  scrollTop - clientTop;
             var left = box.left + scrollLeft - clientLeft;
 
-            return { top: Math.round(top), left: Math.round(left) };
+
+
+            return { top: Math.round(top), left: Math.round(left), section: Math.floor(left / (window.innerWidth / 4)) + 1 };
         },
         getCurrentItemCount(id){
             return this.$store.state.cartItems.reduce((acc, val) => {
@@ -335,6 +375,31 @@ export default {
     width: calc(100vw - 4rem);
     z-index: 4;
     background-color: rgb(78, 66, 62);
+    box-shadow: rgb(0 0 0 / 39%) 1px -3px 15px;
+}
+
+.recipe-box:after{
+    /* content: '';
+	position: absolute;
+	bottom: 0;
+	left: var(--loc);
+	width: 0;
+	height: 0;
+	border: 23px solid transparent;
+	border-top-color: #4e423e;
+	border-bottom: 0;
+	margin-left: -0.625em;
+	margin-bottom: -0.625em; */
+    content: "";
+    position: absolute;
+    box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 2px ;
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    bottom: -10px;
+	left: var(--loc);
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent rgb(78, 66, 62) rgb(78, 66, 62) transparent;
 }
 
 .checkout {
