@@ -22,6 +22,8 @@
             </top>
         </div>
 
+        <carousel />
+
         <div> <!-- change height -->
             <div class="h-full mx-6 flex flex-row justify-evenly justify-items-stretch md:mt-12">
                 <div class="w-full h-44 mr-2 pr-2">
@@ -91,11 +93,13 @@
 import Tombol from '../components/Button.vue'
 import Top from '../components/Top.vue'
 import Swal from 'sweetalert2'
+import Carousel from '../components/Carousel.vue'
 export default {
     name: 'Sight',
     components: {
       Top,
       Tombol,
+      Carousel,
     },
     data(){
         return {

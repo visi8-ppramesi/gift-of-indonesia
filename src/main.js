@@ -19,6 +19,10 @@ import 'aframe'
 import { uuidv4 } from './utils/utils.js'
 import EventBus from './utils/eventBus.js'
 import Swal from 'sweetalert2'
+import Flicking from "@egjs/vue-flicking";
+import "@egjs/vue-flicking/dist/flicking.css";
+
+Vue.use(Flicking);
 // import dotenv from 'dotenv'
 
 // const env = dotenv.config().parsed

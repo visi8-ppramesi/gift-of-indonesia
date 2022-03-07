@@ -22,6 +22,27 @@
             </top>
         </div>
 
+        <div>
+            <div v-for="item in kategori" :key="item.nama">
+                <div class="mt-5 py-8">
+                    <div class="mx-6">
+                        <hr class="w-full border-2 border-white md:border-4" />
+                    </div>
+                    <div class="flex justify-center items-center">
+                        <div style="background-color: #F9AC18;" class="text-center w-36 py-3 text-xs font-bold absolute rounded-full md:text-lg">{{ item.nama }}</div>
+                    </div>
+                </div>
+
+                <div class="pt-6">
+                    <Carousel />
+                </div>
+            </div>
+        </div>
+
+        <div v-show="tooltipShown" class="recipe-box w-screen m-6 p-4 h-1/2 absolute rounded-xl" id="testBox">
+            {{recipeText}}
+        </div>
+
         <div class="mt-5">
             <div class="mx-6">
                 <hr class="w-full border-2 border-white md:border-4" />
@@ -66,7 +87,7 @@
             <div v-if="idx % 2 == 0">
                 <div class="mt-12 mx-2 md:mt-16">
                     <div class="flex flex-row justify-evenly justify-items-stretch mx-4">
-                        <div class="w-full text-left mr-5">
+                        <div class="w-full text-left mr-5" @click="testStuff">
                             <card
                                 class="text-left" 
                                 type="A"
@@ -90,7 +111,7 @@
                             <img class="rounded-md object-cover w-full h-44 md:h-60" :src= data.image />
                         </div>
 
-                        <div class="w-full text-right ml-5">
+                        <div class="w-full text-right ml-5" @click="testStuff">
                             <card
                                 class="text-right"
                                 type="A"
@@ -174,6 +195,7 @@ import Top from '../components/Top.vue'
 import Card from '../components/Card.vue'
 import Placeholder from '../components/Placeholder.vue'
 import Tombol from '../components/Button.vue'
+import Carousel from '../components/Carousel.vue'
 // import food1 from '../assets/food1.jpg'
 // import food2 from '../assets/food2.jpg'
 import { where } from "firebase/firestore"
@@ -187,6 +209,7 @@ export default {
       Card,
       Tombol,
       Placeholder,
+      Carousel,
     },
     watch: {
         
@@ -214,6 +237,8 @@ export default {
     },
     data(){
         return {
+            tooltipShown: false,
+            tooltipTop: 0,
             tasteBackground: require('../assets/tasteHeader.jpg'),
             spice1: require('../assets/cengkeh.jpg'),
             spice2: require('../assets/kayu manis.jpg'),
@@ -224,10 +249,44 @@ export default {
                 // {id: 3, title: "Ketoprak", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam", image: food1 },
                 // {id: 4, title: "Soto Betawi", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam", image: food2 },
             ],
-            spicesData: []
+            spicesData: [],
+            kategori: [
+                {nama: 'Sumatera'},
+                {nama: 'Jawa'},
+                {nama: 'Kalimantan'},
+                {nama: 'NTT'},
+                {nama: 'Sulawesi'}
+            ],
+            recipeText: 'TEST'
         }
     },
     methods: {
+        testStuff(e){
+            this.tooltipShown = !this.tooltipShown
+            const infoBox = document.getElementById('testBox')
+            const coords = this.getCoords(e.target)
+            infoBox.style.top = 'calc(' + coords.top + 'px - 4rem - 50%)'
+            // console.log(e.target.getBoundingClientRect().top)
+            // e.target.style.top = e.target.getBoundingClientRect().top
+            // console.log(e.target.getBoundingClientRect().top )
+        },
+        getCoords(elem) { // crossbrowser version
+            var box = elem.getBoundingClientRect();
+
+            var body = document.body;
+            var docEl = document.documentElement;
+
+            var scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop;
+            var scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft;
+
+            var clientTop = docEl.clientTop || body.clientTop || 0;
+            var clientLeft = docEl.clientLeft || body.clientLeft || 0;
+
+            var top  = box.top +  scrollTop - clientTop;
+            var left = box.left + scrollLeft - clientLeft;
+
+            return { top: Math.round(top), left: Math.round(left) };
+        },
         getCurrentItemCount(id){
             return this.$store.state.cartItems.reduce((acc, val) => {
                 acc[val.id] = val.quantity || 0
@@ -271,6 +330,13 @@ export default {
 </script>
 
 <style>
+.recipe-box{
+    top: 0;
+    width: calc(100vw - 4rem);
+    z-index: 4;
+    background-color: rgb(78, 66, 62);
+}
+
 .checkout {
     top: calc(var(--viewport-height) - 67px);
     right: 20px;

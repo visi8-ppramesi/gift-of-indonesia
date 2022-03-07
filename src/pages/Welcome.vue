@@ -2,7 +2,7 @@
     <div class="container h-screen">
         <!-- center the content below -->
         <div class="flex flex-col">
-            <top class="h-screen w-screen items-center text-white flex flex-col justify-center" :background="welcomeBackground">
+            <top class="min-h-screen h-full w-screen items-center text-white flex flex-col justify-center" :background="welcomeBackground">
                 <div class="text-md md:text-xl" @click="openIdViewer">Welcome To</div>
                 <div class="font-bold text-xl md:text-4xl" @click="openPlayStore">Experience of Indonesia</div>
                 <hr class="underline mt-2 border-4" />
