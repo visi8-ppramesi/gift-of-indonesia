@@ -1,5 +1,5 @@
 <template>
-    <div style="background-color: #202424;" class="text-white pb-16">
+    <div style="background-color: #202424;" class="text-white pb-16" @click="closeInfoWindow">
         <div class="flex">
             <!-- add background image + bottom fadeout color -->
             <top  class="h-screen w-screen items-center text-white flex flex-col justify-end" :background="tasteBackground">
@@ -29,40 +29,56 @@
                         <hr class="w-full border-2 border-white md:border-4" />
                     </div>
                     <div class="flex justify-center items-center">
-                        <div style="background-color: #F9AC18;" class="text-center w-36 py-3 text-xs font-bold absolute rounded-full md:text-lg">{{ item.nama }}</div>
+                        <div style="background-color: #F9AC18;" class="text-center w-36 py-3 text-xs font-bold absolute rounded-full md:text-lg">{{ item.title }}</div>
                     </div>
                 </div>
 
                 <div class="pt-6">
                     <Carousel>
-                        <div
-                            style="height: 360px;"
-                            v-for="item in item.items"
-                            class="px-2"
-                            :key="item.name"
-                            @click="moveInfoBox"
-                        >
-                            <img :src="item.image" :id="'box-' + item.id" />
-                        </div>
+                        <template v-if="item.items.length > 0">
+                            <div
+                                style="height: 360px;"
+                                v-for="item in item.items"
+                                class="px-2"
+                                :key="item.name"
+                                @click.stop="moveInfoBox(item.id, $event)"
+                            >
+                                <img :src="item.image" :id="'box-' + item.id" />
+                            </div>
+                        </template>
+                        <template v-else>
+                            <placeholder v-for="idx in 3" type="food" :key="idx"/>
+                        </template>
                     </Carousel>
                 </div>
             </div>
         </div>
 
         <div v-show="tooltipShown" class="recipe-box w-screen m-6 p-4 h-1/2 absolute rounded-xl" id="testBox" data-content="50%">
-            {{recipeText}}
+            <div>
+                <h1>
+                    {{recipeTitle}}
+                </h1>
+                <div>
+                    {{recipeText}}
+                </div>
+
+                <router-link :to="'/recipe/' + recipeId">
+                <tombol class="mt-2 text-xs md:text-lg md:mt-3" title="RECIPE" />
+                </router-link>
+            </div>
         </div>
 
-        <div class="mt-5">
+        <!-- <div class="mt-5">
             <div class="mx-6">
                 <hr class="w-full border-2 border-white md:border-4" />
             </div>
             <div class="flex justify-center items-center">
                 <div style="background-color: #F9AC18;" class="w-max p-3 text-xs font-bold absolute rounded-full md:text-lg">Traditional Food</div>
             </div>
-        </div>
+        </div> -->
 
-        <template v-if="dataRecipe.length === 0">
+        <!-- <template v-if="dataRecipe.length === 0">
             <div v-for="index in 3" :key="index + '-placeholders'">
                 <div v-if="index % 2 == 0">
                     <div class="mt-12 mx-2 md:mt-16">
@@ -91,9 +107,9 @@
                     </div>
                 </div>
             </div>
-        </template>
+        </template> -->
 
-        <div v-for="(data, idx) in dataRecipe" :key="data.id">
+        <!-- <div v-for="(data, idx) in dataRecipe" :key="data.id">
             <div v-if="idx % 2 == 0">
                 <div class="mt-12 mx-2 md:mt-16">
                     <div class="flex flex-row justify-evenly justify-items-stretch mx-4">
@@ -133,18 +149,18 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <div class="py-14">
+        <!-- <div class="py-14">
             <div class="mx-6">
                 <hr class="w-full border-2 border-white md:border-4" />
             </div>
             <div class="flex justify-center items-center">
                 <div style="background-color: #F9AC18;" class="w-max text-xs py-3 px-8 font-bold absolute rounded-full md:text-lg">Spices</div>
             </div>
-        </div>
+        </div> -->
 
-        <template v-if="spicesData.length === 0">
+        <!-- <template v-if="spicesData.length === 0">
             <div v-for="index in 3" :key="index + '-bottom-placeholders'">
                 <div class="mt-10 mx-2 md:mt-6">
                     <div class="flex flex-row justify-evenly justify-items-stretch mx-4">
@@ -154,9 +170,9 @@
                     </div>
                 </div>
             </div>
-        </template>
+        </template> -->
 
-        <div v-for="item in spicesData" :key="item.id" class="w-full">
+        <!-- <div v-for="item in spicesData" :key="item.id" class="w-full">
             <div class="mx-6 my-5">
                 <div style="background-color: #4E423E;" class="text-white w-full flex flex-col rounded-xl shadow-lg p-4">
                     <div class="flex">
@@ -179,7 +195,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- <div v-if="spicesData.length === 0" wire:loading class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-gray-700 opacity-75 flex flex-col items-center justify-center">
             <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
@@ -187,7 +203,7 @@
             <p class="w-1/3 text-center text-white">This may take a few seconds, please don't close this page.</p>
         </div> -->
 
-        <div class="checkout fixed">
+        <!-- <div class="checkout fixed">
             <router-link to="/order" :class="{ disabled: count < 1 }">
                 <div class='badge badge-warning' id='lblCartCount'>{{count}}</div>
                 <div class="bg-white rounded-full p-2 border-2 border-black">
@@ -196,13 +212,13 @@
                     </svg>
                 </div>
             </router-link>
-        </div>
+        </div> -->
     </div>
 </template>
 
 <script>
 import Top from '../components/Top.vue'
-import Card from '../components/Card.vue'
+// import Card from '../components/Card.vue'
 import Placeholder from '../components/Placeholder.vue'
 import Tombol from '../components/Button.vue'
 import Carousel from '../components/Carousel.vue'
@@ -217,7 +233,7 @@ export default {
     name: 'Taste',
     components: {
       Top,
-      Card,
+    //   Card,
       Tombol,
       Placeholder,
       Carousel,
@@ -270,15 +286,25 @@ export default {
                 {items: [], nama: 'pedas', title: 'Pedas'}
             ],
             recipeText: 'TEST',
+            recipeTitle: 'TEST',
+            recipeId: null
         }
     },
     methods: {
-        moveInfoBox(ev){
+        closeInfoWindow(){
+            this.tooltipShown = false
+        },
+        moveInfoBox(id, ev){
+            const clickedRecipe = this.kategori.findRecipe(id)
+            this.recipeText = clickedRecipe.description
+            this.recipeTitle = clickedRecipe.title
+            this.recipeId = clickedRecipe.id
             const e = ev.target
-            if(e.isEqualNode(this.currentlySelected)){
+            if(this.currentlySelected == id){
                 this.tooltipShown = !this.tooltipShown
             }else{
-                this.currentlySelected = e
+                this.tooltipShown = true
+                this.currentlySelected = id
             }
 
             // this.tooltipShown = !this.tooltipShown
@@ -366,6 +392,12 @@ export default {
             })
             console.log(this.kategori)
         })
+
+        this.kategori.findRecipe = function(name){
+            return this.find((v) => {
+                return v.items.find(va => va.id == name)
+            }).items.find(v => v.id == name)
+        }
 
         this.dataRecipe = await this.$firestoreOrm.collections.recipes.functions.fetch()
         this.spicesData = await this.$firestoreOrm.collections.spices.functions.fetch()
