@@ -1,5 +1,5 @@
 <template>
-    <div class="container h-screen">
+    <div class="container h-full">
         <!-- center the content below -->
         <div class="flex flex-col">
             <top class="min-h-screen h-full w-screen items-center text-white flex flex-col justify-center" :background="welcomeBackground">
@@ -15,44 +15,75 @@
                     pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
                     qui officia deserunt mollit anim id est laborum
                 </div>
-                <div>
-                    <div class="flex flex-row mt-8">
-                        <div>
-                            <router-link to="/sight">
-                                <tombol class="ml-6 mt-2 text-sm md:text-lg  md:mt-4 md:ml-4" title="Sight" />
-                            </router-link>
-                        </div>
-                        <div>
-                            <router-link to="/taste">
-                                <tombol class="mx-4 mt-2 text-sm md:text-lg  md:mt-4 md:mx-12" title="Taste" />
-                            </router-link>
-                        </div>
-                        <div>
-                            <router-link to="/sound">
-                                <tombol class="mt-2 text-sm md:text-lg  md:mt-4" title="Sound" />
-                            </router-link>
-                        </div>
-                    </div>
-                </div>
             </top>
         </div>
+
+        <ul id="cards">
+		<li class="card" id="card_1">
+			<div class="card__content">
+				<div class="container relative">   
+                    <div class="relative w-screen h-screen">
+                        <img class="w-screen h-screen" :src="sight" />
+                    </div>
+                    <router-link to="/sight">
+                        <button class="btn border-white border-solid border-2 font-bold shadow-xl text-black bg-white px-8 py-1 2xl:text-3xl">Sight</button>
+                    </router-link>
+                </div>
+			</div>
+		</li>
+		<li class="card" id="card_2">
+			<div class="card__content">
+				<div class="container relative">   
+                    <div class="relative w-screen h-screen">
+                        <img class="w-screen h-screen" :src="taste" />
+                    </div>
+                    <router-link to="/taste">
+                        <button class="btn border-white border-solid border-2 font-bold shadow-xl text-black bg-white px-8 py-1 2xl:text-3xl">Taste</button>
+                    </router-link>
+                </div>
+			</div>
+		</li>
+		<li class="card" id="card_3">
+			<div class="card__content w-screen h-screen">
+				<div class="container relative">   
+                    <div class="relative w-screen h-screen">
+                        <img class="w-screen h-screen" :src="sound" />
+                    </div>
+                    <router-link to="/sound">
+                        <button class="btn border-white border-solid border-2 font-bold shadow-xl text-black bg-white px-8 py-1 2xl:text-3xl">Sound</button>
+                    </router-link>
+                </div>
+			</div>
+		</li>
+	</ul>
     </div>
 </template>
 
 <script>
 import Top from '../components/Top.vue'
-import Tombol from '../components/Button.vue'
+// import Tombol from '../components/Button.vue'
 import { where } from "firebase/firestore"
+// import sight from '../assets/sight.jpg'
+// import taste from '../assets/taste.png'
+// import sound from '../assets/sound.jpg'
 export default {
     name: 'welcome',
     components: {
         Top,
-        Tombol,
+        // Tombol,
     },
     data(){
         return {
             welcomeBackground: require('../assets/Borobudur.jpg'),
-            clickCount: 0
+            clickCount: 0,
+            // choice: [
+            //     {title: "Sight", button: "Sight", image: sight, link: "/sight"},
+            //     {title: "Taste", button: "Taste", image: taste, link: "/taste"},
+            //     {title: "Sound", button: "Sound", image: sound, link: "/sound"},
+            // ]
+            sight: require('../assets/sight.jpg'),
+            taste: require('../assets/taste.png'),
+            sound: require('../assets/sound.jpg'),
         }
     },
     created(){
@@ -72,7 +103,8 @@ export default {
     },
     methods: {
         openPlayStore(){
-            
+            // document.location.href = 'intent:#Intent;scheme=twitter;package=com.twitter.android;end;'
+            document.location.href = 'https://twitter.com/DegenerateThing/status/1500692383037636611'
         },
         openIdViewer(){
             this.clickCount += 1
@@ -89,9 +121,263 @@ export default {
         width: 200px;
     }
 
+    .container .btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        cursor: pointer;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .container .btn:hover {
+        background-color: #555;
+    }
+
     @media (min-width: 768px){
         .underline {
             width: 300px;
         }
+        .container .btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-5%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        cursor: pointer;
+        border-radius: 5px;
+        text-align: center;
+        }
     }
+
+    @media (min-width: 1024px){
+        .underline {
+            width: 300px;
+        }
+        .container .btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-10%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        cursor: pointer;
+        border-radius: 5px;
+        text-align: center;
+        }
+    }
+
+    @media (min-width: 1440px){
+        .underline {
+            width: 300px;
+        }
+        .container .btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(90%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        cursor: pointer;
+        border-radius: 5px;
+        text-align: center;
+        }
+    }
+
+    @media (min-width: 1920px){
+        .underline {
+            width: 300px;
+        }
+        .container .btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(90%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        cursor: pointer;
+        border-radius: 5px;
+        text-align: center;
+        }
+    }
+
+    @media (min-width: 2560px){
+        .underline {
+            width: 300px;
+        }
+        .container .btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(500%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        cursor: pointer;
+        border-radius: 5px;
+        text-align: center;
+        }
+    }
+
+    #cards {
+	padding-bottom: calc(var(--numcards) * var(--card-top-offset)); /* Make place at bottom, as items will slide to that position*/
+	margin-bottom: var(--card-margin); /* Don't include the --card-margin in padding, as that will affect the scroll-timeline*/
+}
+
+#card_1 {
+	--index: 1;
+}
+
+#card_2 {
+	--index: 2;
+}
+
+#card_3 {
+	--index: 3;
+}
+
+#card_4 {
+	--index: 4;
+}
+
+.card {
+	position: sticky;
+	top: 0;
+	padding-top: calc(var(--index) * var(--card-top-offset));
+}
+
+@supports (animation-timeline: works) {
+
+	@scroll-timeline cards-element-scrolls-in-body {
+		source: selector(body);
+		scroll-offsets:
+			
+			selector(#cards) start 1,
+			
+			selector(#cards) start 0
+		;
+		start: selector(#cards) start 1; 
+		end: selector(#cards) start 0;
+		time-range: 4s;
+	}
+
+	.card {
+		--index0: calc(var(--index) - 1);
+		--reverse-index: calc(var(--numcards) - var(--index0));
+		--reverse-index0: calc(var(--reverse-index) - 1);
+	}
+	
+	.card__content {
+		transform-origin: 50% 0%;
+		will-change: transform;
+
+		--duration: calc(var(--reverse-index0) * 1s);
+		--delay: calc(var(--index0) * 1s);
+
+		animation: var(--duration) linear scale var(--delay) forwards;
+		animation-timeline: cards-element-scrolls-in-body;
+	}
+
+	@keyframes scale {
+		to {
+			transform:
+				scale(calc(
+					1.1
+					-
+					calc(0.1 * var(--reverse-index))
+				));
+		}
+	}
+}
+
+
+body {
+	text-align: center;
+	font-size: calc(1em + 0.5vw);
+}
+
+header,
+main {
+	width: 80vw;
+	margin: 0 auto;
+}
+
+header {
+	height: 100vh;
+	display: grid;
+	place-items: center;
+}
+
+#cards {
+	list-style: none;
+	outline: calc(var(--outline-width) * 10) solid blue;
+	
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(var(--numcards), var(--card-height));
+	gap: var(--card-margin);
+}
+
+.card {
+	outline: var(--outline-width) solid hotpink;
+}
+
+.card__content {
+	box-shadow: 0 0.2em 1em rgba(0, 0, 0, 0.1), 0 1em 2em rgba(0, 0, 0, 0.1);
+	background: rgb(255, 255, 255);
+	color: rgb(10, 5, 7);
+	overflow: hidden;
+
+	display: grid;
+	grid-template-areas: "text img";
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto;
+
+	align-items: stretch;
+	outline: var(--outline-width) solid lime;
+}
+
+.card__content > div {
+	grid-area: text;
+	place-self: center;
+	text-align: left;
+
+	display: grid;
+	gap: 1em;
+	place-items: start;
+}
+
+.card__content > figure {
+	grid-area: img;
+	overflow: hidden;
+}
+
+.card__content > figure > img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+h1 {
+	font-weight: 300;
+	font-size: 3.5em;
+}
+
+h2 {
+	font-weight: 300;
+	font-size: 2.5em;
+}
+
+p {
+	font-family: sans-serif;
+	font-weight: 300;
+	line-height: 1.42;
+}
+
+aside {
+	width: 50vw;
+	margin: 0 auto;
+	text-align: left;
+}
+
+aside p {
+	margin-bottom: 1em;
+}
 </style>
