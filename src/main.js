@@ -21,7 +21,6 @@ import EventBus from './utils/eventBus.js'
 import Swal from 'sweetalert2'
 import * as Flicking from "@egjs/vue-flicking";
 import "@egjs/vue-flicking/dist/flicking.css";
-
 Vue.use(Flicking);
 // import dotenv from 'dotenv'
 

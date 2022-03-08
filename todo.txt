@@ -1,9 +1,14 @@
 integrate wire comms
 open another app from this app
 add VR carousel
+    link to vr videos/content
+    needs data structuring + fetcher
 transition background on homepage
+    find package for that
 large animated buttons on homepage
 taste page rework
+    needs data fetcher
+    needs data structuring
 tablet landscape
 rework sizing
 partners page

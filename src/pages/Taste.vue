@@ -34,7 +34,17 @@
                 </div>
 
                 <div class="pt-6">
-                    <Carousel @clickBox="moveInfoBox" />
+                    <Carousel>
+                        <div
+                            style="height: 360px;"
+                            v-for="item in item.items"
+                            class="px-2"
+                            :key="item.name"
+                            @click="moveInfoBox"
+                        >
+                            <img :src="item.image" :id="'box-' + item.id" />
+                        </div>
+                    </Carousel>
                 </div>
             </div>
         </div>
@@ -196,6 +206,7 @@ import Card from '../components/Card.vue'
 import Placeholder from '../components/Placeholder.vue'
 import Tombol from '../components/Button.vue'
 import Carousel from '../components/Carousel.vue'
+// import _ from 'lodash'
 // import food1 from '../assets/food1.jpg'
 // import food2 from '../assets/food2.jpg'
 import { where } from "firebase/firestore"
@@ -252,17 +263,18 @@ export default {
             ],
             spicesData: [],
             kategori: [
-                {nama: 'Sumatera'},
-                {nama: 'Jawa'},
-                {nama: 'Kalimantan'},
-                {nama: 'NTT'},
-                {nama: 'Sulawesi'}
+                {items: [], nama: 'recommended', title: 'Recommended'},
+                {items: [], nama: 'top', title: 'Top'},
+                {items: [], nama: 'jawa-barat', title: 'Jawa Barat'},
+                {items: [], nama: 'bali', title: 'bali'},
+                {items: [], nama: 'pedas', title: 'Pedas'}
             ],
-            recipeText: 'TEST'
+            recipeText: 'TEST',
         }
     },
     methods: {
-        moveInfoBox(e){
+        moveInfoBox(ev){
+            const e = ev.target
             if(e.isEqualNode(this.currentlySelected)){
                 this.tooltipShown = !this.tooltipShown
             }else{
@@ -343,6 +355,18 @@ export default {
         },
     },
     async created(){
+        const promises = this.kategori.reduce(function(acc, val){
+            const whereQuery = [where('tags', 'array-contains', val.nama)]
+            acc.push(this.$firestoreOrm.collections.recipes.functions.fetchQuery(whereQuery))
+            return acc
+        }.bind(this), [])
+        Promise.all(promises).then((res) => {
+            res.forEach((v, idx) => {
+                this.kategori[idx].items = v
+            })
+            console.log(this.kategori)
+        })
+
         this.dataRecipe = await this.$firestoreOrm.collections.recipes.functions.fetch()
         this.spicesData = await this.$firestoreOrm.collections.spices.functions.fetch()
 
@@ -403,6 +427,7 @@ export default {
 }
 
 .checkout {
+    z-index: 99;
     top: calc(var(--viewport-height) - 67px);
     right: 20px;
     /* opacity: 0.7; */

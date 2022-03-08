@@ -18,6 +18,9 @@ export default {
         },
         title: {
             type: String
+        },
+        tags: {
+            type: Array
         }
     },
     spices: {

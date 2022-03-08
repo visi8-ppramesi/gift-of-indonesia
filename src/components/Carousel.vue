@@ -9,14 +9,15 @@
           circular: true,
         }"
       >
-        <div
+        <slot></slot>
+        <!-- <div
           v-for="item in list"
           class="px-2"
           :key="item.name"
           @click="clickBox"
         >
           <img :src="item.image" :id="'box-' + item.id" />
-        </div>
+        </div> -->
       </Flicking>
     </div>
   </div>
