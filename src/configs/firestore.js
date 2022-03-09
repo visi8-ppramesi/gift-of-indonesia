@@ -50,7 +50,7 @@ export default {
             type: String
         },
         preview: {
-            type: String
+            type: types.Firestorage
         }
     }
 }

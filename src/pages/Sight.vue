@@ -22,13 +22,31 @@
             </top>
         </div>
 
-        <Carousel>
-            <div v-for="idx in 5" :key="idx">
-                asdfasdfasdfasdfadsasdf
-            </div>
-        </Carousel>
+        <div class="my-4">
+            <title-separator class="mb-4">VR Content</title-separator>
 
-        <div> <!-- change height -->
+            <Carousel :panelsPerView="3">
+                <template v-if="content.length > 0">
+                        <div
+                            style="height: 16rem; width: 26rem;"
+                            v-for="item in content"
+                            class="px-2"
+                            :key="item.id"
+                        >
+                            <a :href="item.url">
+                                <img :src="item.preview" :id="'box-' + item.id" />
+                            </a>
+                        </div>
+                </template>
+                <template v-else>
+                    <placeholder style="height: 360px;" class="px-2" v-for="idx in 3" type="carousel" :key="idx"/>
+                </template>
+            </Carousel>
+        </div>
+
+        <div class="my-4">
+            <title-separator class="mb-4">Content</title-separator> 
+            <!-- change height -->
             <div class="h-full mx-6 flex flex-row justify-evenly justify-items-stretch md:mt-12">
                 <div class="w-full h-44 mr-2 pr-2">
                     <img class="rounded-lg object-cover w-full h-full" :src="card1" />
@@ -98,12 +116,16 @@ import Tombol from '../components/Button.vue'
 import Top from '../components/Top.vue'
 import Swal from 'sweetalert2'
 import Carousel from '../components/Carousel.vue'
+import TitleSeparator from '../components/TitleSeparator.vue'
+import Placeholder from '../components/Placeholder.vue'
 export default {
     name: 'Sight',
     components: {
       Top,
       Tombol,
       Carousel,
+      TitleSeparator,
+      Placeholder,
     },
     data(){
         return {
@@ -111,12 +133,16 @@ export default {
             card1: require('../assets/Card1.jpg'),
             card2: require('../assets/Card2.jpeg'),
             card3: require('../assets/Card3.jpg'),
+            content: []
         }
     },
     async created(){
-        console.log(await this.$firestoreOrm.collections['vr-content'].functions.fetch())
+        this.content = await this.$firestoreOrm.collections['vr-content'].functions.fetch()
     },
     methods: {
+        goToContent(url){
+            document.URL = url
+        },
         openVR(){
             const self = this
             if(this.$isOculus || this.$isMobile){

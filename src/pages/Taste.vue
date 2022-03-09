@@ -24,14 +24,15 @@
 
         <div>
             <div v-for="item in kategori" :key="item.nama">
-                <div class="mt-5 py-8">
+                <title-separator>{{ item.title }}</title-separator>
+                <!-- <div class="mt-5 py-8">
                     <div class="mx-6">
                         <hr class="w-full border-2 border-white md:border-4" />
                     </div>
                     <div class="flex justify-center items-center">
                         <div style="background-color: #F9AC18;" class="text-center w-36 py-3 text-xs font-bold absolute rounded-full md:text-lg">{{ item.title }}</div>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="pt-6">
                     <Carousel>
@@ -224,6 +225,7 @@ import Top from '../components/Top.vue'
 import Placeholder from '../components/Placeholder.vue'
 import Tombol from '../components/Button.vue'
 import Carousel from '../components/Carousel.vue'
+import TitleSeparator from '../components/TitleSeparator.vue'
 // import _ from 'lodash'
 // import food1 from '../assets/food1.jpg'
 // import food2 from '../assets/food2.jpg'
@@ -239,6 +241,7 @@ export default {
       Tombol,
       Placeholder,
       Carousel,
+      TitleSeparator
     },
     watch: {
         
