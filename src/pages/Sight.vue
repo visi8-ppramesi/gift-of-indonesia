@@ -22,7 +22,11 @@
             </top>
         </div>
 
-        <carousel />
+        <Carousel>
+            <div v-for="idx in 5" :key="idx">
+                asdfasdfasdfasdfadsasdf
+            </div>
+        </Carousel>
 
         <div> <!-- change height -->
             <div class="h-full mx-6 flex flex-row justify-evenly justify-items-stretch md:mt-12">
@@ -109,7 +113,8 @@ export default {
             card3: require('../assets/Card3.jpg'),
         }
     },
-    created(){
+    async created(){
+        console.log(await this.$firestoreOrm.collections['vr-content'].functions.fetch())
     },
     methods: {
         openVR(){

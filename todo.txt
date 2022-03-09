@@ -13,3 +13,4 @@ tablet landscape
 rework sizing
 partners page
     subcategory for each type (culinary, tourism, culture, religion, etc)
+create demo for when content needs to be added

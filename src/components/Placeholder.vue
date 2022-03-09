@@ -37,6 +37,15 @@
                 </div>
             </div>
         </div>
+
+        <div v-if="type === 'carousel'">
+            <div style="background-color: #4E423E;" class="text-white w-full flex flex-col rounded-xl shadow-lg p-4">
+                <div class="flex">
+                    <div data-placeholder style="width: 620px" class="mr-2 h-64 overflow-hidden relative bg-gray-200">   
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </template>
 

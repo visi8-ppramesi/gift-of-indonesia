@@ -37,7 +37,7 @@
                     <Carousel>
                         <template v-if="item.items.length > 0">
                             <div
-                                style="height: 360px;"
+                                style="height: 16rem;"
                                 v-for="item in item.items"
                                 class="px-2"
                                 :key="item.name"
@@ -47,27 +47,29 @@
                             </div>
                         </template>
                         <template v-else>
-                            <placeholder v-for="idx in 3" type="food" :key="idx"/>
+                            <placeholder style="height: 360px;" class="px-2" v-for="idx in 3" type="carousel" :key="idx"/>
                         </template>
                     </Carousel>
                 </div>
             </div>
         </div>
-
-        <div v-show="tooltipShown" class="recipe-box w-screen m-6 p-4 h-1/2 absolute rounded-xl" id="testBox" data-content="50%">
-            <div>
-                <h1>
-                    {{recipeTitle}}
-                </h1>
+        
+        <transition name="fade">
+            <div v-show="tooltipShown" class="recipe-box w-screen m-6 p-4 h-1/2 absolute rounded-xl" id="testBox" data-content="50%">
                 <div>
-                    {{recipeText}}
-                </div>
+                    <h1>
+                        {{recipeTitle}}
+                    </h1>
+                    <div>
+                        {{recipeText}}
+                    </div>
 
-                <router-link :to="'/recipe/' + recipeId">
-                <tombol class="mt-2 text-xs md:text-lg md:mt-3" title="RECIPE" />
-                </router-link>
+                    <router-link :to="'/recipe/' + recipeId">
+                    <tombol class="mt-2 text-xs md:text-lg md:mt-3" title="RECIPE" />
+                    </router-link>
+                </div>
             </div>
-        </div>
+        </transition>
 
         <!-- <div class="mt-5">
             <div class="mx-6">
@@ -282,7 +284,7 @@ export default {
                 {items: [], nama: 'recommended', title: 'Recommended'},
                 {items: [], nama: 'top', title: 'Top'},
                 {items: [], nama: 'jawa-barat', title: 'Jawa Barat'},
-                {items: [], nama: 'bali', title: 'bali'},
+                {items: [], nama: 'bali', title: 'Bali'},
                 {items: [], nama: 'pedas', title: 'Pedas'}
             ],
             recipeText: 'TEST',
@@ -489,6 +491,13 @@ export default {
 	border-top-color: #3498db;
 	-webkit-animation: spinner 1.5s linear infinite;
 	animation: spinner 1.5s linear infinite;
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .25s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+    opacity: 0
 }
 
 @-webkit-keyframes spinner {

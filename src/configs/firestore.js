@@ -44,5 +44,13 @@ export default {
         open: {
             type: Number
         }
+    },
+    'vr-content': {
+        url: {
+            type: String
+        },
+        preview: {
+            type: String
+        }
     }
 }
