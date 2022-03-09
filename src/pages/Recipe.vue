@@ -14,7 +14,7 @@
         </div>
 
         <card 
-            class="px-6"
+            class="px-6 pt-6"
             type="Recipe"
             title="Ingredients :"
             :ingredients="ingredients"

@@ -56,7 +56,7 @@
         </div>
         
         <transition name="fade">
-            <div v-show="tooltipShown" class="recipe-box w-screen m-6 p-4 h-1/2 absolute rounded-xl" id="testBox" data-content="50%">
+            <div v-show="tooltipShown" class="recipe-box w-screen m-6 p-4 absolute rounded-xl" id="testBox" data-content="50%">
                 <div>
                     <h1>
                         {{recipeTitle}}
@@ -327,7 +327,7 @@ export default {
                     break
             }
 
-            infoBox.style.top = 'calc(' + coords.top + 'px - 3rem - 50%)'
+            infoBox.style.top = 'calc(' + coords.top + 'px - 3rem - ' + infoBox.offsetHeight + 'px)'
         },
         testStuff(id){
             if(this.currentlySelected == id){

@@ -5,7 +5,7 @@
             <top class="h-screen w-screen items-center text-white flex flex-col justify-end" :background="soundBackground">
             <!-- align items below to the left  -->
             <div class="text-left pb-16">   
-                <div class="mx-6 font-bold text-xl md:text-4xl">SIGHT OF INDONESIA</div>
+                <div class="mx-6 font-bold text-xl md:text-4xl">SOUND OF INDONESIA</div>
                  <hr class="w-36 ml-6 mt-1 border-4 md:w-64" />
                 <div class="mt-3 mx-6 text-xs md:text-lg">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
