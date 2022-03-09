@@ -43,104 +43,185 @@
     <ul id="cards">
       <li class="card" id="card_1">
         <div class="card__content">
-          <div class="container relative">
-            <div class="relative w-screen h-screen">
-              <img class="w-screen h-screen" :src="sight" />
-            </div>
-            <div class="w-screen h-screen flex absolute">
-              <router-link to="/sight">
-                <button
-                  class="
-                    btn
-                    text-white
-                    border-white
-                    bg-opacity-10
-                    border-solid border-2
-                    font-bold
-                    shadow-xl
-                    text-black
-                    bg-white
-                    px-20
-                    py-4
-                    2xl:text-3xl
-                  "
+          <layer-choice
+            class="
+              min-h-screen
+              h-full
+              w-screen
+              items-center
+              text-white
+              justify-center
+            "
+            :backgroundChoice="sight"
+            >
+
+            <div class="flex flex h-screen justify-center items-center">
+              <div class="flex flex-col items-center justify-center max-w-screen-xl">
+                <div
+                class="
+                  text-center
+                  w-full
+                  px-4
+                  text-sm
+                  mt-3
+                  md:text-lg md:w-full md:px-6
+                "
                 >
-                  Sight
-                </button>
-              </router-link>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                  minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                  aliquip ex ea commodo consequat. Duis aute irure dolor in
+                  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                  culpa qui officia deserunt mollit anim id est laborum
+                </div>
+
+                <div>
+                  <router-link to="/sight">
+                  <button
+                    class="
+                      text-white
+                      border-white
+                      bg-opacity-10
+                      border-solid border-2
+                      shadow-xl
+                      text-black
+                      bg-white
+                      mt-7
+                      px-20
+                      py-4
+                      2xl:text-3xl
+                    "
+                    >
+                      Sight
+                    </button>
+                  </router-link>
+                </div>
+              </div>
             </div>
-            <!-- <router-link to="/sight">
-                            <button class="btn text-white border-white bg-opacity-10 border-solid border-2 font-bold shadow-xl text-black bg-white px-20 py-4 2xl:text-3xl">Sight</button>
-                        </router-link> -->
-          </div>
+          </layer-choice>
         </div>
       </li>
       <li class="card" id="card_2">
         <div class="card__content">
-          <div class="container relative">
-            <div class="relative w-screen h-screen">
-              <img class="w-screen h-screen" :src="taste" />
-            </div>
-            <div class="w-screen h-screen flex absolute">
-              <router-link to="/taste">
-                <button
-                  class="
-                    btn
-                    text-white
-                    border-white
-                    bg-opacity-10
-                    border-solid border-2
-                    font-bold
-                    shadow-xl
-                    text-black
-                    bg-white
-                    px-20
-                    py-4
-                    2xl:text-3xl
-                  "
+          <layer-choice
+            class="
+              min-h-screen
+              h-full
+              w-screen
+              items-center
+              text-white
+              justify-center
+            "
+            :backgroundChoice="taste"
+            >
+
+            <div class="flex flex h-screen justify-center items-center">
+              <div class="flex flex-col items-center justify-center max-w-screen-xl">
+                <div
+                class="
+                  text-center
+                  w-full
+                  px-4
+                  text-sm
+                  mt-3
+                  md:text-lg md:w-full md:px-6
+                "
                 >
-                  Taste
-                </button>
-              </router-link>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                  minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                  aliquip ex ea commodo consequat. Duis aute irure dolor in
+                  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                  culpa qui officia deserunt mollit anim id est laborum
+                </div>
+
+                <div>
+                  <router-link to="/taste">
+                  <button
+                    class="
+                      text-white
+                      border-white
+                      bg-opacity-10
+                      border-solid border-2
+                      shadow-xl
+                      text-black
+                      bg-white
+                      mt-7
+                      px-20
+                      py-4
+                      2xl:text-3xl
+                    "
+                    >
+                      Taste
+                    </button>
+                  </router-link>
+                </div>
+              </div>
             </div>
-            <!-- <router-link to="/taste">
-                            <button class="btn text-white border-white bg-opacity-10 border-solid border-2 font-bold shadow-xl text-black bg-white px-20 py-4 2xl:text-3xl">Taste</button>
-                        </router-link> -->
-          </div>
+          </layer-choice>
         </div>
       </li>
       <li class="card" id="card_3">
         <div class="card__content w-screen h-screen">
-          <div class="container relative">
-            <div class="relative w-screen h-screen">
-              <img class="w-screen h-screen" :src="sound" />
-            </div>
-            <div class="w-screen h-screen flex absolute">
-              <router-link to="/sound">
-                <button
-                  class="
-                    btn
-                    text-white
-                    border-white
-                    bg-opacity-10
-                    border-solid border-2
-                    font-bold
-                    shadow-xl
-                    text-black
-                    bg-white
-                    px-20
-                    py-4
-                    2xl:text-3xl
-                  "
+          <layer-choice
+            class="
+              min-h-screen
+              h-full
+              w-screen
+              items-center
+              text-white
+              justify-center
+            "
+            :backgroundChoice="sound"
+            >
+
+            <div class="flex flex h-screen justify-center items-center">
+              <div class="flex flex-col items-center justify-center max-w-screen-xl">
+                <div
+                class="
+                  text-center
+                  w-full
+                  px-4
+                  text-sm
+                  mt-3
+                  md:text-lg md:w-full md:px-6
+                "
                 >
-                  Sound
-                </button>
-              </router-link>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                  minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                  aliquip ex ea commodo consequat. Duis aute irure dolor in
+                  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                  culpa qui officia deserunt mollit anim id est laborum
+                </div>
+
+                <div>
+                  <router-link to="/sound">
+                  <button
+                    class="
+                      text-white
+                      border-white
+                      bg-opacity-10
+                      border-solid border-2
+                      shadow-xl
+                      text-black
+                      bg-white
+                      mt-7
+                      px-20
+                      py-4
+                      2xl:text-3xl
+                    "
+                    >
+                      Sound
+                    </button>
+                  </router-link>
+                </div>
+              </div>
             </div>
-            <!-- <router-link to="/sound">
-                            <button class="btn text-white border-white bg-opacity-10 border-solid border-2 font-bold shadow-xl text-black bg-white px-20 py-4 2xl:text-3xl">Sound</button>
-                        </router-link> -->
-          </div>
+          </layer-choice>
         </div>
       </li>
     </ul>
@@ -149,6 +230,7 @@
 
 <script>
 import Top from "../components/Top.vue";
+import LayerChoice from "../components/LayerChoice.vue";
 // import Tombol from '../components/Button.vue'
 import { where } from "firebase/firestore";
 // import sight from '../assets/sight.jpg'
@@ -158,6 +240,7 @@ export default {
   name: "welcome",
   components: {
     Top,
+    LayerChoice,
     // Tombol,
   },
   data() {
@@ -204,101 +287,6 @@ export default {
 <style>
 .underline {
   width: 200px;
-}
-
-.container .btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  cursor: pointer;
-  border-radius: 5px;
-  text-align: center;
-}
-
-.container .btn:hover {
-  background-color: #555;
-}
-
-@media (min-width: 768px) {
-  .underline {
-    width: 300px;
-  }
-  .container .btn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-5%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    cursor: pointer;
-    border-radius: 5px;
-    text-align: center;
-  }
-}
-
-@media (min-width: 1024px) {
-  .underline {
-    width: 300px;
-  }
-  .container .btn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    cursor: pointer;
-    border-radius: 5px;
-    text-align: center;
-  }
-}
-
-@media (min-width: 1440px) {
-  .underline {
-    width: 300px;
-  }
-  .container .btn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(90%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    cursor: pointer;
-    border-radius: 5px;
-    text-align: center;
-  }
-}
-
-@media (min-width: 1920px) {
-  .underline {
-    width: 300px;
-  }
-  .container .btn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(90%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    cursor: pointer;
-    border-radius: 5px;
-    text-align: center;
-  }
-}
-
-@media (min-width: 2560px) {
-  .underline {
-    width: 300px;
-  }
-  .container .btn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(500%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    cursor: pointer;
-    border-radius: 5px;
-    text-align: center;
-  }
 }
 
 #cards {
