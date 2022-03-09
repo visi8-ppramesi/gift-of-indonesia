@@ -53,13 +53,13 @@ self.addEventListener('fetch', (event) => {
         if (cachedResponse) {
           // If we found a match in the cache, return it, but also
           // update the entry in the cache in the background.
-          console.log('cache hit')
+        //   console.log('cache hit')
           event.waitUntil(cache.add(event.request));
           return cachedResponse;
         }
 
         // If we didn't find a match in the cache, use the network.
-        console.log('cache not hit')
+        // console.log('cache not hit')
         return fetch(event.request);
     }());
 })

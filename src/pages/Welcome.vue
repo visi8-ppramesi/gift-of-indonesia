@@ -16,7 +16,7 @@
       >
         <div class="text-md md:text-xl" @click="openIdViewer">Welcome To</div>
         <div class="font-bold text-xl md:text-4xl" @click="openPlayStore">
-          Experience of Indonesia
+          Path of Indonesia
         </div>
         <hr class="underline mt-2 border-4" />
         <div
