@@ -53,6 +53,12 @@ export const routes = [
         meta: { title: 'Id Viewer', noCache: false }
     },
     {
+        path: '/partners',
+        component: () => import('../pages/Partners'),
+        name: 'Partners',
+        meta: { title: 'Partners', noCache: false }
+    },
+    {
         path: '/test',
         component: () => import('../pages/Test'),
         name: 'Test',

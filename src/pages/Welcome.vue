@@ -224,6 +224,67 @@
           </layer-choice>
         </div>
       </li>
+      <li class="card" id="card_4">
+        <div class="card__content w-screen h-screen">
+          <layer-choice
+            class="
+              min-h-screen
+              h-full
+              w-screen
+              items-center
+              text-white
+              justify-center
+            "
+            :backgroundChoice="bali"
+            >
+
+            <div class="flex flex h-screen justify-center items-center">
+              <div class="flex flex-col items-center justify-center max-w-screen-xl">
+                <div
+                class="
+                  text-center
+                  w-full
+                  px-4
+                  text-sm
+                  mt-3
+                  md:text-lg md:w-full md:px-6
+                "
+                >
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                  minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                  aliquip ex ea commodo consequat. Duis aute irure dolor in
+                  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                  culpa qui officia deserunt mollit anim id est laborum
+                </div>
+
+                <div>
+                  <router-link to="/partners">
+                  <button
+                    class="
+                      text-white
+                      border-white
+                      bg-opacity-10
+                      border-solid border-2
+                      shadow-xl
+                      text-black
+                      bg-white
+                      mt-7
+                      px-20
+                      py-4
+                      2xl:text-3xl
+                    "
+                    >
+                      Our Partners
+                    </button>
+                  </router-link>
+                </div>
+              </div>
+            </div>
+          </layer-choice>
+        </div>
+      </li>
     </ul>
   </div>
 </template>
@@ -255,6 +316,7 @@ export default {
       sight: require("../assets/sight.jpg"),
       taste: require("../assets/taste.png"),
       sound: require("../assets/sound.jpg"),
+      bali: require("../assets/bali.png"),
     };
   },
   created() {
