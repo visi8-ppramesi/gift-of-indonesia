@@ -40,14 +40,16 @@
                             <div
                                 style="height: 16rem;"
                                 v-for="item in katItem.items"
-                                class="px-2 rounded-xl "
+                                class="px-2 rounded-xl"
                                 :key="item.name"
                                 @click.stop="moveInfoBox(katItem, item.id, $event)"
                             >
-                                <div class="absolute p-4 bottom-0 text-2xl info-box-bg w-full">
-                                    {{item.title}}
+                                <div class="rounded-xl p-4 bottom-0 text-2xl info-box-bg w-full h-full bg-no-repeat bg-cover bg-center items-end flex" v-bind:style="{ backgroundImage: 'linear-gradient(0deg, rgb(32, 36, 36) 0%, rgb(84 84 84 / 27%) 37%, rgb(177 177 177 / 14%) 100%), url(' + item.image + ')' }">
+                                    <div>
+                                        {{item.title}}
+                                    </div>
                                 </div>
-                                <img class="w-full h-full object-cover rounded-xl" :src="item.image" :id="'box-' + item.id" />
+                                <!-- <img class="w-full h-full object-cover rounded-xl" :src="item.image" :id="'box-' + item.id" /> -->
                             </div>
                         </template>
                         <template v-else>
@@ -438,8 +440,8 @@ export default {
 
 <style>
 .info-box-bg{
-    background: rgb(32,36,36);
-    background: linear-gradient(0deg, rgba(32,36,36,1) 0%, rgba(9,9,121,0) 70%, rgba(0,212,255,0) 100%);
+    /* background: rgb(32,36,36); */
+    /* background-color: linear-gradient(0deg, rgba(32,36,36,1) 0%, rgba(9,9,121,0) 70%, rgba(0,212,255,0) 100%); */
 }
 
 .recipe-box{
