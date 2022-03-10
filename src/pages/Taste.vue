@@ -23,8 +23,8 @@
         </div>
 
         <div>
-            <div v-for="item in kategori" :key="item.nama">
-                <title-separator>{{ item.title }}</title-separator>
+            <div v-for="katItem in kategori" :key="katItem.nama">
+                <title-separator>{{ katItem.title }}</title-separator>
                 <!-- <div class="mt-5 py-8">
                     <div class="mx-6">
                         <hr class="w-full border-2 border-white md:border-4" />
@@ -36,15 +36,18 @@
 
                 <div class="pt-6">
                     <Carousel>
-                        <template v-if="item.items.length > 0">
+                        <template v-if="katItem.items.length > 0">
                             <div
                                 style="height: 16rem;"
-                                v-for="item in item.items"
-                                class="px-2"
+                                v-for="item in katItem.items"
+                                class="px-2 rounded-xl "
                                 :key="item.name"
-                                @click.stop="moveInfoBox(item.id, $event)"
+                                @click.stop="moveInfoBox(katItem, item.id, $event)"
                             >
-                                <img :src="item.image" :id="'box-' + item.id" />
+                                <div class="absolute p-4 bottom-0 text-2xl info-box-bg w-full">
+                                    {{item.title}}
+                                </div>
+                                <img class="w-full h-full object-cover rounded-xl" :src="item.image" :id="'box-' + item.id" />
                             </div>
                         </template>
                         <template v-else>
@@ -299,18 +302,13 @@ export default {
         closeInfoWindow(){
             this.tooltipShown = false
         },
-        moveInfoBox(id, ev){
+        moveInfoBox(kategori, id, ev){
             const clickedRecipe = this.kategori.findRecipe(id)
             this.recipeText = clickedRecipe.description
             this.recipeTitle = clickedRecipe.title
             this.recipeId = clickedRecipe.id
             const e = ev.target
-            if(this.currentlySelected == id){
-                this.tooltipShown = !this.tooltipShown
-            }else{
-                this.tooltipShown = true
-                this.currentlySelected = id
-            }
+            console.log(this.currentlySelected)
 
             // this.tooltipShown = !this.tooltipShown
             const coords = this.getCoords(e)
@@ -326,8 +324,16 @@ export default {
                     infoBox.style.setProperty('--loc', '87.5%', '')
                     break
             }
+            setTimeout(function(){
+                infoBox.style.top = 'calc(' + coords.top + 'px - 3rem - ' + infoBox.offsetHeight + 'px)'
+            }, 250)
 
-            infoBox.style.top = 'calc(' + coords.top + 'px - 3rem - ' + infoBox.offsetHeight + 'px)'
+            if(this.currentlySelected == id + kategori.nama){
+                this.tooltipShown = !this.tooltipShown
+            }else{
+                this.tooltipShown = true
+                this.currentlySelected = id + kategori.nama
+            }
         },
         testStuff(id){
             if(this.currentlySelected == id){
@@ -431,6 +437,11 @@ export default {
 </script>
 
 <style>
+.info-box-bg{
+    background: rgb(32,36,36);
+    background: linear-gradient(0deg, rgba(32,36,36,1) 0%, rgba(9,9,121,0) 70%, rgba(0,212,255,0) 100%);
+}
+
 .recipe-box{
     top: 0;
     width: calc(100vw - 4rem);
