@@ -39,7 +39,7 @@ self.addEventListener('install', (event) => {
 })
 
 self.addEventListener('fetch', (event) => {
-    console.log(event)
+    console.log(['event', event])
     if (event.request.url.startsWith('chrome-extension://')) return;
     if (event.request.method != 'GET') return;
 
@@ -54,15 +54,17 @@ self.addEventListener('fetch', (event) => {
             // If we found a match in the cache, return it, but also
             // update the entry in the cache in the background.
             //   console.log('cache hit')
+            console.log(['cache hit', event])
             event.waitUntil(cache.add(event.request));
             return cachedResponse;
         }
 
         // If we didn't find a match in the cache, use the network.
-        // console.log('cache not hit')
+        console.log('cache not hit')
         return fetch(event.request).then(response => {
             return caches.open(CACHE_NAME).then(cache => {
                 cache.put(event.request.url, response.clone());
+                console.log(['cache cache', response])
                 return response;
             });
         });;
