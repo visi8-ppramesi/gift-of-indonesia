@@ -412,28 +412,28 @@ export default {
             }).items.find(v => v.id == name)
         }
 
-        this.dataRecipe = await this.$firestoreOrm.collections.recipes.functions.fetch()
-        this.spicesData = await this.$firestoreOrm.collections.spices.functions.fetch()
+        // this.dataRecipe = await this.$firestoreOrm.collections.recipes.functions.fetch()
+        // this.spicesData = await this.$firestoreOrm.collections.spices.functions.fetch()
 
-        this.$firestoreOrm.collections.connections.functions.registerOnSnapshot(
-            function(snap){
-                const data = []
-                snap.forEach((doc) => {
-                    data.push(doc.data())
-                })
-                if(data[0].open === 1){
-                    console.log('open')
-                }
-            },
-            function(err){
-                console.error(err)
-            },
-            [ where('identifier', '==', this.$connection.identifier) ]
-        )
+        // this.$firestoreOrm.collections.connections.functions.registerOnSnapshot(
+        //     function(snap){
+        //         const data = []
+        //         snap.forEach((doc) => {
+        //             data.push(doc.data())
+        //         })
+        //         if(data[0].open === 1){
+        //             console.log('open')
+        //         }
+        //     },
+        //     function(err){
+        //         console.error(err)
+        //     },
+        //     [ where('identifier', '==', this.$connection.identifier) ]
+        // )
 
-        if(this.$store.state.cartItems.length == 0){
-            this.$store.dispatch('setCartItems', [...this.spicesData])
-        }
+        // if(this.$store.state.cartItems.length == 0){
+        //     this.$store.dispatch('setCartItems', [...this.spicesData])
+        // }
     }
 }
 </script>
