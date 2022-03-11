@@ -43,7 +43,9 @@
         v-for="idx in 30"
         :key="idx"
       >
-        <img :src="placeholder" />
+        <a href="https://google.com">
+            <img :src="placeholder" />
+        </a>
       </div>
     </div>
 
