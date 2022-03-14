@@ -44,7 +44,7 @@ Vue.prototype.$isOculus = /OculusBrowser/.test(navigator.userAgent) //!!navigato
 Vue.prototype.$isMobile = /Android|iPhone/.test(navigator.userAgent);
 
 EventBus.$once('connectionStarted', function(idObj){
-    if(process.env.VUE_APP_ENVIRONMENT !== 'production'){
+    if(process.env.VUE_APP_ENVIRONMENT !== 'production' || process.env.VUE_APP_ENVIRONMENT !== 'staging'){
         Swal.fire(JSON.stringify(idObj))
     }
 })
