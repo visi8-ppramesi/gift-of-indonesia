@@ -1,31 +1,45 @@
 <template>
-    <div style="background-color: #202424;" class="text-white pb-16" @click="closeInfoWindow">
-        <div class="flex">
-            <!-- add background image + bottom fadeout color -->
-            <top  class="h-screen w-screen items-center text-white flex flex-col justify-end" :background="tasteBackground">
-                <!-- align items below to the right  -->
-                <div class="text-right pb-12 md:pb-16">
-                    <div class="mx-6 font-bold text-xl md:text-4xl">TASTE OF INDONESIA</div>
-                    <div class="flex justify-end mx-6">
-                        <hr class="w-36 mt-1 border-4 md:w-72" />
-                    </div>
-                    <div class="mt-3 mx-6 text-xs md:text-lg">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                        qui officia deserunt mollit anim id est laborum
-                    </div>
-                </div>
-            </top>
+  <div
+    style="background-color: #202424"
+    class="text-white pb-16"
+    @click="closeInfoWindow"
+  >
+    <div class="flex">
+      <!-- add background image + bottom fadeout color -->
+      <top
+        class="
+          h-screen
+          w-screen
+          items-center
+          text-white
+          flex flex-col
+          justify-end
+        "
+        :background="tasteBackground"
+      >
+        <!-- align items below to the right  -->
+        <div class="text-right pb-12 md:pb-16">
+          <div class="mx-6 font-bold text-xl md:text-4xl">
+            TASTE OF INDONESIA
+          </div>
+          <div class="flex justify-end mx-6">
+            <hr class="w-36 mt-1 border-4 md:w-72" />
+          </div>
+          <div class="mt-3 mx-6 text-xs md:text-lg">
+            With the Richness of natural resources and skilled craftmanship,
+            Indonesia has a tremendous advantage in producing and exporting
+            natural commodities as well as value-added products. From culinary
+            to end products, Indonesia’s food and beverages are bestowed with
+            such a unique profile and wide spectrum of ingredients and tastes.
+          </div>
         </div>
+      </top>
+    </div>
 
-        <div>
-            <div v-for="katItem in kategori" :key="katItem.nama">
-                <title-separator>{{ katItem.title }}</title-separator>
-                <!-- <div class="mt-5 py-8">
+    <div>
+      <div v-for="katItem in kategori" :key="katItem.nama">
+        <title-separator>{{ katItem.title }}</title-separator>
+        <!-- <div class="mt-5 py-8">
                     <div class="mx-6">
                         <hr class="w-full border-2 border-white md:border-4" />
                     </div>
@@ -34,50 +48,80 @@
                     </div>
                 </div> -->
 
-                <div class="pt-6">
-                    <Carousel>
-                        <template v-if="katItem.items.length > 0">
-                            <div
-                                style="height: 16rem;"
-                                v-for="item in katItem.items"
-                                class="px-2 rounded-xl"
-                                :key="item.name"
-                                @click.stop="moveInfoBox(katItem, item.id, $event)"
-                            >
-                                <div class="rounded-xl p-4 bottom-0 text-2xl info-box-bg w-full h-full bg-no-repeat bg-cover bg-center items-end flex" v-bind:style="{ backgroundImage: 'linear-gradient(0deg, rgb(32, 36, 36) 0%, rgb(84 84 84 / 27%) 37%, rgb(177 177 177 / 14%) 100%), url(' + item.image + ')' }">
-                                    <div>
-                                        {{item.title}}
-                                    </div>
-                                </div>
-                                <!-- <img class="w-full h-full object-cover rounded-xl" :src="item.image" :id="'box-' + item.id" /> -->
-                            </div>
-                        </template>
-                        <template v-else>
-                            <placeholder style="height: 360px;" class="px-2" v-for="idx in 3" type="carousel" :key="idx"/>
-                        </template>
-                    </Carousel>
+        <div class="pt-6">
+          <Carousel>
+            <template v-if="katItem.items.length > 0">
+              <div
+                style="height: 16rem"
+                v-for="item in katItem.items"
+                class="px-2 rounded-xl"
+                :key="item.name"
+                @click.stop="moveInfoBox(katItem, item.id, $event)"
+              >
+                <div
+                  class="
+                    rounded-xl
+                    p-4
+                    bottom-0
+                    text-2xl
+                    info-box-bg
+                    w-full
+                    h-full
+                    bg-no-repeat bg-cover bg-center
+                    items-end
+                    flex
+                  "
+                  v-bind:style="{
+                    backgroundImage:
+                      'linear-gradient(0deg, rgb(32, 36, 36) 0%, rgb(84 84 84 / 27%) 37%, rgb(177 177 177 / 14%) 100%), url(' +
+                      item.image +
+                      ')',
+                  }"
+                >
+                  <div>
+                    {{ item.title }}
+                  </div>
                 </div>
-            </div>
+                <!-- <img class="w-full h-full object-cover rounded-xl" :src="item.image" :id="'box-' + item.id" /> -->
+              </div>
+            </template>
+            <template v-else>
+              <placeholder
+                style="height: 360px"
+                class="px-2"
+                v-for="idx in 3"
+                type="carousel"
+                :key="idx"
+              />
+            </template>
+          </Carousel>
         </div>
-        
-        <transition name="fade">
-            <div v-show="tooltipShown" class="recipe-box w-screen m-6 p-4 absolute rounded-xl" id="testBox" data-content="50%">
-                <div>
-                    <h1>
-                        {{recipeTitle}}
-                    </h1>
-                    <div>
-                        {{recipeText}}
-                    </div>
+      </div>
+    </div>
 
-                    <router-link :to="'/recipe/' + recipeId">
-                    <tombol class="mt-2 text-xs md:text-lg md:mt-3" title="RECIPE" />
-                    </router-link>
-                </div>
-            </div>
-        </transition>
+    <transition name="fade">
+      <div
+        v-show="tooltipShown"
+        class="recipe-box w-screen m-6 p-4 absolute rounded-xl"
+        id="testBox"
+        data-content="50%"
+      >
+        <div>
+          <h1>
+            {{ recipeTitle }}
+          </h1>
+          <div>
+            {{ recipeText }}
+          </div>
 
-        <!-- <div class="mt-5">
+          <router-link :to="'/recipe/' + recipeId">
+            <tombol class="mt-2 text-xs md:text-lg md:mt-3" title="RECIPE" />
+          </router-link>
+        </div>
+      </div>
+    </transition>
+
+    <!-- <div class="mt-5">
             <div class="mx-6">
                 <hr class="w-full border-2 border-white md:border-4" />
             </div>
@@ -86,7 +130,7 @@
             </div>
         </div> -->
 
-        <!-- <template v-if="dataRecipe.length === 0">
+    <!-- <template v-if="dataRecipe.length === 0">
             <div v-for="index in 3" :key="index + '-placeholders'">
                 <div v-if="index % 2 == 0">
                     <div class="mt-12 mx-2 md:mt-16">
@@ -117,7 +161,7 @@
             </div>
         </template> -->
 
-        <!-- <div v-for="(data, idx) in dataRecipe" :key="data.id">
+    <!-- <div v-for="(data, idx) in dataRecipe" :key="data.id">
             <div v-if="idx % 2 == 0">
                 <div class="mt-12 mx-2 md:mt-16">
                     <div class="flex flex-row justify-evenly justify-items-stretch mx-4">
@@ -159,7 +203,7 @@
             </div>
         </div> -->
 
-        <!-- <div class="py-14">
+    <!-- <div class="py-14">
             <div class="mx-6">
                 <hr class="w-full border-2 border-white md:border-4" />
             </div>
@@ -168,7 +212,7 @@
             </div>
         </div> -->
 
-        <!-- <template v-if="spicesData.length === 0">
+    <!-- <template v-if="spicesData.length === 0">
             <div v-for="index in 3" :key="index + '-bottom-placeholders'">
                 <div class="mt-10 mx-2 md:mt-6">
                     <div class="flex flex-row justify-evenly justify-items-stretch mx-4">
@@ -180,7 +224,7 @@
             </div>
         </template> -->
 
-        <!-- <div v-for="item in spicesData" :key="item.id" class="w-full">
+    <!-- <div v-for="item in spicesData" :key="item.id" class="w-full">
             <div class="mx-6 my-5">
                 <div style="background-color: #4E423E;" class="text-white w-full flex flex-col rounded-xl shadow-lg p-4">
                     <div class="flex">
@@ -205,13 +249,13 @@
             </div>
         </div> -->
 
-        <!-- <div v-if="spicesData.length === 0" wire:loading class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-gray-700 opacity-75 flex flex-col items-center justify-center">
+    <!-- <div v-if="spicesData.length === 0" wire:loading class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-gray-700 opacity-75 flex flex-col items-center justify-center">
             <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
             <h2 class="text-center text-white text-xl font-semibold">Loading...</h2>
             <p class="w-1/3 text-center text-white">This may take a few seconds, please don't close this page.</p>
         </div> -->
 
-        <!-- <div class="checkout fixed">
+    <!-- <div class="checkout fixed">
             <router-link to="/order" :class="{ disabled: count < 1 }">
                 <div class='badge badge-warning' id='lblCartCount'>{{count}}</div>
                 <div class="bg-white rounded-full p-2 border-2 border-black">
@@ -221,239 +265,248 @@
                 </div>
             </router-link>
         </div> -->
-    </div>
+  </div>
 </template>
 
 <script>
-import Top from '../components/Top.vue'
+import Top from "../components/Top.vue";
 // import Card from '../components/Card.vue'
-import Placeholder from '../components/Placeholder.vue'
-import Tombol from '../components/Button.vue'
-import Carousel from '../components/Carousel.vue'
-import TitleSeparator from '../components/TitleSeparator.vue'
+import Placeholder from "../components/Placeholder.vue";
+import Tombol from "../components/Button.vue";
+import Carousel from "../components/Carousel.vue";
+import TitleSeparator from "../components/TitleSeparator.vue";
 // import _ from 'lodash'
 // import food1 from '../assets/food1.jpg'
 // import food2 from '../assets/food2.jpg'
-import { where } from "firebase/firestore"
+import { where } from "firebase/firestore";
 // import { ref, getDownloadURL } from "firebase/storage"
 // import food3 from '../assets/food3.jpg'
 // import food4 from '../assets/food4.jpg'
 export default {
-    name: 'Taste',
-    components: {
-      Top,
+  name: "Taste",
+  components: {
+    Top,
     //   Card,
-      Tombol,
-      Placeholder,
-      Carousel,
-      TitleSeparator
+    Tombol,
+    Placeholder,
+    Carousel,
+    TitleSeparator,
+  },
+  watch: {},
+  computed: {
+    // description() {
+    //     return this.product.description.substringLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam(0, 150)
+    // }
+    // product() {
+    //     // return this.$store.state.spiceIndo;
+    //     return this.spicesData
+    // },
+    totalItems() {
+      let arr = this.$store.state.cartItems;
+
+      return arr.reduce((acc, val) => {
+        acc[val.id] = val.quantity || 0;
+        return acc;
+      }, {});
     },
-    watch: {
-        
+    count() {
+      return this.$store.state.cartItemCount;
     },
-    computed: {
-        // description() {
-        //     return this.product.description.substringLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam(0, 150)
-        // }
-        // product() {
-        //     // return this.$store.state.spiceIndo;
-        //     return this.spicesData
-        // },
-        totalItems(){
-            let arr = this.$store.state.cartItems
-
-            return arr.reduce((acc, val) => {
-                acc[val.id] = val.quantity || 0
-                return acc;
-            }, {})
-
-        },
-        count(){
-            return this.$store.state.cartItemCount;
-        },
+  },
+  data() {
+    return {
+      currentlySelected: null,
+      tooltipShown: false,
+      tooltipTop: 0,
+      tasteBackground: require("../assets/tasteHeader.jpg"),
+      spice1: require("../assets/cengkeh.jpg"),
+      spice2: require("../assets/kayu manis.jpg"),
+      spice3: require("../assets/kapulaga.jpg"),
+      dataRecipe: [
+        // {id: 1, title: "Gudeg", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam", image: food1 },
+        // {id: 2, title: "Rawon", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam", image: food2 },
+        // {id: 3, title: "Ketoprak", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam", image: food1 },
+        // {id: 4, title: "Soto Betawi", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam", image: food2 },
+      ],
+      spicesData: [],
+      kategori: [
+        { items: [], nama: "recommended", title: "Recommended" },
+        { items: [], nama: "top", title: "Top" },
+        { items: [], nama: "jawa-barat", title: "Jawa Barat" },
+        { items: [], nama: "bali", title: "Bali" },
+        { items: [], nama: "pedas", title: "Pedas" },
+      ],
+      recipeText: "TEST",
+      recipeTitle: "TEST",
+      recipeId: null,
+    };
+  },
+  methods: {
+    closeInfoWindow() {
+      this.tooltipShown = false;
     },
-    data(){
-        return {
-            currentlySelected: null,
-            tooltipShown: false,
-            tooltipTop: 0,
-            tasteBackground: require('../assets/tasteHeader.jpg'),
-            spice1: require('../assets/cengkeh.jpg'),
-            spice2: require('../assets/kayu manis.jpg'),
-            spice3: require('../assets/kapulaga.jpg'),
-            dataRecipe: [
-                // {id: 1, title: "Gudeg", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam", image: food1 },
-                // {id: 2, title: "Rawon", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam", image: food2 },
-                // {id: 3, title: "Ketoprak", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam", image: food1 },
-                // {id: 4, title: "Soto Betawi", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam", image: food2 },
-            ],
-            spicesData: [],
-            kategori: [
-                {items: [], nama: 'recommended', title: 'Recommended'},
-                {items: [], nama: 'top', title: 'Top'},
-                {items: [], nama: 'jawa-barat', title: 'Jawa Barat'},
-                {items: [], nama: 'bali', title: 'Bali'},
-                {items: [], nama: 'pedas', title: 'Pedas'}
-            ],
-            recipeText: 'TEST',
-            recipeTitle: 'TEST',
-            recipeId: null
-        }
+    moveInfoBox(kategori, id, ev) {
+      const clickedRecipe = this.kategori.findRecipe(id);
+      this.recipeText = clickedRecipe.description;
+      this.recipeTitle = clickedRecipe.title;
+      this.recipeId = clickedRecipe.id;
+      const e = ev.target;
+      console.log(this.currentlySelected);
+
+      // this.tooltipShown = !this.tooltipShown
+      const coords = this.getCoords(e);
+      const infoBox = document.getElementById("testBox");
+      switch (coords.section) {
+        case 0:
+          infoBox.style.setProperty("--loc", "12.5%", "");
+          break;
+        case 2:
+          infoBox.style.setProperty("--loc", "50%", "");
+          break;
+        case 3:
+          infoBox.style.setProperty("--loc", "87.5%", "");
+          break;
+      }
+      setTimeout(function () {
+        infoBox.style.top =
+          "calc(" + coords.top + "px - 3rem - " + infoBox.offsetHeight + "px)";
+      }, 250);
+
+      if (this.currentlySelected == id + kategori.nama) {
+        this.tooltipShown = !this.tooltipShown;
+      } else {
+        this.tooltipShown = true;
+        this.currentlySelected = id + kategori.nama;
+      }
     },
-    methods: {
-        closeInfoWindow(){
-            this.tooltipShown = false
-        },
-        moveInfoBox(kategori, id, ev){
-            const clickedRecipe = this.kategori.findRecipe(id)
-            this.recipeText = clickedRecipe.description
-            this.recipeTitle = clickedRecipe.title
-            this.recipeId = clickedRecipe.id
-            const e = ev.target
-            console.log(this.currentlySelected)
+    testStuff(id) {
+      if (this.currentlySelected == id) {
+        this.tooltipShown = !this.tooltipShown;
+      } else {
+        this.currentlySelected = id;
+      }
 
-            // this.tooltipShown = !this.tooltipShown
-            const coords = this.getCoords(e)
-            const infoBox = document.getElementById('testBox')
-            switch(coords.section){
-                case 0:
-                    infoBox.style.setProperty('--loc', '12.5%', '')
-                    break
-                case 2:
-                    infoBox.style.setProperty('--loc', '50%', '')
-                    break
-                case 3:
-                    infoBox.style.setProperty('--loc', '87.5%', '')
-                    break
-            }
-            setTimeout(function(){
-                infoBox.style.top = 'calc(' + coords.top + 'px - 3rem - ' + infoBox.offsetHeight + 'px)'
-            }, 250)
+      const infoBox = document.getElementById("testBox");
+      const elem = document.getElementById("box-" + id);
 
-            if(this.currentlySelected == id + kategori.nama){
-                this.tooltipShown = !this.tooltipShown
-            }else{
-                this.tooltipShown = true
-                this.currentlySelected = id + kategori.nama
-            }
-        },
-        testStuff(id){
-            if(this.currentlySelected == id){
-                this.tooltipShown = !this.tooltipShown
-            }else{
-                this.currentlySelected = id
-            }
-            
-            const infoBox = document.getElementById('testBox')
-            const elem = document.getElementById('box-' + id)
+      const coords = this.getCoords(elem);
+      if (coords.section) {
+        infoBox.style.setProperty("--loc", "75%", "");
+      } else {
+        infoBox.style.setProperty("--loc", "25%", "");
+      }
 
-            const coords = this.getCoords(elem)
-            if(coords.section){
-                infoBox.style.setProperty('--loc', '75%', '')
-            }else{
-                infoBox.style.setProperty('--loc', '25%', '')
-            }
-
-            infoBox.style.top = 'calc(' + coords.top + 'px - 3rem - 50%)'
-            // console.log(e.target.getBoundingClientRect().top)
-            // e.target.style.top = e.target.getBoundingClientRect().top
-            // console.log(e.target.getBoundingClientRect().top )
-        },
-        getCoords(elem) { // crossbrowser version
-            var box = elem.getBoundingClientRect();
-
-            var body = document.body;
-            var docEl = document.documentElement;
-
-            var scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop;
-            var scrollLeft = window.pageXOffset || docEl.scrollLeft || body.scrollLeft;
-
-            var clientTop = docEl.clientTop || body.clientTop || 0;
-            var clientLeft = docEl.clientLeft || body.clientLeft || 0;
-
-            var top  = box.top +  scrollTop - clientTop;
-            var left = box.left + scrollLeft - clientLeft;
-
-
-
-            return { top: Math.round(top), left: Math.round(left), section: Math.floor(left / (window.innerWidth / 4)) + 1 };
-        },
-        getCurrentItemCount(id){
-            return this.$store.state.cartItems.reduce((acc, val) => {
-                acc[val.id] = val.quantity || 0
-                return acc;
-            }, {})[id]
-        },
-        addToCart(item){
-            item.quantity = item.quantity || 0
-            this.$store.dispatch("addToCart", item);
-        },
-        removeItem(item){
-            item.quantity = item.quantity || 0
-            this.$store.dispatch("removeItem", item);
-        },
+      infoBox.style.top = "calc(" + coords.top + "px - 3rem - 50%)";
+      // console.log(e.target.getBoundingClientRect().top)
+      // e.target.style.top = e.target.getBoundingClientRect().top
+      // console.log(e.target.getBoundingClientRect().top )
     },
-    async created(){
-        const promises = this.kategori.reduce(function(acc, val){
-            const whereQuery = [where('tags', 'array-contains', val.nama)]
-            acc.push(this.$firestoreOrm.collections.recipes.functions.fetchQuery(whereQuery))
-            return acc
-        }.bind(this), [])
-        Promise.all(promises).then((res) => {
-            res.forEach((v, idx) => {
-                this.kategori[idx].items = v
-            })
-            console.log(this.kategori)
-        })
+    getCoords(elem) {
+      // crossbrowser version
+      var box = elem.getBoundingClientRect();
 
-        this.kategori.findRecipe = function(name){
-            return this.find((v) => {
-                return v.items.find(va => va.id == name)
-            }).items.find(v => v.id == name)
-        }
+      var body = document.body;
+      var docEl = document.documentElement;
 
-        // this.dataRecipe = await this.$firestoreOrm.collections.recipes.functions.fetch()
-        // this.spicesData = await this.$firestoreOrm.collections.spices.functions.fetch()
+      var scrollTop = window.pageYOffset || docEl.scrollTop || body.scrollTop;
+      var scrollLeft =
+        window.pageXOffset || docEl.scrollLeft || body.scrollLeft;
 
-        // this.$firestoreOrm.collections.connections.functions.registerOnSnapshot(
-        //     function(snap){
-        //         const data = []
-        //         snap.forEach((doc) => {
-        //             data.push(doc.data())
-        //         })
-        //         if(data[0].open === 1){
-        //             console.log('open')
-        //         }
-        //     },
-        //     function(err){
-        //         console.error(err)
-        //     },
-        //     [ where('identifier', '==', this.$connection.identifier) ]
-        // )
+      var clientTop = docEl.clientTop || body.clientTop || 0;
+      var clientLeft = docEl.clientLeft || body.clientLeft || 0;
 
-        // if(this.$store.state.cartItems.length == 0){
-        //     this.$store.dispatch('setCartItems', [...this.spicesData])
-        // }
-    }
-}
+      var top = box.top + scrollTop - clientTop;
+      var left = box.left + scrollLeft - clientLeft;
+
+      return {
+        top: Math.round(top),
+        left: Math.round(left),
+        section: Math.floor(left / (window.innerWidth / 4)) + 1,
+      };
+    },
+    getCurrentItemCount(id) {
+      return this.$store.state.cartItems.reduce((acc, val) => {
+        acc[val.id] = val.quantity || 0;
+        return acc;
+      }, {})[id];
+    },
+    addToCart(item) {
+      item.quantity = item.quantity || 0;
+      this.$store.dispatch("addToCart", item);
+    },
+    removeItem(item) {
+      item.quantity = item.quantity || 0;
+      this.$store.dispatch("removeItem", item);
+    },
+  },
+  async created() {
+    const promises = this.kategori.reduce(
+      function (acc, val) {
+        const whereQuery = [where("tags", "array-contains", val.nama)];
+        acc.push(
+          this.$firestoreOrm.collections.recipes.functions.fetchQuery(
+            whereQuery
+          )
+        );
+        return acc;
+      }.bind(this),
+      []
+    );
+    Promise.all(promises).then((res) => {
+      res.forEach((v, idx) => {
+        this.kategori[idx].items = v;
+      });
+      console.log(this.kategori);
+    });
+
+    this.kategori.findRecipe = function (name) {
+      return this.find((v) => {
+        return v.items.find((va) => va.id == name);
+      }).items.find((v) => v.id == name);
+    };
+
+    // this.dataRecipe = await this.$firestoreOrm.collections.recipes.functions.fetch()
+    // this.spicesData = await this.$firestoreOrm.collections.spices.functions.fetch()
+
+    // this.$firestoreOrm.collections.connections.functions.registerOnSnapshot(
+    //     function(snap){
+    //         const data = []
+    //         snap.forEach((doc) => {
+    //             data.push(doc.data())
+    //         })
+    //         if(data[0].open === 1){
+    //             console.log('open')
+    //         }
+    //     },
+    //     function(err){
+    //         console.error(err)
+    //     },
+    //     [ where('identifier', '==', this.$connection.identifier) ]
+    // )
+
+    // if(this.$store.state.cartItems.length == 0){
+    //     this.$store.dispatch('setCartItems', [...this.spicesData])
+    // }
+  },
+};
 </script>
 
 <style>
-.info-box-bg{
-    /* background: rgb(32,36,36); */
-    /* background-color: linear-gradient(0deg, rgba(32,36,36,1) 0%, rgba(9,9,121,0) 70%, rgba(0,212,255,0) 100%); */
+.info-box-bg {
+  /* background: rgb(32,36,36); */
+  /* background-color: linear-gradient(0deg, rgba(32,36,36,1) 0%, rgba(9,9,121,0) 70%, rgba(0,212,255,0) 100%); */
 }
 
-.recipe-box{
-    top: 0;
-    width: calc(100vw - 4rem);
-    z-index: 4;
-    background-color: rgb(78, 66, 62);
-    box-shadow: rgb(0 0 0 / 39%) 1px -3px 15px;
+.recipe-box {
+  top: 0;
+  width: calc(100vw - 4rem);
+  z-index: 4;
+  background-color: rgb(78, 66, 62);
+  box-shadow: rgb(0 0 0 / 39%) 1px -3px 15px;
 }
 
-.recipe-box:after{
-    /* content: '';
+.recipe-box:after {
+  /* content: '';
 	position: absolute;
 	bottom: 0;
 	left: var(--loc);
@@ -464,74 +517,74 @@ export default {
 	border-bottom: 0;
 	margin-left: -0.625em;
 	margin-bottom: -0.625em; */
-    content: "";
-    position: absolute;
-    box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 2px ;
-    -moz-transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    bottom: -10px;
-	left: var(--loc);
-    border-width: 10px;
-    border-style: solid;
-    border-color: transparent rgb(78, 66, 62) rgb(78, 66, 62) transparent;
+  content: "";
+  position: absolute;
+  box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 2px;
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  bottom: -10px;
+  left: var(--loc);
+  border-width: 10px;
+  border-style: solid;
+  border-color: transparent rgb(78, 66, 62) rgb(78, 66, 62) transparent;
 }
 
 .checkout {
-    z-index: 99;
-    top: calc(var(--viewport-height) - 67px);
-    right: 20px;
-    /* opacity: 0.7; */
+  z-index: 99;
+  top: calc(var(--viewport-height) - 67px);
+  right: 20px;
+  /* opacity: 0.7; */
 }
 
 #lblCartCount {
-    font-size: 12px;
-    background: #ff0000;
-    color: #fff;
-    padding: 0 10px;
-    margin-left: 25px; 
-    margin-top: -10px;
-    position: absolute;
+  font-size: 12px;
+  background: #ff0000;
+  color: #fff;
+  padding: 0 10px;
+  margin-left: 25px;
+  margin-top: -10px;
+  position: absolute;
 }
 
 .badge {
-    padding-left: 9px;
-    padding-right: 9px;
-    border-radius: 9px;
+  padding-left: 9px;
+  padding-right: 9px;
+  border-radius: 9px;
 }
 
-.disabled{
-    pointer-events: none;
+.disabled {
+  pointer-events: none;
 }
 
 .loader {
-	border-top-color: #3498db;
-	-webkit-animation: spinner 1.5s linear infinite;
-	animation: spinner 1.5s linear infinite;
+  border-top-color: #3498db;
+  -webkit-animation: spinner 1.5s linear infinite;
+  animation: spinner 1.5s linear infinite;
 }
 
-.fade-enter-active, .fade-leave-active {
-    transition: opacity .25s
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.25s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
-    opacity: 0
+  opacity: 0;
 }
 
 @-webkit-keyframes spinner {
-	0% {
-		-webkit-transform: rotate(0deg);
-	}
-	100% {
-		-webkit-transform: rotate(360deg);
-	}
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 @keyframes spinner {
-	0% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(360deg);
-	}
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
-
 </style>

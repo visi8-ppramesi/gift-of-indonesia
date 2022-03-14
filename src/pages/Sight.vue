@@ -10,13 +10,7 @@
                     <hr class="w-36 mt-1 border-4 md:w-72" />
                 </div>
                     <div class="mt-3 text-xs md:text-lg mx-6">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                        qui officia deserunt mollit anim id est laborum
+                        Every sightseeing in Indonesia, especially the magnificent Mount Bromo will not disappoint with its spectacular views and dramatic landscapes. Standing majestically inside the huge caldera of the once ancient Mount Tengger, Mount Bromo is surrounded by a vast stretching sea of volcanic sand that radiated a certain mystical beauty.
                     </div>
                 </div>
             </top>
@@ -56,8 +50,7 @@
                     <div class="text-md font-bold md:text-2xl">Diving</div>
                     <div class="text-sm md:text-xl">Raja Ampat</div>
                     <div class="text-xs mt-2 md:text-lg">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                        sed eiusmod tempor incididunt ut labore et dolore magna.
+                        Raja Ampat lies in the heart of the Coral Triangle. It holds the prestigious title as the most marine biodiverse place on earth. Breathtakingly spectacular and truly unforgettable Raja Ampat Scuba Diving experience can’t be missed for everyone to enjoy.
                     </div>
                     <div class="mt-2 md:mt-4">
                         <tombol class="text-xs md:text-md" title="AR" />
@@ -70,10 +63,9 @@
             <div class="h-full mx-6 flex flex-row justify-evenly justify-items-stretch">
                 <div class="w-full text-left">
                     <div class="text-md font-bold md:text-xl">Fishing</div>
-                    <div class="text-sm md:text-lg">Laut Indonesia</div>
+                    <div class="text-sm md:text-lg">Sea of Indonesia</div>
                     <div class="text-xs mt-2 md:text-lg">
-                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                       sed eiusmod tempor. consectetur adipiscing elit
+                       Your fishing in Indonesia experience should be amazing. With tens of thousands of islands offer the best Indonesia Fishing Game or recreational sport fishing in various locations. 
                     </div>
                     <div class="mt-2 md:mt-4" @click="openVR">
                         <!-- <router-link to="/scene/asdfasdfasdf"> -->
@@ -96,10 +88,11 @@
 
                 <div class="w-full text-right">
                     <div class="text-md font-bold md:text-xl">Dance</div>
-                    <div class="text-sm md:text-lg">Tari Reog Ponogoro</div>
+                    <div class="text-sm md:text-lg">Reog Ponogoro Dance</div>
                     <div class="text-xs mt-2 md:text-lg">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                        sed eiusmod tempor incididunt ut labore et dolore.
+                        The dances in Indonesia reflect its diverse and long history. Dances in Indonesia are believed by many scholars to have had their beginning in rituals and religious worship. Every region has its own traditional dances and it reflects their special features.
+
+                        Music is an integral part of every culture in this world. It is seen as a form of entertainment and a way of spending time with a community.
                     </div>
                     <div class="mt-2 md:mt-4">
                         <tombol class="text-xs md:text-md" title="PANORAMA" />

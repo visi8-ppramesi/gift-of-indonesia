@@ -29,13 +29,7 @@
             md:text-lg md:w-full md:px-6
           "
         >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum
+          Indonesia is a huge nation comprised of hundreds of cultures derived from local regions, making it one of the most diverse countries in the world. An intoxicating country of seemingly endless exploration, Indonesia’s islands have something for everyone to experience, whether you’re a thrill-seeker, culture connoisseur, or nature lover. The scenery is gorgeous with a stunningly beautiful archipelago and an amazing array of differing adventure experiences.
         </div>
       </top>
     </div>
@@ -67,15 +61,8 @@
                   md:text-lg md:w-full md:px-6
                 "
                 >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                  minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip ex ea commodo consequat. Duis aute irure dolor in
-                  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                  culpa qui officia deserunt mollit anim id est laborum
+                  Indonesia is located what is called “the Pacific rim of fire” which is one of the most active volcanic areas in the world. Some mountains boast the most gorgeous sunsets in the world that everyone willing to experience. Enjoy Indonesia's natural beauty with our VR and AR experiences.
                 </div>
-
                 <div>
                   <router-link to="/sight">
                   <button
@@ -128,13 +115,7 @@
                   md:text-lg md:w-full md:px-6
                 "
                 >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                  minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip ex ea commodo consequat. Duis aute irure dolor in
-                  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                  culpa qui officia deserunt mollit anim id est laborum
+                  Everyone can literally eat for days in Indonesia and always be trying something new. Some popular foods are Satay, Fried Rice, Gudeg, Sambal, and Rendang. Indonesia is also one of the largest coffee producers in the world.
                 </div>
 
                 <div>
@@ -189,13 +170,9 @@
                   md:text-lg md:w-full md:px-6
                 "
                 >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                  minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip ex ea commodo consequat. Duis aute irure dolor in
-                  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                  culpa qui officia deserunt mollit anim id est laborum
+                  Indonesia is home to a diverse ethnic group with different cultural traditions that have a distinctive beauty of their own. One such tradition is the fascinating cultural music. the traditional regional music of Indonesia comprises strong beats and harmonies.
+                  
+                  Suling, Gamelan, Angklung, Sasando, and Kulintang are some of many Indonesian musical instruments that everyone needs to hear to see the beautiful cultural heritage throughout traditional songs using the original instruments.
                 </div>
 
                 <div>
@@ -240,7 +217,7 @@
 
             <div class="flex flex h-screen justify-center items-center">
               <div class="flex flex-col items-center justify-center max-w-screen-xl">
-                <div
+                <!-- <div
                 class="
                   text-center
                   w-full
@@ -250,14 +227,8 @@
                   md:text-lg md:w-full md:px-6
                 "
                 >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                  minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                  aliquip ex ea commodo consequat. Duis aute irure dolor in
-                  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                  culpa qui officia deserunt mollit anim id est laborum
-                </div>
+                  Meet our partners
+                </div> -->
 
                 <div>
                   <router-link to="/partners">
@@ -276,7 +247,7 @@
                       2xl:text-3xl
                     "
                     >
-                      Our Partners
+                      Meet our partners
                     </button>
                   </router-link>
                 </div>
@@ -336,7 +307,7 @@ export default {
   },
   methods: {
     openPlayStore() {
-      document.location.href = 'intent:#Intent;package=Virtual.Concert.Quest2_Test;end;'
+      document.location.href = 'intent:#Intent;scheme=example;package=Virtual.Concert.Quest2_Test;end;'
     },
     openIdViewer() {
       this.clickCount += 1;
