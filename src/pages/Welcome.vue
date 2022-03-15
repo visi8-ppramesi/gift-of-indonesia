@@ -307,7 +307,7 @@ export default {
   },
   methods: {
     openPlayStore() {
-      document.location.href = 'intent:#Intent;scheme=example;package=Virtual.Concert.Quest2_Test;end;'
+      document.location.href = 'intent://#Intent;scheme=example;package=Virtual.Concert.Quest2_Test;end;'
     },
     openIdViewer() {
       this.clickCount += 1;

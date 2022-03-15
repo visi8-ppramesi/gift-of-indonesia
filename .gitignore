@@ -2,7 +2,7 @@
 node_modules
 /dist
 
-
+text.txt
 # local env files
 .env.local
 .env.*.local
