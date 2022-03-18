@@ -285,7 +285,7 @@ export default {
       //     {title: "Sound", button: "Sound", image: sound, link: "/sound"},
       // ]
       sight: require("../assets/sight.jpg"),
-      taste: require("../assets/taste.png"),
+      taste: require("../assets/taste.jpg"),
       sound: require("../assets/sound.jpg"),
       bali: require("../assets/bali.png"),
     };

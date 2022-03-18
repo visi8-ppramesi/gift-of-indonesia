@@ -61,7 +61,7 @@ export default {
   },
   data() {
     return {
-      soundBackground: require("../assets/soundHeader.jpg"),
+      soundBackground: require("../assets/sound.jpg"),
       iframeSrc1: "https://www.youtube.com/embed/UbF6Uf37XN0",
       iframeSrc2: "https://www.youtube.com/embed/5DmT6N2_uE4",
       iframeSrc3: "https://www.youtube.com/embed/GFZnjFSvB08",

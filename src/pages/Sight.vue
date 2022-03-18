@@ -122,7 +122,7 @@ export default {
     },
     data(){
         return {
-            sightBackground: require('../assets/sightHeader.jpg'),
+            sightBackground: require('../assets/sight.jpg'),
             card1: require('../assets/Card1.jpg'),
             card2: require('../assets/Card2.jpeg'),
             card3: require('../assets/Card3.jpg'),
