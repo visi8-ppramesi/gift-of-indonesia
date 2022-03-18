@@ -29,7 +29,13 @@
             md:text-lg md:w-full md:px-6
           "
         >
-          Indonesia is a huge nation comprised of hundreds of cultures derived from local regions, making it one of the most diverse countries in the world. An intoxicating country of seemingly endless exploration, Indonesia’s islands have something for everyone to experience, whether you’re a thrill-seeker, culture connoisseur, or nature lover. The scenery is gorgeous with a stunningly beautiful archipelago and an amazing array of differing adventure experiences.
+          Indonesia is a huge nation comprised of hundreds of cultures derived
+          from local regions, making it one of the most diverse countries in the
+          world. An intoxicating country of seemingly endless exploration,
+          Indonesia’s islands have something for everyone to experience, whether
+          you’re a thrill-seeker, culture connoisseur, or nature lover. The
+          scenery is gorgeous with a stunningly beautiful archipelago and an
+          amazing array of differing adventure experiences.
         </div>
       </top>
     </div>
@@ -47,38 +53,48 @@
               justify-center
             "
             :backgroundChoice="sight"
-            >
-
+          >
             <div class="flex flex h-screen justify-center items-center">
-              <div class="flex flex-col items-center justify-center max-w-screen-xl">
-                <div
+              <div
                 class="
-                  text-center
-                  w-full
-                  px-4
-                  text-sm
-                  mt-3
-                  md:text-lg md:w-full md:px-6
+                  flex flex-col
+                  items-center
+                  justify-center
+                  max-w-screen-xl
                 "
+              >
+                <div
+                  class="
+                    text-center
+                    w-full
+                    px-4
+                    text-sm
+                    mt-3
+                    md:text-lg md:w-full md:px-6
+                  "
                 >
-                  Indonesia is located what is called “the Pacific rim of fire” which is one of the most active volcanic areas in the world. Some mountains boast the most gorgeous sunsets in the world that everyone willing to experience. Enjoy Indonesia's natural beauty with our VR and AR experiences.
+                  Indonesia is located what is called “the Pacific rim of fire”
+                  which is one of the most active volcanic areas in the world.
+                  Some mountains boast the most gorgeous sunsets in the world
+                  that everyone willing to experience. Enjoy Indonesia's natural
+                  beauty with our VR and AR experiences.
                 </div>
                 <div>
                   <router-link to="/sight">
-                  <button
-                    class="
-                      text-white
-                      border-white
-                      bg-opacity-10
-                      border-solid border-2
-                      shadow-xl
-                      text-black
-                      bg-white
-                      mt-7
-                      px-20
-                      py-4
-                      2xl:text-3xl
-                    "
+                    <button
+                      class="
+                        text-white
+                        border-white
+                        bg-opacity-10
+                        border-solid border-2
+                        shadow-xl
+                        text-black
+                        bg-white
+                        mt-7
+                        px-20
+                        py-4
+                        2xl:text-3xl
+                      "
                     >
                       Sight
                     </button>
@@ -101,39 +117,48 @@
               justify-center
             "
             :backgroundChoice="taste"
-            >
-
+          >
             <div class="flex flex h-screen justify-center items-center">
-              <div class="flex flex-col items-center justify-center max-w-screen-xl">
-                <div
+              <div
                 class="
-                  text-center
-                  w-full
-                  px-4
-                  text-sm
-                  mt-3
-                  md:text-lg md:w-full md:px-6
+                  flex flex-col
+                  items-center
+                  justify-center
+                  max-w-screen-xl
                 "
+              >
+                <div
+                  class="
+                    text-center
+                    w-full
+                    px-4
+                    text-sm
+                    mt-3
+                    md:text-lg md:w-full md:px-6
+                  "
                 >
-                  Everyone can literally eat for days in Indonesia and always be trying something new. Some popular foods are Satay, Fried Rice, Gudeg, Sambal, and Rendang. Indonesia is also one of the largest coffee producers in the world.
+                  Everyone can literally eat for days in Indonesia and always be
+                  trying something new. Some popular foods are Satay, Fried
+                  Rice, Gudeg, Sambal, and Rendang. Indonesia is also one of the
+                  largest coffee producers in the world.
                 </div>
 
                 <div>
                   <router-link to="/taste">
-                  <button
-                    class="
-                      text-white
-                      border-white
-                      bg-opacity-10
-                      border-solid border-2
-                      shadow-xl
-                      text-black
-                      bg-white
-                      mt-7
-                      px-20
-                      py-4
-                      2xl:text-3xl
-                    "
+                    <button
+                      class="
+                        text-white
+                        border-white
+                        bg-opacity-10
+                        border-solid border-2
+                        shadow-xl
+                        text-black
+                        bg-white
+                        mt-7
+                        px-20
+                        py-4
+                        2xl:text-3xl
+                      "
                     >
                       Taste
                     </button>
@@ -156,41 +181,52 @@
               justify-center
             "
             :backgroundChoice="sound"
-            >
-
+          >
             <div class="flex flex h-screen justify-center items-center">
-              <div class="flex flex-col items-center justify-center max-w-screen-xl">
-                <div
+              <div
                 class="
-                  text-center
-                  w-full
-                  px-4
-                  text-sm
-                  mt-3
-                  md:text-lg md:w-full md:px-6
+                  flex flex-col
+                  items-center
+                  justify-center
+                  max-w-screen-xl
                 "
+              >
+                <div
+                  class="
+                    text-center
+                    w-full
+                    px-4
+                    text-sm
+                    mt-3
+                    md:text-lg md:w-full md:px-6
+                  "
                 >
-                  Indonesia is home to a diverse ethnic group with different cultural traditions that have a distinctive beauty of their own. One such tradition is the fascinating cultural music. the traditional regional music of Indonesia comprises strong beats and harmonies.
-                  
-                  Suling, Gamelan, Angklung, Sasando, and Kulintang are some of many Indonesian musical instruments that everyone needs to hear to see the beautiful cultural heritage throughout traditional songs using the original instruments.
+                  Indonesia is home to a diverse ethnic group with different
+                  cultural traditions that have a distinctive beauty of their
+                  own. One such tradition is the fascinating cultural music. the
+                  traditional regional music of Indonesia comprises strong beats
+                  and harmonies. Suling, Gamelan, Angklung, Sasando, and
+                  Kulintang are some of many Indonesian musical instruments that
+                  everyone needs to hear to see the beautiful cultural heritage
+                  throughout traditional songs using the original instruments.
                 </div>
 
                 <div>
                   <router-link to="/sound">
-                  <button
-                    class="
-                      text-white
-                      border-white
-                      bg-opacity-10
-                      border-solid border-2
-                      shadow-xl
-                      text-black
-                      bg-white
-                      mt-7
-                      px-20
-                      py-4
-                      2xl:text-3xl
-                    "
+                    <button
+                      class="
+                        text-white
+                        border-white
+                        bg-opacity-10
+                        border-solid border-2
+                        shadow-xl
+                        text-black
+                        bg-white
+                        mt-7
+                        px-20
+                        py-4
+                        2xl:text-3xl
+                      "
                     >
                       Sound
                     </button>
@@ -213,10 +249,16 @@
               justify-center
             "
             :backgroundChoice="bali"
-            >
-
+          >
             <div class="flex flex h-screen justify-center items-center">
-              <div class="flex flex-col items-center justify-center max-w-screen-xl">
+              <div
+                class="
+                  flex flex-col
+                  items-center
+                  justify-center
+                  max-w-screen-xl
+                "
+              >
                 <!-- <div
                 class="
                   text-center
@@ -231,25 +273,49 @@
                 </div> -->
 
                 <div>
-                  <router-link to="/partners">
-                  <button
-                    class="
-                      text-white
-                      border-white
-                      bg-opacity-10
-                      border-solid border-2
-                      shadow-xl
-                      text-black
-                      bg-white
-                      mt-7
-                      px-20
-                      py-4
-                      2xl:text-3xl
-                    "
+                  <div>
+                    <button
+                      class="
+                        text-white
+                        border-white
+                        bg-opacity-10
+                        border-solid border-2
+                        shadow-xl
+                        text-black
+                        bg-white
+                        mt-7
+                        px-20
+                        py-4
+                        2xl:text-3xl
+                        link-button
+                      "
+                      @click="toCollaborate"
                     >
-                      Meet our partners
+                      Colla8orate
                     </button>
-                  </router-link>
+                  </div>
+                  <div>
+                    <router-link to="/partners">
+                      <button
+                        class="
+                          text-white
+                          border-white
+                          bg-opacity-10
+                          border-solid border-2
+                          shadow-xl
+                          text-black
+                          bg-white
+                          mt-7
+                          px-20
+                          py-4
+                          2xl:text-3xl
+                          link-button
+                        "
+                      >
+                        Meet our partners
+                      </button>
+                    </router-link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -306,8 +372,12 @@ export default {
     }
   },
   methods: {
+    toCollaborate(){
+      document.location.href = "https://colla8orate.com/";
+    },
     openPlayStore() {
-      document.location.href = 'intent://#Intent;scheme=example;package=Virtual.Concert.Quest2_Test;end;'
+      document.location.href =
+        "intent://#Intent;scheme=example;package=Virtual.Concert.Quest2_Test;end;";
     },
     openIdViewer() {
       this.clickCount += 1;
@@ -404,6 +474,10 @@ header {
 	display: grid;
 	place-items: center;
 } */
+
+.link-button{
+  min-width: 300px;
+}
 
 #cards {
   list-style: none;
