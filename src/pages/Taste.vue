@@ -318,7 +318,7 @@ export default {
       currentlySelected: null,
       tooltipShown: false,
       tooltipTop: 0,
-      tasteBackground: require("../assets/tasteHeader.jpg"),
+      tasteBackground: require("../assets/taste.jpg"),
       spice1: require("../assets/cengkeh.jpg"),
       spice2: require("../assets/kayu manis.jpg"),
       spice3: require("../assets/kapulaga.jpg"),
